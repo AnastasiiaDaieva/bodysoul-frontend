@@ -1,0 +1,86 @@
+@import-normalize;
+@import './styles/variables.scss';
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: var(--main-font);
+  font-family: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+background-color: var(--background-color);
+  
+}
+
+button {
+  display: block;
+  margin: 0;
+  font-family: var(--accent-font);
+}
+
+p,
+span {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+article {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.container {
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    min-width: 280px;
+    padding: 25px 0;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 704px;
+    padding: 25px 0;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1248px;
+    padding: 25px 0;
+  }
+}
+

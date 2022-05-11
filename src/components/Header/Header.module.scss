@@ -1,0 +1,27 @@
+@import "../../index.scss";
+
+.Header {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  color: var(--add-light-color);
+  background-color: var(--add-dark-color);
+}
+
+
+
+@media screen and (max-width: 767.99px) {
+  
+}
+
+@media screen and (min-width: 768px) {
+ 
+  
+ 
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279.99px) {
+}
+
+@media screen and (min-width: 1280px) {
+}
