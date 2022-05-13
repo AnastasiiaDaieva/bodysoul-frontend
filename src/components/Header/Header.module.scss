@@ -1,27 +1,43 @@
 @import "../../index.scss";
 
 .Header {
+  position: relative;
+  z-index: 10;
   display: flex;
   width: 100%;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   color: var(--add-light-color);
-  background-color: var(--add-dark-color);
 }
 
 
 
-@media screen and (max-width: 767.99px) {
+.Header__icon{
+  width: 30px;
+  height: 30px;
+}
+
+
+
+@media screen and (max-width: 767px) {
   
 }
 
 @media screen and (min-width: 768px) {
- 
-  
- 
+.Header__icon{
+  display: none;
+}
+ .Header__logo {margin-right: 10%;}
+
+ .Header{
+    justify-content:left;
+ }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279.99px) {
+@media screen and (min-width: 768px) and (max-width: 1279px) {
 }
 
 @media screen and (min-width: 1280px) {
+ 
 }

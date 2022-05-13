@@ -11,15 +11,7 @@ import NavigationList from "./NavigationList";
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openServices, setOpenServices] = useState(false);
-
-  // 767.99 макс
-  // меню скрывается
-  // показываются иконки
-  // при нажатии иконки открывается/скрывается меню
-
-  // 768 мин
-  // меню показывается
-  // иконки - нет
+  const [openSpots, setOpenSpots] = useState(false);
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -28,16 +20,22 @@ function Header() {
   const showServices = () => {
     setOpenServices(!openServices);
   };
+
+  const showSpots = () => {
+    setOpenSpots(!openSpots);
+  };
   return (
     <header>
       <div className={`container ${s.Header}`}>
-        <Logo />
+        <Logo className={s.Header__logo} />
 
         <nav className={s.Header__nav}>
           <MediaQuery query="(min-width: 768px)">
             <NavigationList
               showServices={showServices}
               openServices={openServices}
+              showSpots={showSpots}
+              openSpots={openSpots}
             />
           </MediaQuery>
           <MediaQuery query="(max-width: 767.99px)">
@@ -47,11 +45,19 @@ function Header() {
                   <NavigationList
                     showServices={showServices}
                     openServices={openServices}
+                    showSpots={showSpots}
+                    openSpots={openSpots}
                   />
-                  <IoCloseOutline onClick={toggleMenu} />
+                  <IoCloseOutline
+                    onClick={toggleMenu}
+                    className={s.Header__icon}
+                  />
                 </>
               ) : (
-                <HiOutlineMenu onClick={toggleMenu} />
+                <HiOutlineMenu
+                  onClick={toggleMenu}
+                  className={s.Header__icon}
+                />
               )}
             </div>
           </MediaQuery>
