@@ -1,0 +1,27 @@
+.Services__list{
+}
+
+.Services__item {
+background-color: var(--add-dark-color); color: var(--accent-color); text-decoration: underline;}
+
+
+@media screen and (max-width: 767px) {
+  }
+
+  @media screen and (min-width: 768px)  {
+      .Services__list {
+          display: flex;
+
+      }
+          .Services__item {
+              width: calc(100% / 3);
+          }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+  }
+
+  @media screen and (min-width: 1280px) {
+
+
+}

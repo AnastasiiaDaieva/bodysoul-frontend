@@ -1,16 +1,20 @@
 @import "../../index.scss";
 
 .Header {
-  position: relative;
+  position: absolute;
+left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+
   color: var(--add-light-color);
 }
 
+.Header__container{display: flex;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;}
+  
 
 
 .Header__icon{

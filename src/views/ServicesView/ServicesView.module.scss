@@ -1,0 +1,23 @@
+.ServicesView__type{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+
+
+@media screen and (max-width: 767px) {}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .ServicesView__item {
+            width: calc(100% / 2 - 10px);
+        }
+}
+
+@media screen and (min-width: 1280px) {
+    .ServicesView__item {
+            width: calc(100% / 3 - 10px);
+        }
+}

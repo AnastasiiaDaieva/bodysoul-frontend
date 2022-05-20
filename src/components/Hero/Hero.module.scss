@@ -1,13 +1,15 @@
 .Hero {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    background-image: linear-gradient(var(--hero-gradient)), url(../../img/hero-photo_desktop.jpg);
- 
-    background-position: 80%;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: 0;
-    right: 0;
+    background-image: linear-gradient(var(--hero-gradient)), url(../../img/hero-photo_desktop.jpg);    background-repeat: no-repeat;
+background-position: 80%;
+ background-color: var(--add-dark-color);
+
+
+
+}
+.Hero__container{
+   
     padding-top: 100px;
     display: flex;
     justify-content: left;

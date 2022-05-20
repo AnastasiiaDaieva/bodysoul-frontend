@@ -25,8 +25,8 @@ function Header() {
     setOpenSpots(!openSpots);
   };
   return (
-    <header>
-      <div className={`container ${s.Header}`}>
+    <header className={s.Header}>
+      <div className={`container ${s.Header__container}`}>
         <Logo className={s.Header__logo} />
 
         <nav className={s.Header__nav}>
@@ -36,6 +36,8 @@ function Header() {
               openServices={openServices}
               showSpots={showSpots}
               openSpots={openSpots}
+              setOpenServices={setOpenServices}
+              setOpenSpots={setOpenSpots}
             />
           </MediaQuery>
           <MediaQuery query="(max-width: 767.99px)">
@@ -47,6 +49,8 @@ function Header() {
                     openServices={openServices}
                     showSpots={showSpots}
                     openSpots={openSpots}
+                    setOpenServices={setOpenServices}
+                    setOpenSpots={setOpenSpots}
                   />
                   <IoCloseOutline
                     onClick={toggleMenu}
