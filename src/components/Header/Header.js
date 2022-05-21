@@ -4,14 +4,25 @@ import { useState } from "react";
 import s from "./Header.module.scss";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoCloseOutline } from "react-icons/io5";
-
+import { useLocation } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import NavigationList from "./NavigationList";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openServices, setOpenServices] = useState(false);
   const [openSpots, setOpenSpots] = useState(false);
+
+  let location = useLocation();
+  console.log(location);
+
+  const headerBackground =
+    location.pathname === "/" ? "transparent" : "var(--add-dark-color)";
+  const headerColor =
+    location.pathname === "/*"
+      ? "var(--add-dark-color)"
+      : "var(--add-light-color)";
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -25,10 +36,15 @@ function Header() {
     setOpenSpots(!openSpots);
   };
   return (
-    <header className={s.Header}>
+    <header
+      className={s.Header}
+      style={{ color: headerColor, backgroundColor: headerBackground }}
+    >
       <div className={`container ${s.Header__container}`}>
-        <Logo className={s.Header__logo} />
-
+        <NavLink to="/">
+          {" "}
+          <Logo className={s.Header__logo} />
+        </NavLink>
         <nav className={s.Header__nav}>
           <MediaQuery query="(min-width: 768px)">
             <NavigationList

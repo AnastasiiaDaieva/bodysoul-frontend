@@ -1,0 +1,42 @@
+.Footer {
+  width: 100vw;
+  background-color: var(--sec-bg-color);
+  margin-top: 100px;
+}
+.Footer__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.Footer__contacts {
+  border-top: 1px solid var(--add-dark-color);
+}
+
+.Footer__main {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (min-width: 768px) {
+  .Footer__contacts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .Footer__nav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .Footer__main {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

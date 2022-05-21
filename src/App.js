@@ -5,6 +5,7 @@ import { lazy } from "react";
 import Header from "components/Header/Header";
 import s from "./App.module.scss";
 import "./index.scss";
+import Footer from "components/Footer/Footer";
 
 const AboutView = lazy(() =>
   import("views/AboutView/AboutView" /*webpackChunkName: "about-view" */)
@@ -26,14 +27,15 @@ const ServicesView = lazy(() =>
 function App() {
   return (
     <div className={s.App}>
-      <Header />
       <Suspense fallback={<ContentLoader />}>
+        <Header />
         <Routes>
           <Route path="/*" element={<HomeView />} />
           <Route path="/about" element={<AboutView />} />
           <Route path="/services" element={<ServicesView />} />
           <Route path="/contacts" element={<ContactsView />} />
         </Routes>
+        <Footer />
       </Suspense>
     </div>
   );

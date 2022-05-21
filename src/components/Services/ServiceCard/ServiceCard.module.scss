@@ -1,2 +1,73 @@
+.ServiceCard{
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    align-items: stretch;
+    background-color: var(--add-dark-color);
+    color: var(--add-light-color);
+    margin-top: 100px;
+    &>*:not(:last-child){
+        margin-bottom: 15px;
+    }
+}
+
 .ServiceCard__image{
 width: 100%;}
+
+.ServiceCard__book{
+color: var(--accent-color);
+background-color: var(--add-light-color);
+padding: 12px 0;
+width: 100%;
+}
+
+.ServiceCard__bullets{
+    text-align: justify;
+    list-style-type: disc;
+        margin-bottom: 40px;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 40px;
+        &>*:not(:last-child){
+            margin-bottom: 10px;
+        }
+}
+.ServiceCard__details{
+        
+}
+
+.ServiceCard__details_item{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 30px;
+             &:last-child{margin-bottom: 30px;} 
+   
+}
+.ServiceCard__divider{
+    flex-grow: 1;
+}
+
+.ServiceCard__content{
+    padding: 40px 30px;
+    font-size: 16px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+        align-items: stretch;
+}
+
+.ServiceCard__detail{
+    // border-bottom: 1px solid var(--add-light-color);
+    padding: 15px 15px;
+    display: flex;
+    align-content: center;
+}
+
+.ServiceCard__heading{
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 15px;
+
+}

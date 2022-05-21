@@ -20,8 +20,8 @@ function NavigationList({
       </a>
       <li
         onMouseOver={() => setOpenServices(true)}
-        onMouseLeave={() => setOpenServices(false)}
-        // onClick={showServices}
+        onBlur={() => setOpenServices(false)}
+        onClick={showServices}
         className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}
       >
         <div className={s.NavigationList__heading}>

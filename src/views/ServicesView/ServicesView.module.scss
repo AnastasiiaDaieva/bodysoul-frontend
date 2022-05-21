@@ -1,9 +1,21 @@
 .ServicesView__type{
+        margin-bottom: 120px;
+}
+
+.ServicesView__type_list{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.ServicesView__container{
+    margin-top: 100px;
+}
+.ServicesView__heading{
+    font-size: 35px;
+}
+
 
 
 
