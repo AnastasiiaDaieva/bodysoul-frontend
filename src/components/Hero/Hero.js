@@ -1,7 +1,22 @@
 import MediaQuery from "react-responsive";
 import s from "./Hero.module.scss";
+import { useState } from "react";
+import BookingModal from "components/Booking/BookingModal";
 
 function Hero() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const scrollToTop = () => {
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      document.body.scrollIntoView({ behavior: "auto" });
+    }
+  };
+
+  const modalOpen = () => {
+    setIsOpen(true);
+    scrollToTop();
+    document.body.style.overflow = "hidden";
+  };
   return (
     <div className={s.Hero}>
       <div className={`container ${s.Hero__container}`}>
@@ -21,10 +36,18 @@ function Hero() {
             </p>
           </MediaQuery>
           <div className={s.Hero__buttons}>
-            <button className={`${s.Hero__button} ${s.Hero__button_book}`}>
+            <button
+              type="button"
+              onClick={modalOpen}
+              className={`${s.Hero__button} ${s.Hero__button_book}`}
+            >
               записатися
             </button>
-            <button className={`${s.Hero__button} ${s.Hero__button_gift}`}>
+            {isOpen && <BookingModal isOpen={setIsOpen} />}
+            <button
+              type="button"
+              className={`${s.Hero__button} ${s.Hero__button_gift}`}
+            >
               сертифікат
             </button>
           </div>

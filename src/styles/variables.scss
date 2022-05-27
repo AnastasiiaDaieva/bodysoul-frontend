@@ -1,16 +1,20 @@
-@import './fonts.scss';
+@import "./fonts.scss";
 
 :root {
-    --background-color: #FBEFDF;
-    --sec-bg-color: rgba(60, 100, 177, 0.06);
-    --accent-color: #DD9226;
-    --text-color: #373F41;
-    --add-dark-color: #342113;
-    --add-light-color: #E7D8C4;
-    --alt-color: #88755C;
-    --hero-text-color: #C6AB87;
-    --hero-gradient: rgba(47, 48, 58, 0.8), rgba(47, 48, 58, 0.8);
-    --main-font: 'Roboto', 'sans serif';
-    --accent-font:'Philosopher','sans-serif';
-
+  --background-color: #fbefdf;
+  --sec-bg-color: rgba(60, 100, 177, 0.06);
+  --accent-color: #dd9226;
+  --text-color: #373f41;
+  --add-dark-color: #342113;
+  --add-light-color: #e7d8c4;
+  --alt-color: #88755c;
+  --hero-text-color: #c6ab87;
+  --hero-gradient: rgba(47, 48, 58, 0.8), rgba(47, 48, 58, 0.8);
+  --main-font: "Roboto", "sans serif";
+  --accent-font: "Philosopher", "sans-serif";
+  --modal-shadow: 0px 1px 20px 2px rgba(59, 57, 53, 0.46);
+  --card-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+    0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+  --button-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
+    0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }

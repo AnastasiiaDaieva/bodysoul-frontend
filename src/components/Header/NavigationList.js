@@ -1,26 +1,37 @@
 import { ReactComponent as MenuArrow } from "../../img/icons/menu-arrow.svg";
 import s from "./NavigationList.module.scss";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
-function NavigationList({
-  showServices,
-  openServices,
-  showSpots,
-  openSpots,
-  setOpenServices,
-  setOpenSpots,
-}) {
+function NavigationList({ setOpenMenu, openMenu }) {
+  const [openServices, setOpenServices] = useState(false);
+  const [openSpots, setOpenSpots] = useState(false);
+  const showServices = () => {
+    setOpenServices(!openServices);
+  };
+
+  const showSpots = () => {
+    setOpenSpots(!openSpots);
+  };
+
+  const handleBlur = (e) => {
+    if (
+      e.nativeEvent.explicitOriginalTarget &&
+      e.nativeEvent.explicitOriginalTarget === e.nativeEvent.originalTarget
+    ) {
+      return;
+    }
+  };
+
   return (
     <ul className={s.NavigationList}>
-      <a href="/" className={s.NavigationList__item}>
+      <NavLink to="/" className={s.NavigationList__item}>
         <li>Головна</li>
-      </a>
-      <a href="/about" className={s.NavigationList__item}>
+      </NavLink>
+      <NavLink to="/about" className={s.NavigationList__item}>
         <li>Про нас</li>
-      </a>
+      </NavLink>
       <li
-        onMouseOver={() => setOpenServices(true)}
-        onBlur={() => setOpenServices(false)}
         onClick={showServices}
         className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}
       >
@@ -32,48 +43,75 @@ function NavigationList({
           <ul className={s.NavigationList__services}>
             <NavLink
               to="/services"
-              className={`${s.NavigationList__item} ${s.NavigationList__subitem}`}
+              onClick={() => setOpenMenu(!openMenu)}
+              className={`${s.NavigationList__subitem}`}
             >
-              <li>Масаж</li>
+              <li className={s.NavigationList__item_sec}>Масаж</li>
             </NavLink>
-            <NavLink to="/services" className={s.NavigationList__item}>
-              <li>SPA програми</li>
+            <NavLink
+              to="/services"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__}
+            >
+              <li className={s.NavigationList__item_sec}>SPA програми</li>
             </NavLink>
-            <NavLink to="/services" className={s.NavigationList__item}>
-              <li>Естетика тіла</li>
+            <NavLink
+              to="/services"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__}
+            >
+              <li className={s.NavigationList__item_sec}>Естетика тіла</li>
             </NavLink>
-            {/* <NavLink to="/services" className={s.NavigationList__item}><li >
-             Сертифікати
-            </li> </NavLink>*/}
+            <NavLink
+              to="/services"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__}
+            >
+              <li className={s.NavigationList__item_sec}>Сертифікати</li>{" "}
+            </NavLink>
           </ul>
         )}
       </li>
-      {/*  <NavLink to="/gallery" className={s.NavigationList__item}><li >
+      {/*  <NavLink to="/gallery" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item}><li>
        Галерея
       </li></NavLink> */}
-      <NavLink to="/contacts" className={s.NavigationList__item}>
+      <NavLink
+        to="/contacts"
+        onClick={() => setOpenMenu(!openMenu)}
+        className={s.NavigationList__item}
+      >
         <li>Контакти</li>
       </NavLink>
-      <NavLink to="/specialists" className={s.NavigationList__item}>
-        <li>Масажисти</li>
-      </NavLink>
+      {/* <NavLink to="/specialists" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item}>
+        <li >Масажисти</li>
+      </NavLink> */}
       <li
         onClick={showSpots}
         className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}
-        onMouseOver={() => setOpenSpots(true)}
-        onMouseLeave={() => setOpenSpots(false)}
       >
-        <div className={s.NavigationList__heading}>
+        <div className={s.NavigationList__heading} onBlur={handleBlur}>
           <span className={s.NavigationList__span}>Студії</span>
           <MenuArrow className={s.NavigationList__arrow} />
         </div>
         {openSpots && (
           <ul className={s.NavigationList__spots}>
-            <NavLink to="/contacts" className={s.NavigationList__item}>
-              <li>Піонерський квартал</li>
+            <NavLink
+              to="/contacts"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__}
+            >
+              <li className={s.NavigationList__item_sec}>
+                Піонерський квартал
+              </li>
             </NavLink>
-            <NavLink to="/contacts" className={s.NavigationList__item}>
-              <li>Петрівський квартал</li>
+            <NavLink
+              to="/contacts"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__}
+            >
+              <li className={s.NavigationList__item_sec}>
+                Петрівський квартал
+              </li>
             </NavLink>
           </ul>
         )}

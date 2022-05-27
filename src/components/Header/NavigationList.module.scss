@@ -9,23 +9,35 @@
   position: relative;
   text-align: left;
 }
+.NavigationList__span {
+  margin-right: 5px;
+  padding: 5px;
+}
+
+.NavigationList__heading {
+  position: relative;
+  z-index: 20;
+}
 
 .NavigationList__services,
 .NavigationList__spots {
   position: absolute;
   background-color: var(--background-color);
+  width: 100%;
+  padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   margin: 0;
   padding: 0;
-  top: 100;
+  top: 10px;
   left: 0;
-  margin-top: 10px;
+  margin-top: 20px;
+  z-index: 30;
   color: var(--add-dark-color);
 }
 
 .NavigationList__item {
-  padding: 5px;
+  padding: 10px 15px;
   &:hover {
     background-color: var(--add-light-color);
     color: var(--text-color);
@@ -40,6 +52,9 @@
 }
 .NavigationList__subitem {
   margin-bottom: 10px;
+}
+.NavigationList__item_sec {
+  padding: 10px 15px;
 }
 
 .NavigationList__arrow {
@@ -79,8 +94,6 @@
       border-top: 1px solid var(--add-dark-color);
     }
   }
-
-
 }
 
 @media screen and (min-width: 768px) {

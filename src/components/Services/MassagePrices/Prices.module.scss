@@ -1,0 +1,16 @@
+.Prices__item {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 30px;
+  &:last-child {
+    margin-bottom: 30px;
+  }
+}
+
+.Prices__detail {
+  // border-bottom: 1px solid var(--add-light-color);
+  padding: 5px 5px;
+  display: flex;
+  align-content: center;
+}

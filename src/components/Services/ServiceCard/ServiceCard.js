@@ -1,6 +1,10 @@
 import { nanoid } from "nanoid";
 import placeholder from "img/no-image.jpg";
 import s from "./ServiceCard.module.scss";
+import Prices from "../MassagePrices/Prices";
+import data from "data/massage-prices.json";
+import BookingModal from "components/Booking/BookingModal";
+import { useState } from "react";
 
 function ServiceCard({
   name,
@@ -11,6 +15,11 @@ function ServiceCard({
   effect,
   types,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const modalOpen = () => {
+    setIsOpen(true);
+  };
   return (
     <>
       <article className={s.ServiceCard}>
@@ -42,18 +51,20 @@ function ServiceCard({
 
           {effect && <p>Ефекти: {effect}</p>}
           <div className="divider"></div>
-
-          <div className={s.ServiceCard__details}>
-            {details.map(({ time, price }) => (
-              <div key={nanoid()} className={s.ServiceCard__details_item}>
-                <span className={s.ServiceCard__detail}>{time}</span>{" "}
-                <span className={s.ServiceCard__detail}>-</span>
-                <span className={s.ServiceCard__detail}>{price}</span>
-              </div>
-            ))}
-          </div>
+          {type === "massage" ? (
+            <Prices details={data} />
+          ) : (
+            <Prices details={details} />
+          )}
           <div className="divider"></div>
-          <button className={s.ServiceCard__book}>Записатися</button>
+          {isOpen && <BookingModal isOpen={setIsOpen} />}
+          <button
+            type="button"
+            onClick={modalOpen}
+            className={s.ServiceCard__book}
+          >
+            Записатися
+          </button>
         </div>{" "}
       </article>
     </>

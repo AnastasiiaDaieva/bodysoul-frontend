@@ -1,35 +1,46 @@
-.ServicesView__type{
-        margin-bottom: 120px;
+.ServicesView__type {
+  margin-bottom: 200px;
+}
+.ServicesView__item {
+  flex: 1 0 20em;
 }
 
-.ServicesView__type_list{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.ServicesView__type_list {
+  display: flex;
+  flex-wrap: wrap;
+  //   justify-content: space-around;
+  gap: 1.5rem;
 }
 
-.ServicesView__container{
-    margin-top: 100px;
+.ServicesView__container {
+  margin-top: 150px;
 }
-.ServicesView__heading{
-    font-size: 35px;
+.ServicesView__heading {
+  font-size: 35px;
 }
 
+@media screen and (max-width: 767px) {
+  .ServicesView__item {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .ServicesView__item {
+    width: calc(100% / 2 - 20px);
+  }
+}
 
-
-
-@media screen and (max-width: 767px) {}
-
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-    .ServicesView__item {
-            width: calc(100% / 2 - 10px);
-        }
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .ServicesView__item {
+    width: calc(100% / 3 - 20px);
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .ServicesView__item {
-            width: calc(100% / 3 - 10px);
-        }
+  .ServicesView__item {
+    width: calc(100% / 3 - 20px);
+  }
 }

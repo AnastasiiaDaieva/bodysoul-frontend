@@ -11,11 +11,9 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
-  const [openServices, setOpenServices] = useState(false);
-  const [openSpots, setOpenSpots] = useState(false);
 
   let location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   const headerBackground =
     location.pathname === "/" ? "transparent" : "var(--add-dark-color)";
@@ -28,45 +26,26 @@ function Header() {
     setOpenMenu(!openMenu);
   };
 
-  const showServices = () => {
-    setOpenServices(!openServices);
-  };
-
-  const showSpots = () => {
-    setOpenSpots(!openSpots);
-  };
   return (
     <header
       className={s.Header}
       style={{ color: headerColor, backgroundColor: headerBackground }}
     >
       <div className={`container ${s.Header__container}`}>
-        <NavLink to="/">
-          {" "}
-          <Logo className={s.Header__logo} />
+        <NavLink to="/" className={s.Header__logo}>
+          <Logo />
         </NavLink>
         <nav className={s.Header__nav}>
           <MediaQuery query="(min-width: 768px)">
-            <NavigationList
-              showServices={showServices}
-              openServices={openServices}
-              showSpots={showSpots}
-              openSpots={openSpots}
-              setOpenServices={setOpenServices}
-              setOpenSpots={setOpenSpots}
-            />
+            <NavigationList setOpenMenu={toggleMenu} openMenu={openMenu} />
           </MediaQuery>
           <MediaQuery query="(max-width: 767.99px)">
             <div className={s.Header__mob}>
               {openMenu ? (
                 <>
                   <NavigationList
-                    showServices={showServices}
-                    openServices={openServices}
-                    showSpots={showSpots}
-                    openSpots={openSpots}
-                    setOpenServices={setOpenServices}
-                    setOpenSpots={setOpenSpots}
+                    setOpenMenu={toggleMenu}
+                    openMenu={openMenu}
                   />
                   <IoCloseOutline
                     onClick={toggleMenu}
