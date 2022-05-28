@@ -2,6 +2,8 @@ import s from "./Footer.module.scss";
 import { ReactComponent as Logo } from "img/icons/logo-dark.svg";
 import { ReactComponent as Marker } from "img/icons/map-marker.svg";
 import { Link } from "react-router-dom";
+import data from "data/spots.json";
+import { nanoid } from "nanoid";
 
 function Footer() {
   return (
@@ -93,34 +95,20 @@ function Footer() {
         </div>
         <div className={s.Footer__contacts}>
           <div className={s.Footer__spots}>
-            <address>
-              <div className={s.Footer__spot}>
-                <Link to="/contacts">
-                  <Marker className={s.Footer__marker} />
-                  <p className={s.Footer__building}>Петрівський квартал</p>
-                  <p className={s.Footer__address}>
-                    с. Святопетрівське, бул. Л. Украинки, 6-б
+            {data.map(({ name, address, tel, phone }) => (
+              <address key={nanoid()}>
+                <div className={s.Footer__spot}>
+                  <Link to="/contacts">
+                    <Marker className={s.Footer__marker} />
+                    <p className={s.Footer__building}>{name}</p>
+                    <p className={s.Footer__address}>{address}</p>
+                  </Link>
+                  <p className={s.Footer__phone}>
+                    <a href={`tel:${tel}`}>{phone}</a>
                   </p>
-                </Link>
-                <p className={s.Footer__phone}>
-                  <a href="tel:+380672103377">+38 067 210 33 77</a>
-                </p>
-              </div>
-            </address>
-            <address>
-              <div className={s.Footer__spot}>
-                <Link to="/contacts">
-                  <Marker className={s.Footer__marker} />
-                  <p className={s.Footer__building}>Піонерський квартал</p>
-                  <p className={s.Footer__address}>
-                    м.Вишневе, вул. Молодіжна, 28
-                  </p>
-                </Link>
-                <p className={s.Footer__phone}>
-                  <a href="tel:+380672103373">+38 067 210 33 73</a>
-                </p>
-              </div>
-            </address>
+                </div>
+              </address>
+            ))}
           </div>
 
           <div className={s.Footer__hours}>

@@ -9,10 +9,16 @@
   flex-direction: column;
   align-items: center;
 }
+
+.Services__h2 {
+  margin-bottom: 95px;
+}
 .Services__heading {
   position: absolute;
-  top: 70%;
+  bottom: 10%;
   left: 50%;
+  line-height: 80%;
+  font-weight: 400;
   transform: translateX(-50%);
   font-size: 20px;
 }
@@ -41,6 +47,9 @@
   }
   .Services__item {
     width: calc(100% / 3 - 1em);
+  }
+  .Services__heading {
+    font-size: 40px;
   }
 }
 

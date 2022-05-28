@@ -1,0 +1,47 @@
+.ContactsItem {
+  display: flex;
+  justify-content: left;
+  margin-bottom: 30px;
+}
+
+.ContactsItem__controller {
+  font-size: 30px;
+  line-height: 120%;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.ContactsItem__google {
+  font-family: "Roboto";
+  position: relative;
+  margin-left: 90px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 80%;
+  &::before {
+    content: "";
+    background-color: var(--text-color);
+    width: 85px;
+    height: 1px;
+    position: absolute;
+    left: -60%;
+    top: 50%;
+  }
+}
+.ContactsItem__map {
+  padding: 15px 0 30px 0;
+  margin-left: auto;
+  background-color: var(--sec-bg-color);
+  box-shadow: var(--card-shadow);
+}
+
+.ContactsItem__heading {
+  font-size: 20px;
+  line-height: 120%;
+  margin-bottom: 10px;
+}
+.ContactsItem__info {
+  display: flex;
+  margin-top: 35px;
+  justify-content: space-around;
+}

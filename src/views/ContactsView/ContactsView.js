@@ -1,17 +1,17 @@
-import { useState } from "react";
-import Contact from "components/Contact/Contact";
+import ContactsHeading from "components/Contacts/ContactsHeading";
+import s from "./ContactsView.module.scss";
+import ContactsItem from "components/Contacts/ContactsItem";
 import data from "data/spots.json";
 import { nanoid } from "nanoid";
-import s from "./ContactsView.module.scss";
+import H2Home from "components/Headings/H2Home";
 
 function ContactsView() {
-  const [isActive, setIsActive] = useState("");
   return (
     <div className={`container ${s.ContactsView__container}`}>
-      <h1>Наші студії</h1>
+      <H2Home text="Наші студії" addClass={s.ContactsView__heading} />{" "}
       <ul>
         {data.map((item) => (
-          <Contact key={nanoid()} spot={item} />
+          <ContactsItem key={nanoid()} spot={item} />
         ))}
       </ul>
     </div>
