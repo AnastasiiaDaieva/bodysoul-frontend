@@ -1,4 +1,4 @@
-.Services__item {
+.ServicesHome__item {
   position: relative;
   padding: 20px 15px;
   background-color: var(--add-dark-color);
@@ -10,10 +10,10 @@
   align-items: center;
 }
 
-.Services__h2 {
+.ServicesHome__h2 {
   margin-bottom: 95px;
 }
-.Services__heading {
+.ServicesHome__heading {
   position: absolute;
   bottom: 10%;
   left: 50%;
@@ -24,7 +24,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .Services__item {
+  .ServicesHome__item {
     width: 240px;
     margin-left: auto;
     margin-right: auto;
@@ -32,23 +32,23 @@
       margin-bottom: 20px;
     }
   }
-  .Services__img {
+  .ServicesHome__img {
     width: 200px;
   }
-  .Services__heading {
+  .ServicesHome__heading {
     top: 75%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .Services__list {
+  .ServicesHome__list {
     display: flex;
     justify-content: space-around;
   }
-  .Services__item {
+  .ServicesHome__item {
     width: calc(100% / 3 - 1em);
   }
-  .Services__heading {
+  .ServicesHome__heading {
     font-size: 40px;
   }
 }

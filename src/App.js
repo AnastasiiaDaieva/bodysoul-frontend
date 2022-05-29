@@ -26,6 +26,25 @@ const ServicesView = lazy(() =>
   )
 );
 
+const Massage = lazy(() =>
+  import(
+    "components/Services/Massage/Massage" /*webpackChunkName: "services-massage" */
+  )
+);
+const SpaPrograms = lazy(() =>
+  import(
+    "components/Services/SpaPrograms/SpaPrograms" /*webpackChunkName: "services-spa" */
+  )
+);
+const Body = lazy(() =>
+  import("components/Services/Body/Body" /*webpackChunkName: "services-body" */)
+);
+const Giftcards = lazy(() =>
+  import(
+    "components/Services/Giftcards/Giftcards" /*webpackChunkName: "services-gift" */
+  )
+);
+
 function App() {
   const scrollToTop = () => {
     document.body.scrollIntoView({ behavior: "smooth" });
@@ -54,7 +73,12 @@ function App() {
         <Routes>
           <Route path="/*" element={<HomeView />} />
           <Route path="/about" element={<AboutView />} />
-          <Route path="/services" element={<ServicesView />} />
+          <Route path="/services/*" element={<ServicesView />}>
+            <Route path={`massage`} element={<Massage />} />
+            <Route path={`spa`} element={<SpaPrograms />} />
+            <Route path={`body`} element={<Body />} />
+            <Route path={`giftcards`} element={<Giftcards />} />
+          </Route>
           <Route path="/contacts" element={<ContactsView />} />
         </Routes>
         <Footer />
