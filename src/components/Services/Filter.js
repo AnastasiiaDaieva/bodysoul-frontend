@@ -1,22 +1,24 @@
 import { NavLink } from "react-router-dom";
+import { activeStyle } from "helpers/activeStyle";
+import s from "./Filter.module.scss";
 
 function Filter() {
   return (
-    <div>
-      <NavLink to="/services">
-        <button>Усі</button>
+    <div className={s.Filter}>
+      {/* <NavLink to="/services" style={activeStyle}>
+        Усі
+      </NavLink> */}
+      <NavLink to="/services/massage" style={activeStyle}>
+        Масаж
       </NavLink>
-      <NavLink to="/services/massage">
-        <button>Масаж</button>
+      <NavLink to="/services/spa" style={activeStyle}>
+        СПА Програми
       </NavLink>
-      <NavLink to="/services/spa">
-        <button>СПА Програми</button>
+      <NavLink to="/services/body" style={activeStyle}>
+        Догляд за тілом
       </NavLink>
-      <NavLink to="/services/body">
-        <button>Догляд за тілом</button>
-      </NavLink>
-      <NavLink to="/services/giftcards">
-        <button>Сертифікати</button>
+      <NavLink to="/services/giftcards" style={activeStyle}>
+        Сертифікати
       </NavLink>
     </div>
   );
