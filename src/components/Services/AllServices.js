@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 import s from "./AllServices.module.scss";
 function AllServices() {
   return (
-    <ul className={s.AllServices__services}>
+    <ul className={s.AllServices}>
       {data.map(({ typeLabel, typeValue, services }) => (
         <li key={nanoid()} className={s.AllServices__type}>
           <h2 className={s.AllServices__heading}>{typeLabel}</h2>

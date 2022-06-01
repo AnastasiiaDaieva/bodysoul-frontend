@@ -8,19 +8,40 @@ import SpaPrograms from "components/Services/SpaPrograms/SpaPrograms";
 import Body from "components/Services/Body/Body";
 import Giftcards from "components/Services/Giftcards/Giftcards";
 import AllServices from "components/Services/AllServices";
+import HeroReusable from "components/Hero/HeroReusable";
+import massage from "img/massage-hero-bg.webp";
+import spa from "img/spa-hero-bg.jpg";
+import body from "img/body-hero-bg.webp";
+import { useLocation } from "react-router-dom";
 
-function ServiceView() {
-  // console.log(data);
+function ServicesView() {
+  let location = useLocation();
+  console.log(location);
+  const getLocation = location.pathname.slice(10);
+
+  const getHeroContent = () => {
+    switch (getLocation) {
+      case "massage":
+        return ["Масаж", massage];
+      case "spa":
+        return ["SPA-програми", spa];
+      case "body":
+        return ["Естетика тіла", body];
+      default:
+        break;
+    }
+  };
+
   return (
     <main className={s.ServicesView}>
-      {" "}
+      {location.pathname !== "/services/*" && (
+        <HeroReusable heading={getHeroContent()[0]} img={getHeroContent()[1]} />
+      )}
       <div className={`container ${s.ServicesView__container}`}>
-        <Filter />{" "}
+        <Filter path={location.pathname} />
         <Suspense fallback={<ContentLoader />}>
-          {" "}
           <Routes>
-            {" "}
-            <Route path={`/`} element={<AllServices />} />
+            <Route path={`/*`} element={<AllServices />} />
             <Route path={`massage`} element={<Massage />} />
             <Route path={`spa`} element={<SpaPrograms />} />
             <Route path={`body`} element={<Body />} />
@@ -32,4 +53,4 @@ function ServiceView() {
   );
 }
 
-export default ServiceView;
+export default ServicesView;

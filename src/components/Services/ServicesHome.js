@@ -16,7 +16,7 @@ function ServicesHome() {
       <div className="container">
         <H2Home text="Послуги" addClass={s.ServicesHome__h2} />
         <ul className={s.ServicesHome__list}>
-          {data.map(({ type, typeValue, img }) => (
+          {data.map(({ typeLabel, typeValue, img }) => (
             <li key={nanoid()} className={s.ServicesHome__item}>
               {typeValue === "massage" && (
                 <img
@@ -31,8 +31,8 @@ function ServicesHome() {
               {typeValue === "body" && (
                 <img className={s.ServicesHome__img} src={Body} alt="body" />
               )}
-              <Link to={typeValue}>
-                <h3 className={s.ServicesHome__heading}>{type}</h3>
+              <Link to={`/services/${typeValue}`}>
+                <h3 className={s.ServicesHome__heading}>{typeLabel}</h3>
               </Link>
             </li>
           ))}

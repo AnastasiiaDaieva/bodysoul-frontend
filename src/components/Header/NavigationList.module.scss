@@ -3,16 +3,17 @@
   flex-direction: column;
   line-height: 80%;
   letter-spacing: 0.2px;
+  color: var(--add-light-color);
 }
 
 .NavigationList__sublist {
   position: relative;
   text-align: left;
 }
-.NavigationList__span {
-  margin-right: 5px;
-  padding: 5px;
-}
+// .NavigationList__span {
+//   margin-right: 5px;
+//   padding: 5px;
+// }
 
 .NavigationList__heading {
   position: relative;
@@ -101,6 +102,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     & > *:not(:last-child) {
       margin-right: 40px;
     }

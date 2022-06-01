@@ -51,7 +51,6 @@ function NavigationList({ setOpenMenu, openMenu }) {
         {openServices && (
           <ul className={s.NavigationList__services}>
             <li className={s.NavigationList__item_sec}>
-              {" "}
               <NavLink
                 to="/services/massage"
                 onClick={() => setOpenMenu(!openMenu)}
@@ -88,7 +87,7 @@ function NavigationList({ setOpenMenu, openMenu }) {
                 className={s.NavigationList__}
                 style={activeStyle}
               >
-                Сертифікати{" "}
+                Сертифікати
               </NavLink>
             </li>
           </ul>
@@ -97,14 +96,16 @@ function NavigationList({ setOpenMenu, openMenu }) {
       {/*  <NavLink to="/gallery" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}><li>
        Галерея
       </li></NavLink> */}
-      <NavLink
-        to="/contacts"
-        onClick={() => setOpenMenu(!openMenu)}
-        className={s.NavigationList__item}
-        style={activeStyle}
-      >
-        <li>Контакти</li>
-      </NavLink>
+      <li>
+        <NavLink
+          to="/contacts"
+          onClick={() => setOpenMenu(!openMenu)}
+          className={s.NavigationList__item}
+          style={activeStyle}
+        >
+          Контакти
+        </NavLink>
+      </li>
       {/* <NavLink to="/specialists" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}>
         <li >Масажисти</li>
       </NavLink> */}
@@ -118,9 +119,9 @@ function NavigationList({ setOpenMenu, openMenu }) {
           onBlur={handleBlur}
         >
           <span className={s.NavigationList__span}>Студії</span>
-          <MenuArrow className={s.NavigationList__arrow} />
+          {/* <MenuArrow className={s.NavigationList__arrow} /> */}
         </NavLink>
-        {openSpots && (
+        {/* {openSpots && (
           <ul className={s.NavigationList__spots}>
             <NavLink
               to="/contacts"
@@ -141,7 +142,7 @@ function NavigationList({ setOpenMenu, openMenu }) {
               </li>
             </NavLink>
           </ul>
-        )}
+        )} */}
       </li>
     </ul>
   );

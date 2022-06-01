@@ -1,13 +1,16 @@
 import s from "./HeroReusable.module.scss";
 
 function HeroReusable({ img, heading }) {
-  <div className={s.HeroReusable}>
-    <div className={`container ${s.HeroReusable__container}`}>
+  return (
+    <div className={s.HeroReusable}>
       <h1 className={`heading ${s.HeroReusable__heading}`}>{heading}</h1>
-      HERO
-      <img src={img} alt="hero" width="300" />
+      {/* <img src={img} alt="hero" className={s.HeroReusable__image} /> */}
+      <div
+        className={s.HeroReusable__background}
+        style={{ backgroundImage: `url(${img})` }}
+      ></div>
     </div>
-  </div>;
+  );
 }
 
 export default HeroReusable;

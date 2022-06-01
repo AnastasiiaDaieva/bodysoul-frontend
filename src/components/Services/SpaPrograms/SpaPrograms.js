@@ -10,12 +10,9 @@ function SpaPrograms() {
   );
   return (
     <div>
-      {" "}
-      <h2 className={s.Spa__heading}>Spa Programs</h2>{" "}
       <ul className={s.Spa__list}>
         {availableServices.map(({ name, details, components, effect }) => (
           <li key={nanoid()} className={s.Spa__item}>
-            {" "}
             <ServiceCard
               type="spa"
               name={name}

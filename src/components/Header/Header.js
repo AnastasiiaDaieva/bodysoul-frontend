@@ -16,11 +16,13 @@ function Header() {
   // console.log(location);
 
   const headerBackground =
-    location.pathname === "/" ? "transparent" : "var(--add-dark-color)";
-  const headerColor =
-    location.pathname === "/*"
+    location.pathname === "/services/*"
       ? "var(--add-dark-color)"
-      : "var(--add-light-color)";
+      : "transparent";
+  const headerColor =
+    location.pathname === "/services/*"
+      ? "var(--add-light-color)"
+      : "var(--add-dark-color)";
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);

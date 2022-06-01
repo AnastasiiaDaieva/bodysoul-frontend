@@ -1,4 +1,4 @@
-import NoImage from "img/no-image.jpg";
+import about from "img/about-hero-bg.jpg";
 import About from "components/About/About";
 import HeroReusable from "components/Hero/HeroReusable";
 import s from "./AboutView.module.scss";
@@ -6,7 +6,7 @@ import s from "./AboutView.module.scss";
 function AboutView() {
   return (
     <main className={s.AboutView}>
-      <HeroReusable heading="Про нас" img={NoImage} />
+      <HeroReusable heading="Про нас" img={about} />
       <About />
     </main>
   );

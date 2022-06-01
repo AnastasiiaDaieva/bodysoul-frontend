@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import s from "./Massage.module.scss";
 import data from "data/services.json";
+
 import { nanoid } from "nanoid";
 
 function Massage() {
@@ -12,12 +13,9 @@ function Massage() {
   );
   return (
     <div>
-      {" "}
-      <h2 className={s.Massage__heading}>Масаж</h2>{" "}
       <ul className={s.Massage__list}>
         {availableServices.map(({ name, description, types }) => (
           <li key={nanoid()} className={s.Massage__item}>
-            {" "}
             <ServiceCard
               type="massage"
               name={name}
@@ -42,14 +40,14 @@ function Massage() {
 //   console.log(massages);
 //   return (
 //     <div>
-//       {" "}
-//       <h2 className={s.Massage__heading}>Масаж</h2>{" "}
+//
+//       <h2 className={s.Massage__heading}>Масаж</h2>
 //       <ul className={s.Massage__list}>
 //         {massages
 //           .filter(({ id, attributes }) => attributes.available === true)
 //           .map(({ id, attributes: { name, description, types } }) => (
 //             <li key={id} className={s.Massage__item}>
-//               {" "}
+//
 //               <ServiceCard
 //                 type="massage"
 //                 name={name}

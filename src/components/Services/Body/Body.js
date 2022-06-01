@@ -10,12 +10,9 @@ function Body() {
   );
   return (
     <div>
-      {" "}
-      <h2 className={s.Body__heading}>Body</h2>{" "}
       <ul className={s.Body__list}>
         {availableServices.map(({ name, description, types, details }) => (
           <li key={nanoid()} className={s.Body__item}>
-            {" "}
             <ServiceCard
               type="body"
               name={name}

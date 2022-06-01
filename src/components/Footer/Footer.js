@@ -16,24 +16,20 @@ function Footer() {
               <h2 className={s.Footer__nav_title}>Інформація</h2>
               <ul className={s.Footer__list}>
                 <li className={s.Footer__list_item}>
-                  {" "}
                   <Link to="/">Головна</Link>
                 </li>
 
                 <li className={s.Footer__list_item}>
-                  {" "}
                   <Link to="/about">Про нас </Link>
                 </li>
 
                 <li className={s.Footer__list_item}>
-                  {" "}
                   <Link to="/services">Послуги </Link>
                 </li>
 
                 {/* <li className={s.Footer__list_item}> <Link to="/gallery"> Галерея</Link></li> */}
 
                 <li className={s.Footer__list_item}>
-                  {" "}
                   <Link to="/contacts">Контакти </Link>
                 </li>
               </ul>
@@ -42,19 +38,18 @@ function Footer() {
               <h2 className={s.Footer__nav_title}>Послуги</h2>
               <ul className={s.Footer__list}>
                 <li className={s.Footer__list_item}>
-                  <Link to="/massage">Масаж </Link>
+                  <Link to="/services/massage">Масаж </Link>
                 </li>
                 <li className={s.Footer__list_item}>
-                  <Link to="/spa">СПА-процедури</Link>
-                </li>
-
-                <li className={s.Footer__list_item}>
-                  <Link to="/body">Естетика тіла </Link>
+                  <Link to="/services/spa">СПА-процедури</Link>
                 </li>
 
                 <li className={s.Footer__list_item}>
-                  {" "}
-                  <Link to="/giftcards">Сертифікати </Link>
+                  <Link to="/services/body">Естетика тіла </Link>
+                </li>
+
+                <li className={s.Footer__list_item}>
+                  <Link to="/services/giftcards">Сертифікати </Link>
                 </li>
 
                 {/* 

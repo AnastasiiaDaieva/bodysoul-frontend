@@ -65,7 +65,7 @@ function ServiceCard({
           >
             Записатися
           </button>
-        </div>{" "}
+        </div>
       </article>
     </>
   );
