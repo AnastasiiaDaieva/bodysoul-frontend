@@ -42,19 +42,19 @@ function Footer() {
               <h2 className={s.Footer__nav_title}>Послуги</h2>
               <ul className={s.Footer__list}>
                 <li className={s.Footer__list_item}>
-                  <Link to="/services">Масаж </Link>
+                  <Link to="/massage">Масаж </Link>
                 </li>
                 <li className={s.Footer__list_item}>
-                  <Link to="/services">СПА-процедури</Link>
+                  <Link to="/spa">СПА-процедури</Link>
                 </li>
 
                 <li className={s.Footer__list_item}>
-                  <Link to="/services">Естетика тіла </Link>
+                  <Link to="/body">Естетика тіла </Link>
                 </li>
 
                 <li className={s.Footer__list_item}>
                   {" "}
-                  <Link to="/services">Сертифікати </Link>
+                  <Link to="/giftcards">Сертифікати </Link>
                 </li>
 
                 {/* 

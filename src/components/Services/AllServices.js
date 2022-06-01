@@ -5,9 +5,9 @@ import s from "./AllServices.module.scss";
 function AllServices() {
   return (
     <ul className={s.AllServices__services}>
-      {data.map(({ type, link, services }) => (
+      {data.map(({ typeLabel, typeValue, services }) => (
         <li key={nanoid()} className={s.AllServices__type}>
-          <h2 className={s.AllServices__heading}>{type}</h2>
+          <h2 className={s.AllServices__heading}>{typeLabel}</h2>
           <ul className={s.AllServices__type_list}>
             {services
               .filter(({ available }) => available === true)
@@ -15,7 +15,7 @@ function AllServices() {
                 ({ name, description, components, effect, types, details }) => (
                   <li key={nanoid()} className={s.AllServices__item}>
                     <ServiceCard
-                      type={link}
+                      type={typeValue}
                       name={name}
                       description={description}
                       details={details}

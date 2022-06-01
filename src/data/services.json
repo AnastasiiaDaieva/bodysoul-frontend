@@ -1,7 +1,7 @@
 [
   {
-    "type": "Масаж",
-    "link": "massage",
+    "typeLabel": "Масаж",
+    "typeValue": "massage",
     "services": [
       {
         "name": "Медовий масаж",
@@ -92,8 +92,8 @@
     ]
   },
   {
-    "type": "SPA програми",
-    "link": "spa",
+    "typeLabel": "SPA програми",
+    "typeValue": "spa",
 
     "services": [
       {
@@ -190,8 +190,8 @@
     ]
   },
   {
-    "type": "Естетика тіла",
-    "link": "body",
+    "typeLabel": "Естетика тіла",
+    "typeValue": "body",
 
     "services": [
       {

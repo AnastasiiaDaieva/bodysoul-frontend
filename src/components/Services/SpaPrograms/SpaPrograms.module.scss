@@ -1,0 +1,12 @@
+.Spa__heading {
+  composes: AllServices__heading from "../AllServices.module.scss";
+  font-size: 35px;
+}
+
+.Spa__list {
+  composes: AllServices__type_list from "../AllServices.module.scss";
+}
+
+.Spa__item {
+  composes: AllServices__item from "../AllServices.module.scss";
+}

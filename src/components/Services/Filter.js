@@ -5,9 +5,9 @@ import s from "./Filter.module.scss";
 function Filter() {
   return (
     <div className={s.Filter}>
-      {/* <NavLink to="/services" style={activeStyle}>
+      <NavLink to="/services/*" style={activeStyle}>
         Усі
-      </NavLink> */}
+      </NavLink>
       <NavLink to="/services/massage" style={activeStyle}>
         Масаж
       </NavLink>
