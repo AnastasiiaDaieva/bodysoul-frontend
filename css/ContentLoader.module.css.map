@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAA;EACV,QAAQ,EAAE,QAAQ;EACd,IAAI,EAAE,GAAG;EACT,GAAG,EAAE,GAAG;EACJ,SAAS,EAAE,qBAAqB;EAChC,cAAc,EAAE,IAAI;CAC/B;;AAGD,AAAA,qBAAqB,CAAA;EACrB,KAAK,EAAE,MAAM;EAAC,MAAM,EAAE,MAAM;EACxB,aAAa,EAAE,GAAG;EAClB,SAAS,EAAE,uBAAuB;CACrC;;AAED,UAAU,CAAV,IAAU;EACN,EAAE;IAAC,SAAS,EAAE,YAAY;;EAC1B,IAAI;IAAC,SAAS,EAAE,cAAc",
+    "sources": [
+        "../src/components/ContentLoader/ContentLoader.module.scss"
+    ],
+    "names": [],
+    "file": "ContentLoader.module.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../src/views/AboutView/AboutView.module.scss"
+    ],
+    "names": [],
+    "file": "AboutView.module.css"
+}

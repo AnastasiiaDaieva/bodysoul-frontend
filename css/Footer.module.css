@@ -1,0 +1,128 @@
+.Footer {
+  width: 100vw;
+  text-align: left;
+  background-color: var(--sec-bg-color);
+  margin-top: 100px;
+}
+
+.Footer__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.Footer__main {
+  padding-top: 110px;
+  padding-bottom: 45px;
+}
+
+.Footer__contacts {
+  border-top: 1px solid var(--add-dark-color);
+  padding-top: 35px;
+}
+
+.Footer__phone,
+.Footer__hours_title {
+  font-weight: 500;
+}
+
+.Footer__phone {
+  margin-top: 10px;
+}
+
+.Footer__spot {
+  position: relative;
+}
+
+.Footer__marker {
+  position: absolute;
+  top: -12px;
+  left: -35px;
+}
+
+.Footer__building {
+  font-family: var(--accent-font);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.Footer__nav_item > *:not(:last-child),
+.Footer__list_item:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.Footer__nav_item:not(:last-child) {
+  margin-right: 65px;
+}
+
+.Footer__nav_title {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.Footer__main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 767px) {
+  .Footer__spots {
+    margin-bottom: 20px;
+  }
+  .Footer__spot:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Footer__contacts {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .Footer__nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+  .Footer__spots {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .Footer__spot:first-child {
+    margin-right: 10%;
+  }
+  .Footer__main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+}
+/*# sourceMappingURL=Footer.module.css.map */

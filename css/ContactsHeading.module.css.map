@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACf,aAAa,EAAE,IAAI;EACnB,WAAW,EAAE,GAAG;EAChB,WAAW,EAAE,IAAI;EACjB,SAAS,EAAE,IAAI;CAChB",
+    "sources": [
+        "../src/components/Contacts/ContactsHeading.module.scss"
+    ],
+    "names": [],
+    "file": "ContactsHeading.module.css"
+}

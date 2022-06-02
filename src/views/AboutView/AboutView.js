@@ -1,4 +1,4 @@
-import about from "img/about-hero-bg.jpg";
+import about from "img/about-hero-bg.png";
 import About from "components/About/About";
 import HeroReusable from "components/Hero/HeroReusable";
 import s from "./AboutView.module.scss";

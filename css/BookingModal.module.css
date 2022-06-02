@@ -1,0 +1,61 @@
+.BookingModal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+  padding: 35px 25px;
+  font-family: var(--accent-font);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  background-color: var(--add-light-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 400;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  box-shadow: var(--modal-shadow);
+  -webkit-box-shadow: var(--modal-shadow);
+  -moz-box-shadow: var(--modal-shadow);
+}
+
+.BookingModal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.BookingModal__heading {
+  margin-bottom: 20px;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 100;
+}
+/*# sourceMappingURL=BookingModal.module.css.map */

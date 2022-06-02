@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../src/components/Benefits/Benefits.module.scss"
+    ],
+    "names": [],
+    "file": "Benefits.module.css"
+}

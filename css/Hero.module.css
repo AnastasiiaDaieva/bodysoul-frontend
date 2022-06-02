@@ -1,0 +1,97 @@
+.Hero {
+  width: 100vw;
+  height: 100vh;
+  background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(var(--hero-gradient))
+    ),
+    url(../../img/hero-photo_desktop.jpg);
+  background-image: linear-gradient(var(--hero-gradient)),
+    url(../../img/hero-photo_desktop.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 80%;
+  background-color: var(--add-dark-color);
+}
+
+.Hero__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.Hero__info {
+  max-height: 350px;
+  max-width: 60vw;
+}
+
+.Hero__heading {
+  margin-bottom: 450px;
+  font-size: 30px;
+}
+
+.Hero__button {
+  text-transform: uppercase;
+  padding: 12px 30px;
+  border-radius: 5px;
+  border: 1px solid var(--accent-color);
+  font-size: 14px;
+}
+
+.Hero__button_book {
+  background-color: var(--accent-color);
+  margin-bottom: 20px;
+}
+
+.Hero__button_gift {
+  color: var(--accent-color);
+}
+
+.Hero__description {
+  color: var(--alt-color);
+  margin-bottom: 70px;
+  max-width: 45vw;
+}
+
+@media screen and (min-width: 768px) {
+  .Hero {
+    height: 900px;
+    background-image: url(../../img/hero-photo_desktop.jpg);
+    padding-top: 330px;
+  }
+  .Hero__heading {
+    margin-bottom: 40px;
+    font-size: 60px;
+  }
+  .Hero__info {
+    max-width: 535px;
+  }
+  .Hero__button {
+    padding: 16px 42px;
+    font-size: 16px;
+  }
+  .Hero__buttons {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+  .Hero__button_book {
+    background-color: var(--accent-color);
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+}
+/*# sourceMappingURL=Hero.module.css.map */

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../src/components/About/Specialists/Specialists.module.scss"
+    ],
+    "names": [],
+    "file": "Specialists.module.css"
+}

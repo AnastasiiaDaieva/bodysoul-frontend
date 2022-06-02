@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACb,QAAQ,EAAE,sDAAsD;EAChE,SAAS,EAAE,IAAI;CAChB;;AAED,AAAA,WAAW,CAAC;EACV,QAAQ,EAAE,wDAAwD;CACnE;;AAED,AAAA,WAAW,CAAC;EACV,QAAQ,EAAE,mDAAmD;CAC9D",
+    "sources": [
+        "../src/components/Services/Body/Body.module.scss"
+    ],
+    "names": [],
+    "file": "Body.module.css"
+}

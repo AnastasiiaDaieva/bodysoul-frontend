@@ -1,0 +1,67 @@
+.ServicesHome__item {
+  position: relative;
+  padding: 20px 15px;
+  background-color: var(--add-dark-color);
+  color: var(--accent-color);
+  border-radius: 5px;
+  text-decoration: underline;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.ServicesHome__h2 {
+  margin-bottom: 95px;
+}
+
+.ServicesHome__heading {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  line-height: 80%;
+  font-weight: 400;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  font-size: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .ServicesHome__item {
+    width: 240px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ServicesHome__item:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  .ServicesHome__img {
+    width: 200px;
+  }
+  .ServicesHome__heading {
+    top: 75%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ServicesHome__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+  .ServicesHome__item {
+    width: calc(100% / 3 - 1em);
+  }
+  .ServicesHome__heading {
+    font-size: 40px;
+  }
+}
+/*# sourceMappingURL=ServicesHome.module.css.map */

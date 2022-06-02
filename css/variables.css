@@ -1,0 +1,103 @@
+/* philosopher-regular - latin_cyrillic */
+@font-face {
+  font-family: "Philosopher";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-700.eot");
+  /* IE9 Compat Modes */
+  src: local(""),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-regular.woff2")
+      format("woff2"),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-regular.woff")
+      format("woff"),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-regular.ttf")
+      format("truetype"),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-regular.svg#Philosopher")
+      format("svg");
+  /* Legacy iOS */
+}
+
+/* philosopher-700 - latin_cyrillic */
+@font-face {
+  font-family: "Philosopher";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-700.eot");
+  /* IE9 Compat Modes */
+  src: local(""),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-700.eot?#iefix")
+      format("embedded-opentype"),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-700.woff2")
+      format("woff2"),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-700.woff")
+      format("woff"),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-700.ttf")
+      format("truetype"),
+    url("../assets/fonts/Philosopher/philosopher-v19-latin_cyrillic-700.svg#Philosopher")
+      format("svg");
+  /* Legacy iOS */
+}
+
+/* roboto-regular - latin_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-regular.eot");
+  /* IE9 Compat Modes */
+  src: local(""),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-regular.woff2")
+      format("woff2"),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-regular.woff")
+      format("woff"),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-regular.ttf")
+      format("truetype"),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-regular.svg#Roboto")
+      format("svg");
+  /* Legacy iOS */
+}
+
+/* roboto-500 - latin_cyrillic */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-500.eot");
+  /* IE9 Compat Modes */
+  src: local(""),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-500.eot?#iefix")
+      format("embedded-opentype"),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-500.woff2")
+      format("woff2"),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-500.woff")
+      format("woff"),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-500.ttf")
+      format("truetype"),
+    url("../assets/fonts/Roboto/roboto-v29-latin_cyrillic-500.svg#Roboto")
+      format("svg");
+  /* Legacy iOS */
+}
+
+:root {
+  --background-color: #fbefdf;
+  --sec-bg-color: rgba(60, 100, 177, 0.06);
+  --accent-color: #dd9226;
+  --text-color: #373f41;
+  --add-dark-color: #342113;
+  --add-light-color: #e7d8c4;
+  --alt-color: #88755c;
+  --hero-text-color: #c6ab87;
+  --hero-gradient: rgba(47, 48, 58, 0.8), rgba(47, 48, 58, 0.8);
+  --main-font: "Roboto", "sans serif";
+  --accent-font: "Philosopher", "sans-serif";
+  --modal-shadow: 0px 1px 20px 2px rgba(59, 57, 53, 0.46);
+  --card-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
+    0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
+  --button-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
+    0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+/*# sourceMappingURL=variables.css.map */

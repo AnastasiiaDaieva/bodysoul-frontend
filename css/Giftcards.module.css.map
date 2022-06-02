@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../src/components/Services/GiftCards/GiftCards.module.scss"
+    ],
+    "names": [],
+    "file": "GiftCards.module.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,MAAM,OAAO,SAAS,EAAE,MAAM;EAC1D,AAAA,mBAAmB,CAAC;IAClB,KAAK,EAAE,qBAAqB;GAC7B;;;AAGH,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,MAAM;EAClC,AAAA,mBAAmB,CAAC;IAClB,KAAK,EAAE,qBAAqB;GAC7B",
+    "sources": [
+        "../src/views/ServicesView/ServicesView.module.scss"
+    ],
+    "names": [],
+    "file": "ServicesView.module.css"
+}

@@ -1,0 +1,83 @@
+.ServiceCard {
+  border-radius: 5px;
+  height: 100%;
+  max-width: 410px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-shadow: var(--card-shadow);
+  box-shadow: var(--card-shadow);
+  background-color: var(--add-dark-color);
+  color: var(--add-light-color);
+  margin-top: 100px;
+}
+
+.ServiceCard > *:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.ServiceCard__image {
+  width: 100%;
+}
+
+.ServiceCard__book {
+  color: var(--accent-color);
+  background-color: var(--add-light-color);
+  padding: 12px 0;
+  width: 100%;
+  border: 1px solid var(--add-light-color);
+  -webkit-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.ServiceCard__book:hover {
+  background-color: var(--sec-bg-color);
+  color: var(--add-light-color);
+}
+
+.ServiceCard__bullets {
+  text-align: justify;
+  list-style-type: disc;
+  margin-bottom: 40px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
+
+.ServiceCard__bullets > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.ServiceCard__content {
+  padding: 40px 30px;
+  font-size: 1rem;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+.ServiceCard__heading {
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  line-height: 80%;
+}
+
+@media screen and (max-width: 767px) {
+  .ServiceCard {
+    max-width: 400px;
+  }
+}
+/*# sourceMappingURL=ServiceCard.module.css.map */

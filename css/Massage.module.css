@@ -1,0 +1,13 @@
+.Massage__heading {
+  composes: AllServices__heading from "../AllServices.module.scss";
+  font-size: 35px;
+}
+
+.Massage__list {
+  composes: AllServices__type_list from "../AllServices.module.scss";
+}
+
+.Massage__item {
+  composes: AllServices__item from "../AllServices.module.scss";
+}
+/*# sourceMappingURL=Massage.module.css.map */

@@ -1,0 +1,12 @@
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+  .ServicesView__item {
+    width: calc(100% / 3 - 20px);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .ServicesView__item {
+    width: calc(100% / 3 - 20px);
+  }
+}
+/*# sourceMappingURL=ServicesView.module.css.map */

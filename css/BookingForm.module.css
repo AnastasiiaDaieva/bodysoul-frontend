@@ -1,0 +1,61 @@
+.BookingForm {
+  width: 40vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 16px;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+.BookingForm__container {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.BookingForm__controllers {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+.BookingForm__button {
+  font-size: 16px;
+  width: 100px;
+  padding: 10px;
+  background-color: var(--add-dark-color);
+  color: var(--accent-color);
+  border: 1px solid var(--add-dark-color);
+  -webkit-transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.BookingForm__button:hover {
+  background-color: var(--add-light-color);
+  color: var(--add-dark-color);
+}
+
+.BookingForm__send {
+  font-family: var(--accent-font);
+  font-size: 16px;
+}
+
+.BookingForm__input {
+  all: unset;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid var(--add-dark-color);
+  border-radius: 1px;
+}
+/*# sourceMappingURL=BookingForm.module.css.map */

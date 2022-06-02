@@ -1,19 +1,27 @@
 .Filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: left;
+  -ms-flex-pack: left;
   justify-content: left;
   margin-top: 60px;
 }
 
 .Filter__link {
   margin-right: 5px;
-  &:not(:last-child) {
-    margin-right: 20px;
-  }
 }
+
+.Filter__link:not(:last-child) {
+  margin-right: 20px;
+}
+
 .Filter__item {
   padding: 16px 60px;
   background-color: var(--sec-bg-color);
+  -webkit-box-shadow: var(--button-shadow);
   box-shadow: var(--button-shadow);
   margin-bottom: 20px;
 }
@@ -21,3 +29,4 @@
 .Filter__arrow {
   margin-left: 10px;
 }
+/*# sourceMappingURL=Filter.module.css.map */

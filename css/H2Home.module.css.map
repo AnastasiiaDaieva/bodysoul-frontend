@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACN,WAAW,EAAE,kBAAkB;EAC/B,KAAK,EAAE,iBAAiB;EACxB,UAAU,EAAE,IAAI;EAChB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,WAAW,EAAE,GAAG;CACjB",
+    "sources": [
+        "../src/components/Headings/H2Home.module.scss"
+    ],
+    "names": [],
+    "file": "H2Home.module.css"
+}

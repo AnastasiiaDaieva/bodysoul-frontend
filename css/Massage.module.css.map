@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EAChB,QAAQ,EAAE,sDAAsD;EAChE,SAAS,EAAE,IAAI;CAChB;;AAED,AAAA,cAAc,CAAC;EACb,QAAQ,EAAE,wDAAwD;CACnE;;AAED,AAAA,cAAc,CAAC;EACb,QAAQ,EAAE,mDAAmD;CAC9D",
+    "sources": [
+        "../src/components/Services/Massage/Massage.module.scss"
+    ],
+    "names": [],
+    "file": "Massage.module.css"
+}

@@ -9,9 +9,9 @@ import Body from "components/Services/Body/Body";
 import Giftcards from "components/Services/Giftcards/Giftcards";
 import AllServices from "components/Services/AllServices";
 import HeroReusable from "components/Hero/HeroReusable";
-import massage from "img/massage-hero-bg.webp";
-import spa from "img/spa-hero-bg.jpg";
-import body from "img/body-hero-bg.webp";
+import massage from "img/massage-hero-bg.png";
+import spa from "img/spa-hero-bg.png";
+import body from "img/body-hero-bg.png";
 import { useLocation } from "react-router-dom";
 
 function ServicesView() {
@@ -34,9 +34,13 @@ function ServicesView() {
 
   return (
     <main className={s.ServicesView}>
-      {location.pathname !== "/services/*" && (
-        <HeroReusable heading={getHeroContent()[0]} img={getHeroContent()[1]} />
-      )}
+      {location.pathname !== "/services/*" &&
+        location.pathname !== "/services/giftcards" && (
+          <HeroReusable
+            heading={getHeroContent()[0]}
+            img={getHeroContent()[1]}
+          />
+        )}
       <div className={`container ${s.ServicesView__container}`}>
         <Filter path={location.pathname} />
         <Suspense fallback={<ContentLoader />}>

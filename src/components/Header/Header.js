@@ -1,5 +1,6 @@
 import "../../index.scss";
 import { ReactComponent as Logo } from "../../img/icons/logo-light.svg";
+import { ReactComponent as MobLogo } from "../../img/icons/logo-dark.svg";
 import { useState } from "react";
 import s from "./Header.module.scss";
 import { HiOutlineMenu } from "react-icons/hi";
@@ -13,19 +14,23 @@ function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
   let location = useLocation();
-  // console.log(location);
 
   const headerBackground =
-    location.pathname === "/services/*"
+    location.pathname === "/services/*" || location.pathname === "/contacts"
       ? "var(--add-dark-color)"
       : "transparent";
   const headerColor =
-    location.pathname === "/services/*"
+    location.pathname === "/services/*" || location.pathname === "/contacts"
       ? "var(--add-light-color)"
       : "var(--add-dark-color)";
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
+    if (openMenu) {
+      document.body.style.overflow = "unset";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
   };
 
   return (

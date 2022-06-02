@@ -3,6 +3,7 @@ import s from "./NavigationList.module.scss";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { activeStyle } from "helpers/activeStyle";
+import { ReactComponent as Logo } from "../../img/icons/logo-light.svg";
 
 function NavigationList({ setOpenMenu, openMenu }) {
   const [openServices, setOpenServices] = useState(false);
@@ -26,20 +27,16 @@ function NavigationList({ setOpenMenu, openMenu }) {
 
   return (
     <ul className={s.NavigationList}>
-      <li>
-        <NavLink to="/" className={s.NavigationList__item} style={activeStyle}>
-          Головна
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/about"
-          className={s.NavigationList__item}
-          style={activeStyle}
-        >
-          Про нас
-        </NavLink>
-      </li>
+      <NavLink to="/" className={s.NavigationList__item} style={activeStyle}>
+        <li> Головна</li>
+      </NavLink>
+      <NavLink
+        to="/about"
+        className={s.NavigationList__item}
+        style={activeStyle}
+      >
+        <li>Про нас</li>
+      </NavLink>
       <li
         onClick={showServices}
         className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}
@@ -50,78 +47,69 @@ function NavigationList({ setOpenMenu, openMenu }) {
         </div>
         {openServices && (
           <ul className={s.NavigationList__services}>
-            <li className={s.NavigationList__item_sec}>
-              <NavLink
-                to="/services/massage"
-                onClick={() => setOpenMenu(!openMenu)}
-                className={`${s.NavigationList__subitem}`}
-                style={activeStyle}
-              >
-                Масаж
-              </NavLink>
-            </li>
-            <li className={s.NavigationList__item_sec}>
-              <NavLink
-                to="/services/spa"
-                onClick={() => setOpenMenu(!openMenu)}
-                className={s.NavigationList__}
-                style={activeStyle}
-              >
-                SPA програми
-              </NavLink>
-            </li>
-            <li className={s.NavigationList__item_sec}>
-              <NavLink
-                to="/services/body"
-                onClick={() => setOpenMenu(!openMenu)}
-                className={s.NavigationList__}
-                style={activeStyle}
-              >
-                Естетика тіла
-              </NavLink>
-            </li>
-            <li className={s.NavigationList__item_sec}>
-              <NavLink
-                to="/services/giftcards"
-                onClick={() => setOpenMenu(!openMenu)}
-                className={s.NavigationList__}
-                style={activeStyle}
-              >
-                Сертифікати
-              </NavLink>
-            </li>
+            <NavLink
+              to="/services/massage"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={`${s.NavigationList__subitem}`}
+              style={activeStyle}
+            >
+              <li className={s.NavigationList__item_sec}>Масаж</li>
+            </NavLink>
+
+            <NavLink
+              to="/services/spa"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__subitem}
+              style={activeStyle}
+            >
+              <li className={s.NavigationList__item_sec}> SPA програми</li>
+            </NavLink>
+
+            <NavLink
+              to="/services/body"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__subitem}
+              style={activeStyle}
+            >
+              <li className={s.NavigationList__item_sec}>Естетика тіла </li>
+            </NavLink>
+
+            <NavLink
+              to="/services/giftcards"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__subitem}
+              style={activeStyle}
+            >
+              <li className={s.NavigationList__item_sec}>Сертифікати </li>
+            </NavLink>
           </ul>
         )}
       </li>
       {/*  <NavLink to="/gallery" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}><li>
        Галерея
       </li></NavLink> */}
-      <li>
-        <NavLink
-          to="/contacts"
-          onClick={() => setOpenMenu(!openMenu)}
-          className={s.NavigationList__item}
-          style={activeStyle}
-        >
-          Контакти
-        </NavLink>
-      </li>
+      <NavLink
+        to="/contacts"
+        onClick={() => setOpenMenu(!openMenu)}
+        className={s.NavigationList__item}
+        style={activeStyle}
+      >
+        <li>Контакти </li>
+      </NavLink>
       {/* <NavLink to="/specialists" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}>
         <li >Масажисти</li>
       </NavLink> */}
-      <li
-        onClick={showSpots}
-        className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}
+      <NavLink
+        to="/contacts"
+        className={s.NavigationList__item}
+        style={activeStyle}
       >
-        <NavLink
-          to="/contacts"
-          className={s.NavigationList__heading}
-          onBlur={handleBlur}
-        >
-          <span className={s.NavigationList__span}>Студії</span>
+        <li>
+          Студії
           {/* <MenuArrow className={s.NavigationList__arrow} /> */}
-        </NavLink>
-        {/* {openSpots && (
+        </li>
+      </NavLink>{" "}
+      {/* {openSpots && (
           <ul className={s.NavigationList__spots}>
             <NavLink
               to="/contacts"
@@ -143,7 +131,6 @@ function NavigationList({ setOpenMenu, openMenu }) {
             </NavLink>
           </ul>
         )} */}
-      </li>
     </ul>
   );
 }

@@ -1,31 +1,38 @@
 import { NavLink } from "react-router-dom";
 import { activeStyle } from "helpers/activeStyle";
 import s from "./Filter.module.scss";
+import data from "data/filter.json";
+import { useLocation } from "react-router-dom";
+import { ReactComponent as Arrow } from "img/icons/filter-arrow.svg";
+import { nanoid } from "nanoid";
 
 function Filter({ path }) {
+  let location = useLocation();
   return (
-    <div
+    <ul
       className={s.Filter}
       style={{
         marginTop: path === "/services/*" ? "120px" : "0",
       }}
     >
-      <NavLink to="/services/*" style={activeStyle}>
-        Усі
-      </NavLink>
-      <NavLink to="/services/massage" style={activeStyle}>
-        Масаж
-      </NavLink>
-      <NavLink to="/services/spa" style={activeStyle}>
-        СПА Програми
-      </NavLink>
-      <NavLink to="/services/body" style={activeStyle}>
-        Естетика тіла
-      </NavLink>
-      <NavLink to="/services/giftcards" style={activeStyle}>
-        Сертифікати
-      </NavLink>
-    </div>
+      {data.map(({ label, path }) => (
+        <NavLink
+          to={`/services/${path}`}
+          style={activeStyle}
+          className={s.Filter__link}
+          key={nanoid()}
+        >
+          {" "}
+          <li className={s.Filter__item}>
+            {label}
+
+            {location.pathname !== `/services/${path}` && (
+              <Arrow className={s.Filter__arrow} />
+            )}
+          </li>
+        </NavLink>
+      ))}
+    </ul>
   );
 }
 

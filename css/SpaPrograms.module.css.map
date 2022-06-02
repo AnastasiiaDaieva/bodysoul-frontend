@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAC;EACZ,QAAQ,EAAE,sDAAsD;EAChE,SAAS,EAAE,IAAI;CAChB;;AAED,AAAA,UAAU,CAAC;EACT,QAAQ,EAAE,wDAAwD;CACnE;;AAED,AAAA,UAAU,CAAC;EACT,QAAQ,EAAE,mDAAmD;CAC9D",
+    "sources": [
+        "../src/components/Services/SpaPrograms/SpaPrograms.module.scss"
+    ],
+    "names": [],
+    "file": "SpaPrograms.module.css"
+}

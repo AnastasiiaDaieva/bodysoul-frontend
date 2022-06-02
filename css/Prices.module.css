@@ -1,0 +1,23 @@
+.Prices__item {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding: 0 30px;
+}
+
+.Prices__item:last-child {
+  margin-bottom: 30px;
+}
+
+.Prices__detail {
+  padding: 5px 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+/*# sourceMappingURL=Prices.module.css.map */
