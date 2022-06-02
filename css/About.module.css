@@ -1,34 +1,61 @@
-.About__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .About__visual {
   position: relative;
   background-color: var(--add-dark-color);
   border-radius: 5px;
-  margin-right: 150px;
 }
 
 .About__background {
-  min-width: 560px;
+  max-width: 200px;
 }
 
 .About__picture {
-  position: absolute;
-  width: 450px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: -80px;
+  display: none;
 }
 
 .About__description {
-  text-align: left;
+  text-align: center;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 130%;
   margin-top: 30px;
+}
+
+@media screen and (max-width: 767.99px) {
+  .About__visual {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .About__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .About__visual {
+    margin: 0;
+    margin-right: 150px;
+  }
+  .About__background {
+    min-width: 560px;
+  }
+  .About__picture {
+    display: block;
+    width: 450px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: -80px;
+  }
+  .About__description {
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    margin-top: 30px;
+  }
 }
 /*# sourceMappingURL=About.module.css.map */

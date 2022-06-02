@@ -12,6 +12,7 @@ import HeroReusable from "components/Hero/HeroReusable";
 import massage from "img/massage-hero-bg.png";
 import spa from "img/spa-hero-bg.png";
 import body from "img/body-hero-bg.png";
+import giftcards from "img/cert.png";
 import { useLocation } from "react-router-dom";
 
 function ServicesView() {
@@ -27,6 +28,8 @@ function ServicesView() {
         return ["SPA-програми", spa];
       case "body":
         return ["Естетика тіла", body];
+      case "giftcards":
+        return ["Сертифікати", giftcards];
       default:
         break;
     }
@@ -34,13 +37,9 @@ function ServicesView() {
 
   return (
     <main className={s.ServicesView}>
-      {location.pathname !== "/services/*" &&
-        location.pathname !== "/services/giftcards" && (
-          <HeroReusable
-            heading={getHeroContent()[0]}
-            img={getHeroContent()[1]}
-          />
-        )}
+      {location.pathname !== "/services/*" && (
+        <HeroReusable heading={getHeroContent()[0]} img={getHeroContent()[1]} />
+      )}
       <div className={`container ${s.ServicesView__container}`}>
         <Filter path={location.pathname} />
         <Suspense fallback={<ContentLoader />}>

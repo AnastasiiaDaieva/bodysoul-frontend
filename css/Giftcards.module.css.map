@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,OAAO,EAAE,IAAI;CACd;;AAID,AAAA,uBAAuB,CAAC;EACtB,UAAU,EAAE,IAAI;CACjB",
     "sources": [
         "../src/components/Services/GiftCards/GiftCards.module.scss"
     ],

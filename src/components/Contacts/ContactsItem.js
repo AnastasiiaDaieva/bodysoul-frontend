@@ -54,6 +54,7 @@ function ContactsItem({ spot }) {
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
+          className={s.ContactsItem__frame}
         />
         {/* )} */}
         <address className={s.ContactsItem__info}>

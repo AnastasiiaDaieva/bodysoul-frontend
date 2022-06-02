@@ -10,15 +10,9 @@ function About() {
           <img
             src={Background}
             alt="background"
-            width="560"
             className={s.About__background}
           />
-          <img
-            src={Photo}
-            alt="buddha"
-            className={s.About__picture}
-            width="450"
-          />
+          <img src={Photo} alt="buddha" className={s.About__picture} />
         </div>
         <div className={s.About__info}>
           <H2Home text="Про студію" />

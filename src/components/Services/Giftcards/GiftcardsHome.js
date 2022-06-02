@@ -1,15 +1,15 @@
-import s from "./Giftcards.module.scss";
+import s from "./GiftcardsHome.module.scss";
 import H2Home from "components/Headings/H2Home";
 import giftcards from "img/cert.png";
 
-function Giftcards() {
+function GiftcardsHome() {
   return (
-    <div className={s.Giftcards}>
-      {" "}
-      <div className={`container ${s.Giftcards__container}`}>
-        <div className={s.Giftcards__info}>
-          <H2Home text="Сертифікати" addClass={s.Giftcards__heading} />
-          <p className={s.Giftcards__description}>
+    <div className={`container ${s.GiftcardsHome__container}`}>
+      <div className={s.GiftcardsHome__info}>
+        <H2Home text="Сертифікати" />
+        <div className={s.GiftcardsHome__text}>
+          {" "}
+          <p className={s.GiftcardsHome__description}>
             Масаж або SPA програма - то є користь і задоволення, яке можна
             подарувати на День народження, річницю весілля, день Валентина, на
             будь-яке інше свято або просто без приводу. Ви можете придбати та
@@ -19,15 +19,15 @@ function Giftcards() {
             банківський рахунок. Замовити подарунковий сертифікат можна в три
             способи:
           </p>
-          <ul className={s.Giftcards__list}>
+          <ul className={s.GiftcardsHome__list}>
             <li> завітавши за адресою однієї з наших студій </li>
             <li>
-              віддалено по телефону, Viber, Telegram або WhatsApp за номером
-              <a href="tel: +380672103377" className={s.Giftcards__number}>
+              віддалено по телефону, Viber, Telegram або WhatsApp за номером{" "}
+              <a href="tel: +380672103377" className={s.GiftcardsHome__number}>
                 +38 067 210 33 77
               </a>{" "}
               або{" "}
-              <a href="tel: +380672103373" className={s.Giftcards__number}>
+              <a href="tel: +380672103373" className={s.GiftcardsHome__number}>
                 +38 067 210 33 73
               </a>{" "}
             </li>
@@ -40,16 +40,15 @@ function Giftcards() {
             сертифікати становить три місяці з дати його придбання.
           </p>
         </div>
-        <div className={s.Giftcards__visual}>
-          <img
-            src={giftcards}
-            alt="background"
-            className={s.Giftcards__picture}
-          />
-        </div>
+      </div>
+      <div className={s.GiftcardsHome__visual}>
+        <img
+          src={giftcards}
+          alt="background"
+          className={s.GiftcardsHome__picture}
+        />
       </div>
     </div>
   );
 }
-
-export default Giftcards;
+export default GiftcardsHome;

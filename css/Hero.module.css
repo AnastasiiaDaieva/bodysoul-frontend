@@ -35,7 +35,7 @@
 }
 
 .Hero__heading {
-  margin-bottom: 450px;
+  margin-bottom: 190px;
   font-size: 30px;
 }
 
@@ -60,6 +60,12 @@
   color: var(--alt-color);
   margin-bottom: 70px;
   max-width: 45vw;
+}
+
+@media screen and (max-width: 767px) {
+  .Hero {
+    padding-top: 100px;
+  }
 }
 
 @media screen and (min-width: 768px) {

@@ -1,0 +1,57 @@
+.GiftcardsHome__picture {
+}
+
+.GiftcardsHome__number {
+  font-weight: 500;
+}
+.GiftcardsHome__visual {
+  margin-top: 10px;
+}
+
+.GiftcardsHome__list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+.GiftcardsHome__text {
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  & > * {
+    margin-bottom: 10px;
+  }
+}
+
+.GiftcardsHome__description {
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 767.99px) {
+  .GiftcardsHome__visual {
+    width: 250px;
+  }
+  .GiftcardsHome__visual {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .GiftcardsHome__container {
+    display: flex;
+  }
+  .GiftcardsHome__description {
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    margin-top: 30px;
+    margin-right: 70px;
+  }
+  .GiftcardsHome__picture {
+    min-width: 560px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279.99px) {
+}
+
+@media screen and (min-width: 1280px) {
+}

@@ -1,8 +1,25 @@
 .H2Home {
   font-family: var(--accent-font);
   color: var(--text-color);
-  text-align: left;
-  font-size: 72px;
-  line-height: 130%;
+  text-align: center;
+  font-size: 40px;
   font-weight: 400;
+  line-height: 130%;
+  margin-top: 10px;
+
+  // margin-top: 20px;
+}
+
+@media screen and (max-width: 767px) {
+}
+@media screen and (min-width: 768px) {
+  .H2Home {
+    text-align: left;
+    font-size: 72px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+}
+
+@media screen and (min-width: 1280px) {
 }

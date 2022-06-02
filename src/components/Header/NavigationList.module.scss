@@ -114,6 +114,10 @@
       color: var(--accent-color);
     }
   }
+
+  .NavigationList__heading {
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (min-width: 768px) {

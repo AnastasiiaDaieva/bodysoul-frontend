@@ -1,9 +1,17 @@
 .H2Home {
   font-family: var(--accent-font);
   color: var(--text-color);
-  text-align: left;
-  font-size: 72px;
-  line-height: 130%;
+  text-align: center;
+  font-size: 40px;
   font-weight: 400;
+  line-height: 130%;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .H2Home {
+    text-align: left;
+    font-size: 72px;
+  }
 }
 /*# sourceMappingURL=H2Home.module.css.map */

@@ -1,1 +1,10 @@
-/* No CSS */ /*# sourceMappingURL=Giftcards.module.css.map */
+.Giftcards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Giftcards__description {
+  text-align: left;
+}
+/*# sourceMappingURL=GiftCards.module.css.map */
