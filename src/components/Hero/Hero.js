@@ -44,7 +44,7 @@ function Hero() {
             >
               записатися
             </button>
-            {isOpen && <BookingModal isOpen={setIsOpen} type="booking" />}
+            {isOpen && <BookingModal setIsOpen={setIsOpen} type="booking" />}
             <button
               type="button"
               className={`${s.Hero__button} ${s.Hero__button_gift}`}
@@ -55,7 +55,7 @@ function Hero() {
             {giftcardModal && (
               <BookingModal
                 type="giftcard"
-                giftcardModalIsOpen={setGiftcardModal}
+                setGiftcardModal={setGiftcardModal}
               />
             )}
           </div>

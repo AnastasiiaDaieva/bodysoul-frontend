@@ -44,8 +44,6 @@ function OrderGiftcard({ closeModal }) {
       url: "https://bodysoul-backend.herokuapp.com/emails/sendemail",
       data: { order, type: "giftcard" },
     }).then((response) => {
-      reset();
-      console.log(data);
       if (response.data.msg === "success") {
         alert("Email sent, awesome!");
         this.resetForm();
@@ -53,6 +51,7 @@ function OrderGiftcard({ closeModal }) {
         alert("Oops, something went wrong. Try again");
       }
     });
+    closeModal();
     reset();
     console.log(data);
   };

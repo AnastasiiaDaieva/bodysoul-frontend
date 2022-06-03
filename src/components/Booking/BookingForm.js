@@ -48,8 +48,6 @@ function BookingForm({ closeModal }) {
       url: "https://bodysoul-backend.herokuapp.com/emails/sendemail",
       data: { order, type: "order" },
     }).then((response) => {
-      reset();
-      console.log(data);
       if (response.data.msg === "success") {
         alert("Email sent, awesome!");
         this.resetForm();
@@ -57,6 +55,9 @@ function BookingForm({ closeModal }) {
         alert("Oops, something went wrong. Try again");
       }
     });
+    closeModal();
+    reset();
+    console.log(data);
   };
 
   const selectStyles = {

@@ -34,7 +34,9 @@ function ContactsItem({ spot }) {
           onClick={() => setShowMap(!showMap)}
           className={s.ContactsItem__google}
         >
-          <a href={linkGoogle}>Подивитися на мапі</a>
+          <a href={linkGoogle} target="_blank" rel="noreferrer noopener">
+            Подивитися на мапі
+          </a>
         </button>
       </div>
 

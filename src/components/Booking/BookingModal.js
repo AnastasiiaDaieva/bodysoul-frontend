@@ -7,12 +7,12 @@ import s from "./BookingModal.module.scss";
 
 const modalRoot = document.getElementById("modal-root");
 
-function BookingModal({ isOpen, giftcardModalIsOpen, type }) {
+function BookingModal({ setIsOpen, setGiftcardModal, type }) {
   const closeModal = () => {
     if (type === "booking") {
-      isOpen(false);
+      setIsOpen(false);
     } else if (type === "giftcard") {
-      giftcardModalIsOpen(false);
+      setGiftcardModal(false);
     }
     document.body.style.overflow = "unset";
   };
