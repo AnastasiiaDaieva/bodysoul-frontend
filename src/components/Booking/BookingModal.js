@@ -44,7 +44,7 @@ function BookingModal({ isOpen, giftcardModalIsOpen, type }) {
             <>
               {" "}
               <h2 className={s.BookingModal__heading}>Записатися</h2>
-              <BookingForm closeModal={closeModal} type="booking" />
+              <BookingForm closeModal={closeModal} />
             </>
           )}
           {type === "giftcard" && (

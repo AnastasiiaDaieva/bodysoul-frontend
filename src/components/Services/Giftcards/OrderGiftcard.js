@@ -2,6 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 
 import s from "./OrderGiftcard.module.scss";
 import Select from "react-select";
+import axios from "axios";
 
 import { nanoid } from "nanoid";
 
@@ -38,6 +39,20 @@ function OrderGiftcard({ closeModal }) {
       location: location.label,
       additional: additional,
     };
+    axios({
+      method: "POST",
+      url: "https://bodysoul-backend.herokuapp.com/emails/sendemail",
+      data: { order, type: "giftcard" },
+    }).then((response) => {
+      reset();
+      console.log(data);
+      if (response.data.msg === "success") {
+        alert("Email sent, awesome!");
+        this.resetForm();
+      } else if (response.data.msg === "fail") {
+        alert("Oops, something went wrong. Try again");
+      }
+    });
     reset();
     console.log(data);
   };
@@ -139,13 +154,6 @@ function OrderGiftcard({ closeModal }) {
             value="Надіслати"
             className={`${s.OrderGiftcard__button} ${s.OrderGiftcard__send}`}
           />
-          <button
-            onClick={() => closeModal()}
-            className={`${s.OrderGiftcard__button} ${s.OrderGiftcard__cancel}`}
-            type="button"
-          >
-            Відміна
-          </button>
         </div>
       </form>
     </div>

@@ -121,7 +121,7 @@ function ServiceCard({
             <Prices details={details} />
           )}
           <div className="divider"></div>
-          {isOpen && <BookingModal isOpen={setIsOpen} />}
+          {isOpen && <BookingModal isOpen={setIsOpen} type="booking" />}
           <button
             type="button"
             onClick={modalOpen}

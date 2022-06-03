@@ -24,7 +24,7 @@ function Footer() {
                 </li>
 
                 <li className={s.Footer__list_item}>
-                  <Link to="/services">Послуги </Link>
+                  <Link to="/services/*">Послуги </Link>
                 </li>
 
                 {/* <li className={s.Footer__list_item}> <Link to="/gallery"> Галерея</Link></li> */}
@@ -41,7 +41,7 @@ function Footer() {
                   <Link to="/services/massage">Масаж </Link>
                 </li>
                 <li className={s.Footer__list_item}>
-                  <Link to="/services/spa">СПА-процедури</Link>
+                  <Link to="/services/spa">SPA-процедури</Link>
                 </li>
 
                 <li className={s.Footer__list_item}>

@@ -46,7 +46,7 @@ function BookingForm({ closeModal }) {
     axios({
       method: "POST",
       url: "https://bodysoul-backend.herokuapp.com/emails/sendemail",
-      data: { order },
+      data: { order, type: "order" },
     }).then((response) => {
       reset();
       console.log(data);
@@ -199,13 +199,6 @@ function BookingForm({ closeModal }) {
             value="Надіслати"
             className={`${s.BookingForm__button} ${s.BookingForm__send}`}
           />
-          <button
-            onClick={() => closeModal()}
-            className={`${s.BookingForm__button} ${s.BookingForm__cancel}`}
-            type="button"
-          >
-            Відміна
-          </button>
         </div>
       </form>
     </div>

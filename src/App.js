@@ -8,6 +8,7 @@ import Header from "components/Header/Header";
 import s from "./App.module.scss";
 import "./index.scss";
 import Footer from "components/Footer/Footer";
+import ScrollToTop from "helpers/ScrollToTop";
 
 const AboutView = lazy(() =>
   import("views/AboutView/AboutView" /*webpackChunkName: "about-view" */)
@@ -70,17 +71,19 @@ function App() {
     <div className={s.App}>
       <Suspense fallback={<ContentLoader />}>
         <Header />
-        <Routes>
-          <Route path="/*" element={<HomeView />} />
-          <Route path="/about" element={<AboutView />} />
-          <Route path="/services/*" element={<ServicesView />}>
-            <Route path={`massage`} element={<Massage />} />
-            <Route path={`spa`} element={<SpaPrograms />} />
-            <Route path={`body`} element={<Body />} />
-            <Route path={`giftcards`} element={<Giftcards />} />
-          </Route>
-          <Route path="/contacts" element={<ContactsView />} />
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route path="/*" element={<HomeView />} />
+            <Route path="/about" element={<AboutView />} />
+            <Route path="/services/*" element={<ServicesView />}>
+              <Route path={`massage`} element={<Massage />} />
+              <Route path={`spa`} element={<SpaPrograms />} />
+              <Route path={`body`} element={<Body />} />
+              <Route path={`giftcards`} element={<Giftcards />} />
+            </Route>
+            <Route path="/contacts" element={<ContactsView />} />
+          </Routes>
+        </ScrollToTop>
         <Footer />
       </Suspense>
       <button type="button" onClick={scrollToTop} className="App__goback">

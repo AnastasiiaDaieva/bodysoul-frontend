@@ -9,7 +9,8 @@
   //   align-items: stretch;
   background-color: var(--add-dark-color);
   color: var(--add-light-color);
-  margin-top: 100px;
+  // margin-top: 100px;
+
   & > *:not(:last-child) {
     margin-bottom: 15px;
   }
@@ -28,6 +29,9 @@
   width: 100%;
   border: 1px solid var(--add-light-color);
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  // position: relative;
+  // z-index: 20;
+
   &:hover {
     background-color: var(--sec-bg-color);
     color: var(--add-light-color);
