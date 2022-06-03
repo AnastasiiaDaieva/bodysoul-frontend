@@ -36,6 +36,37 @@ function BookingForm({ closeModal }) {
     console.log(data);
   };
 
+  const selectStyles = {
+    control: (styles) => ({
+      ...styles,
+      backgroundColor: "transparent",
+      border: "1px solid var(--text-color)",
+      borderRadius: "0px",
+      width: "100%",
+    }),
+    dropdownIndicator: (styles) => ({
+      ...styles,
+      color: "var(--text-color)",
+    }),
+    indicatorSeparator: (styles) => ({
+      ...styles,
+      backgroundColor: "var(--text-color)",
+    }),
+    container: (styles) => ({
+      ...styles,
+      width: "100%",
+      paddingRight: "0",
+    }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: isDisabled ? "grey" : "var(--add-light-color)",
+        color: "var(--text-color",
+        cursor: isDisabled ? "not-allowed" : "default",
+      };
+    },
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className={s.BookingForm}>
@@ -99,10 +130,11 @@ function BookingForm({ closeModal }) {
               <Select
                 options={spotsOptions}
                 placeholder="Оберіть адресу"
-                className={`${s.BookingForm__}`}
+                className={`${s.BookingForm__select}`}
                 onChange={onChange}
                 onBlur={onBlur}
                 selected={value}
+                styles={selectStyles}
               />
             )}
           />

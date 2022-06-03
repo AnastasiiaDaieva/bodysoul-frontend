@@ -2,13 +2,18 @@ import { createPortal } from "react-dom";
 import { useEffect } from "react";
 import { IoCloseOutline as CloseModal } from "react-icons/io5";
 import BookingForm from "./BookingForm";
+import OrderGiftcard from "components/Services/Giftcards/OrderGiftcard";
 import s from "./BookingModal.module.scss";
 
 const modalRoot = document.getElementById("modal-root");
 
-function BookingModal({ isOpen }) {
+function BookingModal({ isOpen, giftcardModalIsOpen, type }) {
   const closeModal = () => {
-    isOpen(false);
+    if (type === "booking") {
+      isOpen(false);
+    } else if (type === "giftcard") {
+      giftcardModalIsOpen(false);
+    }
     document.body.style.overflow = "unset";
   };
 
@@ -35,9 +40,20 @@ function BookingModal({ isOpen }) {
       <div className={s.BookingModal}>
         <CloseModal className={s.BookingModal__close} onClick={closeModal} />
         <div className={s.BookingModal__body}>
-          <h2 className={s.BookingModal__heading}>Записатися</h2>
-
-          <BookingForm closeModal={closeModal} />
+          {type === "booking" && (
+            <>
+              {" "}
+              <h2 className={s.BookingModal__heading}>Записатися</h2>
+              <BookingForm closeModal={closeModal} type="booking" />
+            </>
+          )}
+          {type === "giftcard" && (
+            <>
+              {" "}
+              <h2 className={s.BookingModal__heading}>Придбати сертифікат</h2>
+              <OrderGiftcard closeModal={closeModal} />
+            </>
+          )}
         </div>
       </div>
     </div>,
