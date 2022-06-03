@@ -1,6 +1,7 @@
 import s from "./Giftcards.module.scss";
 import H2Home from "components/Headings/H2Home";
-import giftcards from "img/cert.png";
+import giftcard1 from "img/gc1.jpg";
+import giftcard2 from "img/gc2.jpg";
 
 function Giftcards() {
   return (
@@ -20,8 +21,11 @@ function Giftcards() {
             способи:
           </p>
           <ul className={s.Giftcards__list}>
-            <li> завітавши за адресою однієї з наших студій </li>
-            <li>
+            <li className={s.Giftcards__list_item}>
+              {" "}
+              завітавши за адресою однієї з наших студій{" "}
+            </li>
+            <li className={s.Giftcards__list_item}>
               віддалено по телефону, Viber, Telegram або WhatsApp за номером
               <a href="tel: +380672103377" className={s.Giftcards__number}>
                 +38 067 210 33 77
@@ -31,7 +35,9 @@ function Giftcards() {
                 +38 067 210 33 73
               </a>{" "}
             </li>
-            <li>заповнивши відповідну форму на цьому сайті </li>
+            <li className={s.Giftcards__list_item}>
+              заповнивши відповідну форму на цьому сайті{" "}
+            </li>
           </ul>
           <p>
             Отримати подарунковий сертифікат можете або Ви, або та особа, котрій
@@ -42,8 +48,13 @@ function Giftcards() {
         </div>
         <div className={s.Giftcards__visual}>
           <img
-            src={giftcards}
-            alt="background"
+            src={giftcard1}
+            alt="giftcard"
+            className={s.Giftcards__picture}
+          />
+          <img
+            src={giftcard2}
+            alt="giftcard"
             className={s.Giftcards__picture}
           />
         </div>

@@ -7,3 +7,36 @@
 .Giftcards__description {
   text-align: left;
 }
+
+.Giftcards__list {
+  composes: GiftcardsHome__list from "./GiftcardsHome.module.scss";
+}
+@media screen and (max-width: 768px) {
+  .Giftcards__picture {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .GiftcardsHome__container {
+    display: flex;
+  }
+  .Giftcards__picture {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+  .GiftcardsHome__description {
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    margin-top: 30px;
+    margin-right: 70px;
+  }
+  .Giftcards__visual {
+    width: 50%;
+    display: flex;
+  }
+}

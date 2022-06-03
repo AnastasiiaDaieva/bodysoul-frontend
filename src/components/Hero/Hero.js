@@ -52,7 +52,12 @@ function Hero() {
             >
               сертифікат
             </button>
-            {giftcardModal && <BookingModal type="giftcard" />}
+            {giftcardModal && (
+              <BookingModal
+                type="giftcard"
+                giftcardModalIsOpen={setGiftcardModal}
+              />
+            )}
           </div>
         </div>
       </div>

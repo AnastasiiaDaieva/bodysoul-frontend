@@ -10,7 +10,8 @@
 
 .GiftcardsHome__list {
   list-style-type: disc;
-  padding-left: 20px;
+  padding-left: 40px;
+  text-align: left;
 }
 .GiftcardsHome__text {
   display: flex;
@@ -28,8 +29,7 @@
 @media screen and (max-width: 767.99px) {
   .GiftcardsHome__visual {
     width: 250px;
-  }
-  .GiftcardsHome__visual {
+
     margin-left: auto;
     margin-right: auto;
   }

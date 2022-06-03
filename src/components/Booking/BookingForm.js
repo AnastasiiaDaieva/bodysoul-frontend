@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import Datetime from "react-datetime";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 import { useForm, Controller } from "react-hook-form";
 
@@ -32,8 +33,30 @@ function BookingForm({ closeModal }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    reset();
-    console.log(data);
+    const { comment, length, date, service, location, name, phone } = data;
+    const order = {
+      name: name,
+      phone: phone,
+      service: service,
+      length: length,
+      date: date,
+      location: location.label,
+      comment: comment,
+    };
+    axios({
+      method: "POST",
+      url: "https://bodysoul-backend.herokuapp.com/emails/sendemail",
+      data: { order },
+    }).then((response) => {
+      reset();
+      console.log(data);
+      if (response.data.msg === "success") {
+        alert("Email sent, awesome!");
+        this.resetForm();
+      } else if (response.data.msg === "fail") {
+        alert("Oops, something went wrong. Try again");
+      }
+    });
   };
 
   const selectStyles = {
@@ -102,7 +125,7 @@ function BookingForm({ closeModal }) {
             {...register("date", {
               required: true,
             })}
-            render={({ field: { onChange, onBlur, value, ref } }) => (
+            render={({ field: { onChange, onBlur, value } }) => (
               <ReactDatePicker
                 onChange={onChange}
                 onBlur={onBlur}
@@ -120,12 +143,18 @@ function BookingForm({ closeModal }) {
             name="length"
             placeholder="Оберіть тривалість"
             className={`${s.BookingForm__input}`}
+            {...register("length", {
+              required: false,
+            })}
           />
         </div>
         <div className={s.BookingForm__container}>
           <Controller
             control={control}
             name="location"
+            {...register("location", {
+              required: true,
+            })}
             render={({ field: { onChange, onBlur, value, ref } }) => (
               <Select
                 options={spotsOptions}
@@ -159,6 +188,9 @@ function BookingForm({ closeModal }) {
             name="comment"
             placeholder="Додаткова інформація"
             className={`${s.BookingForm__input} `}
+            {...register("comment", {
+              required: false,
+            })}
           />
         </div>
         <div className={s.BookingForm__controllers}>

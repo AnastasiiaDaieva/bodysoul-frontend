@@ -1,0 +1,65 @@
+.OrderGiftcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  justify-content: space-around;
+}
+.OrderGiftcard__container {
+  width: 80%;
+  margin-bottom: 10px;
+}
+.OrderGiftcard__controllers {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.OrderGiftcard__button {
+  font-size: 16px;
+  width: 100px;
+  padding: 10px;
+  background-color: var(--add-dark-color);
+  color: var(--accent-color);
+  border: 1px solid var(--add-dark-color);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  &:hover {
+    background-color: var(--add-light-color);
+    color: var(--add-dark-color);
+  }
+}
+.OrderGiftcard__send {
+  //   border: none;
+  font-family: var(--accent-font);
+  font-size: 16px;
+}
+
+.OrderGiftcard__select {
+  background-color: transparent;
+  width: 100%;
+}
+
+.OrderGiftcard__input {
+  all: unset;
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid var(--add-dark-color);
+  border-radius: 1px;
+}
+@media screen and (max-width: 767.99px) {
+  .OrderGiftcard {
+    width: 100vw;
+    height: 90vh;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279.99px) {
+  .OrderGiftcard {
+    width: 40vw;
+    height: 60vh;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

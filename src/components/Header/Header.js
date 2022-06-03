@@ -1,6 +1,6 @@
 import "../../index.scss";
 import { ReactComponent as Logo } from "../../img/icons/logo-light.svg";
-import { ReactComponent as MobLogo } from "../../img/icons/logo-dark.svg";
+import { ReactComponent as DarkLogo } from "../../img/icons/logo-dark.svg";
 import { useState } from "react";
 import s from "./Header.module.scss";
 import { HiOutlineMenu } from "react-icons/hi";
@@ -33,6 +33,12 @@ function Header() {
     }
   };
 
+  const logoPath =
+    location.pathname === "/services/massage" ||
+    location.pathname === "/services/body" ||
+    location.pathname === "/services/giftcards" ||
+    location.pathname === "/about";
+
   return (
     <header
       className={s.Header}
@@ -40,7 +46,7 @@ function Header() {
     >
       <div className={`container ${s.Header__container}`}>
         <NavLink to="/" className={s.Header__logo}>
-          <Logo />
+          {logoPath ? <DarkLogo /> : <Logo />}{" "}
         </NavLink>
         <nav className={s.Header__nav}>
           <MediaQuery query="(min-width: 768px)">
