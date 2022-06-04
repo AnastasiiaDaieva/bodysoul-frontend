@@ -5,7 +5,8 @@
 .Giftcards__heading {
 }
 .Giftcards__description {
-  text-align: justify;
+  composes: GiftcardsHome__description from "./GiftcardsHome.module.scss";
+  margin-bottom: 40px;
 }
 
 .Giftcards__list {

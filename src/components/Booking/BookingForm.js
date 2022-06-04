@@ -95,12 +95,17 @@ function BookingForm({ closeModal }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className={s.BookingForm}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={s.BookingForm}
+        autoComplete="off"
+      >
         <div className={s.BookingForm__container}>
           <input
             type="text"
             name="name"
             placeholder="Вкажіть Ваше Ім'я"
+            autoComplete="false"
             className={`${s.BookingForm__input}`}
             {...register("name", {
               required: true,
@@ -112,7 +117,7 @@ function BookingForm({ closeModal }) {
           <input
             type="text"
             name="service"
-            placeholder="Яка послуга вас цікавить?"
+            placeholder="Яка послуга Вас цікавить?"
             className={`${s.BookingForm__input}`}
             {...register("service", {
               required: true,
@@ -147,7 +152,7 @@ function BookingForm({ closeModal }) {
             {...register("time", {
               required: true,
             })}
-            placeholder="Вкажіть зручний для вас час"
+            placeholder="Вкажіть зручний для Вас час"
             className={`${s.BookingForm__input}`}
           />
 
@@ -189,7 +194,7 @@ function BookingForm({ closeModal }) {
           <input
             type="tel"
             name="phone"
-            placeholder="Вкажіть ваш номер телефону"
+            placeholder="Вкажіть Ваш номер телефону"
             className={`${s.BookingForm__input}`}
             {...register("phone", {
               required: true,

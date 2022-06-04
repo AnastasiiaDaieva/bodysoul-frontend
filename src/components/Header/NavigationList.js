@@ -27,13 +27,19 @@ function NavigationList({ setOpenMenu, openMenu }) {
 
   return (
     <ul className={s.NavigationList}>
-      <NavLink to="/" className={s.NavigationList__item} style={activeStyle}>
+      <NavLink
+        to="/"
+        className={s.NavigationList__item}
+        style={activeStyle}
+        onClick={() => setOpenMenu(!openMenu)}
+      >
         <li> Головна</li>
       </NavLink>
       <NavLink
         to="/about"
         className={s.NavigationList__item}
         style={activeStyle}
+        onClick={() => setOpenMenu(!openMenu)}
       >
         <li>Про нас</li>
       </NavLink>
@@ -99,16 +105,16 @@ function NavigationList({ setOpenMenu, openMenu }) {
       {/* <NavLink to="/specialists" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}>
         <li >Масажисти</li>
       </NavLink> */}
-      <NavLink
+      {/* <NavLink
         to="/contacts"
         className={s.NavigationList__item}
         style={activeStyle}
       >
         <li>
           Студії
-          {/* <MenuArrow className={s.NavigationList__arrow} /> */}
+          <MenuArrow className={s.NavigationList__arrow} /> 
         </li>
-      </NavLink>{" "}
+      </NavLink>{" "} */}
       {/* {openSpots && (
           <ul className={s.NavigationList__spots}>
             <NavLink

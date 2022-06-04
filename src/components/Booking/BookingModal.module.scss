@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 35px 25px;
   font-family: var(--accent-font);
   font-weight: 400;
   font-size: 18px;
@@ -48,8 +47,14 @@
     height: 100vh;
     width: 100vw;
   }
+  .BookingModal__body {
+    padding-top: 70px;
+  }
 }
 @media screen and (min-width: 768px) {
+  .BookingModal {
+    padding: 35px 25px;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
 }

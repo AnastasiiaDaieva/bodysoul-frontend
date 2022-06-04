@@ -1,64 +1,39 @@
 .OrderGiftcard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 16px;
-  justify-content: space-around;
+  composes: BookingForm from "../../Booking/BookingForm.module.scss";
 }
 .OrderGiftcard__container {
-  width: 80%;
-  margin-bottom: 10px;
+  composes: BookingForm__container from "../../Booking/BookingForm.module.scss";
 }
 .OrderGiftcard__controllers {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
+  composes: BookingForm__controllers from "../../Booking/BookingForm.module.scss";
 }
 
 .OrderGiftcard__button {
-  font-size: 16px;
-  width: 100px;
-  padding: 10px;
-  background-color: var(--add-dark-color);
-  color: var(--accent-color);
-  border: 1px solid var(--add-dark-color);
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-  &:hover {
-    background-color: var(--add-light-color);
-    color: var(--add-dark-color);
-  }
+  composes: BookingForm__button from "../../Booking/BookingForm.module.scss";
 }
 .OrderGiftcard__send {
-  //   border: none;
-  font-family: var(--accent-font);
-  font-size: 16px;
+  composes: BookingForm__send from "../../Booking/BookingForm.module.scss";
 }
 
 .OrderGiftcard__select {
-  background-color: transparent;
-  width: 100%;
+  composes: BookingForm__select from "../../Booking/BookingForm.module.scss";
 }
 
 .OrderGiftcard__input {
-  all: unset;
-  width: 100%;
-  padding: 5px;
-  text-align: center;
-  font-family: var(--accent-font);
-  border: 1px solid var(--add-dark-color);
-  border-radius: 1px;
+  composes: BookingForm__input from "../../Booking/BookingForm.module.scss";
 }
 @media screen and (max-width: 767.99px) {
   .OrderGiftcard {
     width: 100vw;
     height: 90vh;
+    justify-content: center;
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279.99px) {
+@media screen and (min-width: 768px) {
   .OrderGiftcard {
     width: 40vw;
-    height: 60vh;
+    height: 40vh;
   }
 }
 

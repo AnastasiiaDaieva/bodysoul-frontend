@@ -89,12 +89,17 @@ function OrderGiftcard({ closeModal }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)} className={s.OrderGiftcard}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={s.OrderGiftcard}
+        autoComplete="off"
+      >
         <div className={s.OrderGiftcard__container}>
           <input
             type="text"
             name="name"
             placeholder="Вкажіть Ваше Ім'я"
+            autoComplete="false"
             className={`${s.OrderGiftcard__input}`}
             {...register("name", {
               required: true,
@@ -107,7 +112,7 @@ function OrderGiftcard({ closeModal }) {
           <input
             type="tel"
             name="phone"
-            placeholder="Вкажіть ваш номер телефону"
+            placeholder="Вкажіть Ваш номер телефону"
             className={`${s.OrderGiftcard__input}`}
             {...register("phone", {
               required: true,

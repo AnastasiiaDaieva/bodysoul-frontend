@@ -19,7 +19,9 @@ function GiftcardsHome() {
             банківський рахунок. Замовити подарунковий сертифікат можна в три
             способи:
           </p>
-          <ul className={s.GiftcardsHome__list}>
+          <ul
+            className={`${s.GiftcardsHome__list} ${s.GiftcardsHome__description}`}
+          >
             <li> завітавши за адресою однієї з наших студій </li>
             <li>
               віддалено по телефону, Viber, Telegram або WhatsApp за номером{" "}
@@ -33,7 +35,7 @@ function GiftcardsHome() {
             </li>
             <li>заповнивши відповідну форму на цьому сайті </li>
           </ul>
-          <p>
+          <p className={s.GiftcardsHome__description}>
             Отримати подарунковий сертифікат можете або Ви, або та особа, котрій
             призначається, в одній з наших студій. Також можлива доставка Новою
             поштою за вказаною Вами адресою. Термін дії подарункового
