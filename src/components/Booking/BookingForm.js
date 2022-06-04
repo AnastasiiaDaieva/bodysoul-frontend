@@ -33,13 +33,15 @@ function BookingForm({ closeModal }) {
   } = useForm();
 
   const onSubmit = (data) => {
-    const { comment, length, date, service, location, name, phone } = data;
+    const { comment, length, date, service, location, name, phone, time } =
+      data;
     const order = {
       name: name,
       phone: phone,
       service: service,
       length: length,
       date: date,
+      time: time,
       location: location.label,
       comment: comment,
     };
@@ -130,12 +132,25 @@ function BookingForm({ closeModal }) {
               <ReactDatePicker
                 onChange={onChange}
                 onBlur={onBlur}
-                placeholderText="Оберіть дату та час"
+                placeholderText="Оберіть дату"
                 selected={value}
                 className={`${s.BookingForm__input}`}
               />
             )}
           />
+          {errors.date && <span>Заповніть поле</span>}
+        </div>
+        <div className={s.BookingForm__container}>
+          <input
+            name="time"
+            type="text"
+            {...register("time", {
+              required: true,
+            })}
+            placeholder="Вкажіть зручний для вас час"
+            className={`${s.BookingForm__input}`}
+          />
+
           {errors.date && <span>Заповніть поле</span>}
         </div>
         <div className={s.BookingForm__container}>
