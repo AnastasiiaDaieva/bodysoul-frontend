@@ -108,7 +108,7 @@ function Footer() {
 
           <div className={s.Footer__hours}>
             <p className={s.Footer__hours_title}>Режим роботи</p>
-            <p>7 днів на тиждень</p> <p>10:00 - 22:00</p>
+            <p>7 днів на тиждень</p> <p>10:00 - 21:00</p>
           </div>
         </div>
       </div>
