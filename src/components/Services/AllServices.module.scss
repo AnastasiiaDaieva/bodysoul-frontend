@@ -3,7 +3,6 @@
 }
 .AllServices__item {
   flex: 1 0 20em;
-  outline: 1px solid tomato;
 }
 
 .AllServices__type_list {
@@ -24,10 +23,16 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .AllServices__heading {
+    margin-bottom: 20px;
+  }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) {
   .AllServices__item {
     width: calc(100% / 2 - 20px);
+  }
+  .AllServices__heading {
+    margin-bottom: 50px;
   }
 }

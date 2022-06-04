@@ -20,7 +20,7 @@ function Hero() {
       setGiftcardModal(true);
     }
     scrollToTop();
-    document.body.style.overflow = "hidden";
+    // document.body.style.overflow = "hidden";
   };
   return (
     <div className={s.Hero}>

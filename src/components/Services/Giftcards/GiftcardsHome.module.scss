@@ -11,7 +11,7 @@
 .GiftcardsHome__list {
   list-style-type: disc;
   padding-left: 40px;
-  text-align: left;
+  text-align: justify;
 }
 .GiftcardsHome__text {
   display: flex;
@@ -39,7 +39,7 @@
     display: flex;
   }
   .GiftcardsHome__description {
-    text-align: left;
+    text-align: justify;
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
