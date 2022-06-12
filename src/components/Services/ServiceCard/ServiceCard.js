@@ -115,11 +115,9 @@ function ServiceCard({
 
           {effect && <p>Ефекти: {effect}</p>}
           <div className="divider"></div>
-          {type === "massage" ? (
-            <Prices details={data} />
-          ) : (
-            <Prices details={details} />
-          )}
+
+          <Prices details={details} />
+
           <div className="divider"></div>
           {isOpen && <BookingModal isOpen={setIsOpen} type="booking" />}
           <button

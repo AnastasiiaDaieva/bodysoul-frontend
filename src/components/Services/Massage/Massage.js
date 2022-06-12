@@ -14,13 +14,14 @@ function Massage() {
   return (
     <div>
       <ul className={s.Massage__list}>
-        {availableServices.map(({ name, description, types }) => (
+        {availableServices.map(({ name, description, types, details }) => (
           <li key={nanoid()} className={s.Massage__item}>
             <ServiceCard
               type="massage"
               name={name}
               description={description}
               types={types}
+              details={details}
             />
           </li>
         ))}
