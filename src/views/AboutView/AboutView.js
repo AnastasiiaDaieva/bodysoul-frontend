@@ -6,7 +6,7 @@ import s from "./AboutView.module.scss";
 function AboutView() {
   return (
     <main className={s.AboutView}>
-      <HeroReusable heading="Про нас" img={about} />
+      {/* <HeroReusable heading="Про нас" img={about} /> */}
       <About />
     </main>
   );

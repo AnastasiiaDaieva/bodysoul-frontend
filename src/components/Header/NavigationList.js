@@ -28,7 +28,7 @@ function NavigationList({ setOpenMenu, openMenu }) {
   return (
     <ul className={s.NavigationList}>
       <NavLink
-        to="/"
+        to="/*"
         className={s.NavigationList__item}
         style={activeStyle}
         onClick={() => setOpenMenu(!openMenu)}

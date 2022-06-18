@@ -14,15 +14,9 @@ function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
   let location = useLocation();
-
+  console.log(location);
   const headerBackground =
-    location.pathname === "/services/*" || location.pathname === "/contacts"
-      ? "var(--add-dark-color)"
-      : "transparent";
-  const headerColor =
-    location.pathname === "/services/*" || location.pathname === "/contacts"
-      ? "var(--add-light-color)"
-      : "var(--add-dark-color)";
+    location.pathname === "/*" ? "transparent" : "var(--add-dark-color)";
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -33,20 +27,11 @@ function Header() {
     // }
   };
 
-  const logoPath =
-    location.pathname === "/services/massage" ||
-    location.pathname === "/services/body" ||
-    location.pathname === "/services/giftcards" ||
-    location.pathname === "/about";
-
   return (
-    <header
-      className={s.Header}
-      style={{ color: headerColor, backgroundColor: headerBackground }}
-    >
+    <header className={s.Header} style={{ backgroundColor: headerBackground }}>
       <div className={`container ${s.Header__container}`}>
-        <NavLink to="/" className={s.Header__logo}>
-          {logoPath ? <DarkLogo /> : <Logo />}{" "}
+        <NavLink to="/*" className={s.Header__logo}>
+          <Logo />
         </NavLink>
         <nav className={s.Header__nav}>
           <MediaQuery query="(min-width: 768px)">

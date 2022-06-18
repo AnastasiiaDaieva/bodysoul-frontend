@@ -47,9 +47,9 @@ function ContactsItem({ spot }) {
 
       {/* {isActive === value && ( */}
       <div className={s.ContactsItem__map}>
-        <h2 className={s.ContactsItem__heading}>
+        {/* <h2 className={s.ContactsItem__heading}>
           Студія масажу у <b>{where}</b>
-        </h2>
+        </h2> */}
         {/* <img src={IMG_LINK} alt="studio" width="600" /> */}
         {/* {showMap && ( */}
         <iframe

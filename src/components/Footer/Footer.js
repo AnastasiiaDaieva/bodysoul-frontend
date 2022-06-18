@@ -16,7 +16,7 @@ function Footer() {
               <h2 className={s.Footer__nav_title}>Інформація</h2>
               <ul className={s.Footer__list}>
                 <li className={s.Footer__list_item}>
-                  <Link to="/">Головна</Link>
+                  <Link to="/*">Головна</Link>
                 </li>
 
                 <li className={s.Footer__list_item}>
@@ -54,7 +54,7 @@ function Footer() {
 
                 {/* 
                   
-                  <li className={s.Footer__list_item}><Link to="/">Протипоказання
+                  <li className={s.Footer__list_item}><Link to="/*">Протипоказання
                 </Link></li> */}
               </ul>
             </div>

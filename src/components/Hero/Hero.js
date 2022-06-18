@@ -27,7 +27,7 @@ function Hero() {
       <div className={`container ${s.Hero__container}`}>
         <div className={s.Hero__info}>
           <h1 className={`heading ${s.Hero__heading}`}>
-            Пориньте у світ масажу та спа
+            Пориньте у світ масажу та SPA
           </h1>
           <MediaQuery query="(min-width: 768px)">
             <p className={s.Hero__description}>

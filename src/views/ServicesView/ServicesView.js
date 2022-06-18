@@ -37,9 +37,9 @@ function ServicesView() {
 
   return (
     <main className={s.ServicesView}>
-      {location.pathname !== "/services/*" && (
+      {/* {location.pathname !== "/services/*" && (
         <HeroReusable heading={getHeroContent()[0]} img={getHeroContent()[1]} />
-      )}
+      )} */}
       <div className={`container ${s.ServicesView__container}`}>
         <Filter path={location.pathname} />
         <Suspense fallback={<ContentLoader />}>
