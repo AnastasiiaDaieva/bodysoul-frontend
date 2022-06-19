@@ -18,6 +18,7 @@
 .BookingForm__button {
   font-size: 16px;
   width: 100px;
+  border-radius: 5px;
   padding: 10px;
   background-color: var(--add-dark-color);
   color: var(--accent-color);
@@ -37,10 +38,15 @@
 .BookingForm__select {
   background-color: transparent;
   width: 100%;
+  &::placeholder {
+    font-family: var(--main-font);
+    font-size: 12px;
+  }
 }
 
 .BookingForm__input {
   all: unset;
+  font-family: var(--main-font);
   width: 100%;
   padding: 5px;
   text-align: center;
@@ -48,6 +54,11 @@
 
   border: 1px solid var(--add-dark-color);
   border-radius: 1px;
+
+  &::placeholder {
+    font-family: var(--main-font);
+    font-size: 12px;
+  }
 }
 @media screen and (max-width: 767.99px) {
   .BookingForm {

@@ -5,13 +5,13 @@
   font-weight: 500;
 }
 .GiftcardsHome__visual {
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .GiftcardsHome__list {
   list-style-type: disc;
   padding-left: 40px;
-  text-align: justify;
+  text-align: left;
 }
 .GiftcardsHome__text {
   display: flex;
@@ -23,7 +23,9 @@
 }
 
 .GiftcardsHome__description {
-  margin-top: 30px;
+  &:first-child {
+    margin-top: 30px;
+  }
 }
 
 @media screen and (max-width: 767.99px) {
@@ -40,11 +42,10 @@
     justify-content: space-around;
   }
   .GiftcardsHome__description {
-    text-align: justify;
+    text-align: left;
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
-    margin-top: 30px;
     margin-right: 70px;
   }
   .GiftcardsHome__picture {

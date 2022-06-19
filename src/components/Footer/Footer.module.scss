@@ -1,8 +1,8 @@
 .Footer {
   width: 100vw;
   text-align: left;
-
-  background-color: var(--sec-bg-color);
+  color: var(--add-light-color);
+  background-color: var(--add-dark-color);
   margin-top: 100px;
 }
 .Footer__container {
@@ -34,6 +34,7 @@
 }
 .Footer__marker {
   position: absolute;
+  fill: var(--add-light-color);
   top: -12px;
   left: -35px;
 }
@@ -56,6 +57,7 @@
   font-family: var(--main-font);
   font-weight: 500;
   font-size: 14px;
+  color: var(--accent-color);
 }
 
 .Footer__main {

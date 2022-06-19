@@ -1,5 +1,5 @@
 import s from "./Footer.module.scss";
-import { ReactComponent as Logo } from "img/icons/logo-dark.svg";
+import { ReactComponent as Logo } from "img/icons/logo-light.svg";
 import { ReactComponent as Marker } from "img/icons/map-marker.svg";
 import { Link } from "react-router-dom";
 import data from "data/spots.json";
@@ -10,7 +10,11 @@ function Footer() {
     <footer className={s.Footer}>
       <div className={`container ${s.Footer__container}`}>
         <div className={s.Footer__main}>
-          <Logo className={s.Footer__logo} />
+          <Link to="/*">
+            {" "}
+            <Logo className={s.Footer__logo} />
+          </Link>
+
           <div className={s.Footer__nav}>
             <div className={s.Footer__nav_item}>
               <h2 className={s.Footer__nav_title}>Інформація</h2>

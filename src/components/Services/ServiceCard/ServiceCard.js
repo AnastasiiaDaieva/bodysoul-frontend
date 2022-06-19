@@ -119,10 +119,10 @@ function ServiceCard({
           <Prices details={details} />
 
           <div className="divider"></div>
-          {isOpen && <BookingModal isOpen={setIsOpen} type="booking" />}
+          {isOpen && <BookingModal setIsOpen={setIsOpen} type="booking" />}
           <button
             type="button"
-            onClick={modalOpen}
+            onClick={() => modalOpen("booking")}
             className={s.ServiceCard__book}
           >
             Записатися
