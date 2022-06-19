@@ -55,9 +55,9 @@ function ContactsItem({ spot }) {
         <iframe
           src={frame.link}
           title={frame.title}
-          width="600"
+          width="800"
           height="450"
-          style={{ border: "0" }}
+          style={{ border: "0", borderRadius: "5px" }}
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
