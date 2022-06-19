@@ -42,6 +42,10 @@ span {
   margin: 0;
 }
 
+input {
+  font-family: var(--main-font);
+}
+
 address {
   all: unset;
   color: inherit;

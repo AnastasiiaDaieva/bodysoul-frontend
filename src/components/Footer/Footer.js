@@ -95,7 +95,7 @@ function Footer() {
         <div className={s.Footer__contacts}>
           <div className={s.Footer__spots}>
             {data.map(({ name, address, tel, phone }) => (
-              <address key={nanoid()}>
+              <address key={nanoid()} className={s.Footer__address_block}>
                 <div className={s.Footer__spot}>
                   <Link to="/contacts">
                     <Marker className={s.Footer__marker} />

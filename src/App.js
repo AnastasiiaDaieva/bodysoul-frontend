@@ -9,6 +9,9 @@ import s from "./App.module.scss";
 import "./index.scss";
 import Footer from "components/Footer/Footer";
 import ScrollToTop from "helpers/ScrollToTop";
+import axios from "axios";
+axios.defaults.baseURL = "https://bodysoul-backend.herokuapp.com";
+// axios.defaults.baseURL = "http://localhost:4000";
 
 const AboutView = lazy(() =>
   import("views/AboutView/AboutView" /*webpackChunkName: "about-view" */)

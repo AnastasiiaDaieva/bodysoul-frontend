@@ -39,18 +39,16 @@ function OrderGiftcard({ closeModal }) {
       location: location.label,
       additional: additional,
     };
-    axios({
-      method: "POST",
-      url: "https://bodysoul-backend.herokuapp.com/emails/sendemail",
-      data: { order, type: "giftcard" },
-    }).then((response) => {
-      if (response.data.msg === "success") {
-        alert("Email sent, awesome!");
-        this.resetForm();
-      } else if (response.data.msg === "fail") {
-        alert("Oops, something went wrong. Try again");
-      }
-    });
+    axios
+      .post("/emails/sendemail", { order, type: "giftcard" })
+      .then((response) => {
+        if (response.data.msg === "success") {
+          alert("Email sent, awesome!");
+          this.resetForm();
+        } else if (response.data.msg === "fail") {
+          alert("Oops, something went wrong. Try again");
+        }
+      });
     closeModal();
     reset();
     console.log(data);
@@ -62,7 +60,9 @@ function OrderGiftcard({ closeModal }) {
       backgroundColor: "transparent",
       border: "1px solid var(--text-color)",
       borderRadius: "0px",
-      width: "100%",
+      "@media screen and (min-width: 768px)": { width: "297px" },
+      fontFamily: "var(--main-font)",
+      fontSize: "12px",
     }),
     dropdownIndicator: (styles) => ({
       ...styles,
@@ -70,18 +70,22 @@ function OrderGiftcard({ closeModal }) {
     }),
     indicatorSeparator: (styles) => ({
       ...styles,
-      backgroundColor: "var(--text-color)",
+      all: "unset",
     }),
+
     container: (styles) => ({
       ...styles,
       width: "100%",
+      backgroundColor: "var(--add-light-color)",
       paddingRight: "0",
     }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
       return {
         ...styles,
         backgroundColor: isDisabled ? "grey" : "var(--add-light-color)",
-        color: "var(--text-color",
+        color: "var(--text-color)",
+        fontFamily: "var(--main-font)",
+        fontSize: "12px",
         cursor: isDisabled ? "not-allowed" : "default",
       };
     },

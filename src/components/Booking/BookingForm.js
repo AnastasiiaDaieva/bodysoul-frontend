@@ -16,6 +16,46 @@ import Select from "react-select";
 import data from "data/services.json";
 import { nanoid } from "nanoid";
 
+const selectStyles = {
+  control: (styles) => ({
+    ...styles,
+    backgroundColor: "transparent",
+    border: "1px solid rgb(52, 33, 19)",
+    fontWeight: "400",
+    borderRadius: "0px",
+    fontFamily: "var(--main-font)",
+    fontSize: "12px",
+    "@media screen and (min-width: 768px)": { width: "330px" },
+  }),
+
+  dropdownIndicator: (styles) => ({
+    ...styles,
+    color: "var(--text-color)",
+  }),
+  indicatorSeparator: (styles) => ({
+    ...styles,
+    all: "unset",
+  }),
+
+  container: (styles) => ({
+    ...styles,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "var(--add-light-color)",
+    paddingRight: "0",
+  }),
+  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+    return {
+      ...styles,
+      backgroundColor: isDisabled ? "grey" : "var(--add-light-color)",
+      color: "var(--text-color)",
+      fontFamily: "var(--main-font)",
+      fontSize: "12px",
+      cursor: isDisabled ? "not-allowed" : "default",
+    };
+  },
+};
+
 function BookingForm({ closeModal }) {
   const spotsOptions = [
     {
@@ -45,60 +85,19 @@ function BookingForm({ closeModal }) {
       location: location.label,
       comment: comment,
     };
-    axios({
-      method: "POST",
-      url: "https://bodysoul-backend.herokuapp.com/emails/sendemail",
-      data: { order, type: "order" },
-    }).then((response) => {
-      if (response.data.msg === "success") {
-        alert("Email sent, awesome!");
-        this.resetForm();
-      } else if (response.data.msg === "fail") {
-        alert("Oops, something went wrong. Try again");
-      }
-    });
+    axios
+      .post("/emails/sendemail", { order, type: "order" })
+      .then((response) => {
+        if (response.data.msg === "success") {
+          alert("Email sent, awesome!");
+          this.resetForm();
+        } else if (response.data.msg === "fail") {
+          alert("Oops, something went wrong. Try again");
+        }
+      });
     closeModal();
     reset();
     console.log(data);
-  };
-
-  const selectStyles = {
-    control: (styles) => ({
-      ...styles,
-      backgroundColor: "transparent",
-      border: "1px solid rgb(52, 33, 19)",
-      fontWeight: "400",
-      borderRadius: "0px",
-      fontFamily: "var(--main-font)",
-      fontSize: "12px",
-      "@media screen and (min-width: 768px)": { width: "330px" },
-    }),
-
-    dropdownIndicator: (styles) => ({
-      ...styles,
-      color: "var(--text-color)",
-    }),
-    indicatorSeparator: (styles) => ({
-      ...styles,
-      all: "unset",
-    }),
-    container: (styles) => ({
-      ...styles,
-      width: "100%",
-      height: "100%",
-      backgroundColor: "var(--add-light-color)",
-      paddingRight: "0",
-    }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      return {
-        ...styles,
-        backgroundColor: isDisabled ? "grey" : "var(--add-light-color)",
-        color: "var(--text-color)",
-        fontFamily: "var(--main-font)",
-        fontSize: "12px",
-        cursor: isDisabled ? "not-allowed" : "default",
-      };
-    },
   };
 
   return (
