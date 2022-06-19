@@ -15,8 +15,13 @@ function Header() {
 
   let location = useLocation();
   console.log(location);
-  const headerBackground =
-    location.pathname === "/*" ? "transparent" : "var(--add-dark-color)";
+  const headerBackground = () => {
+    if (location.pathname === "/" || location.pathname === "/*") {
+      return "transparent";
+    } else {
+      return "var(--add-dark-color)";
+    }
+  };
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -28,11 +33,19 @@ function Header() {
   };
 
   return (
-    <header className={s.Header} style={{ backgroundColor: headerBackground }}>
+    <header
+      className={s.Header}
+      style={{ backgroundColor: headerBackground() }}
+    >
       <div className={`container ${s.Header__container}`}>
         <NavLink to="/*" className={s.Header__logo}>
           <Logo />
         </NavLink>
+        <MediaQuery query="(min-width: 768px)">
+          {" "}
+          <p className={s.Header__name}>Студія масажу і SPA Body&Soul</p>
+        </MediaQuery>
+
         <nav className={s.Header__nav}>
           <MediaQuery query="(min-width: 768px)">
             <NavigationList setOpenMenu={toggleMenu} openMenu={openMenu} />
@@ -47,13 +60,13 @@ function Header() {
                   />
                   <IoCloseOutline
                     onClick={toggleMenu}
-                    className={s.Header__icon}
+                    className={`${s.Header__icon} `}
                   />
                 </>
               ) : (
                 <HiOutlineMenu
                   onClick={toggleMenu}
-                  className={s.Header__icon}
+                  className={`${s.Header__icon} ${s.Header__burger}`}
                 />
               )}
             </div>

@@ -26,18 +26,14 @@
   justify-content: space-between;
 }
 
-.Header__mob_logo {
-  color: var(--add-dark-color);
-  position: relative;
-  text-align: center;
-  z-index: 30;
-}
-
 .Header__icon {
   width: 30px;
   height: 30px;
   position: relative;
   z-index: 30;
+}
+.Header__burger {
+  color: var(--add-light-color);
 }
 
 @media screen and (max-width: 767px) {
@@ -51,11 +47,17 @@
     display: none;
   }
   .Header__logo {
-    margin-right: 10%;
+    margin-right: 20px;
   }
 
   .Header {
     justify-content: left;
+  }
+  .Header__name {
+    color: var(--add-light-color);
+    margin-right: 7%;
+    font-family: var(--accent-font);
+    font-size: 16px;
   }
 }
 

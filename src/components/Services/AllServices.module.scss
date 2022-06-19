@@ -2,13 +2,13 @@
   margin-bottom: 200px;
 }
 .AllServices__item {
-  flex: 1 0 20em;
+  flex: 0 20em;
 }
 
 .AllServices__type_list {
   display: flex;
   flex-wrap: wrap;
-  //   justify-content: space-around;
+  justify-content: space-around;
   gap: 1.5rem;
 }
 
