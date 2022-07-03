@@ -6,7 +6,7 @@ import data from "data/services.json";
 
 import { nanoid } from "nanoid";
 
-function Massage() {
+function Massage({ setBookingStatus }) {
   const massage = data.find(({ typeValue }) => typeValue === "massage");
   const availableServices = massage.services.filter(
     ({ available }) => available === true
@@ -22,6 +22,7 @@ function Massage() {
               description={description}
               types={types}
               details={details}
+              setBookingStatus={setBookingStatus}
             />
           </li>
         ))}

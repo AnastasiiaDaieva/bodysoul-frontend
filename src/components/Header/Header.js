@@ -14,7 +14,6 @@ function Header() {
   const [openMenu, setOpenMenu] = useState(false);
 
   let location = useLocation();
-  console.log(location);
   const headerBackground = () => {
     if (location.pathname === "/" || location.pathname === "/*") {
       return "transparent";

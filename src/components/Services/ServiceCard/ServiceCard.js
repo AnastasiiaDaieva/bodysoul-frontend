@@ -29,6 +29,7 @@ function ServiceCard({
   components,
   effect,
   types,
+  setBookingStatus,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const getHeroContent = () => {
@@ -119,7 +120,13 @@ function ServiceCard({
           <Prices details={details} />
 
           <div className="divider"></div>
-          {isOpen && <BookingModal setIsOpen={setIsOpen} type="booking" />}
+          {isOpen && (
+            <BookingModal
+              setIsOpen={setIsOpen}
+              type="booking"
+              setBookingStatus={setBookingStatus}
+            />
+          )}
           <button
             type="button"
             onClick={() => modalOpen("booking")}

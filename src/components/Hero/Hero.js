@@ -3,7 +3,7 @@ import s from "./Hero.module.scss";
 import { useState } from "react";
 import BookingModal from "components/Booking/BookingModal";
 
-function Hero() {
+function Hero({ setBookingStatus }) {
   const [isOpen, setIsOpen] = useState(false);
   const [giftcardModal, setGiftcardModal] = useState(false);
 
@@ -44,7 +44,13 @@ function Hero() {
             >
               записатися
             </button>
-            {isOpen && <BookingModal setIsOpen={setIsOpen} type="booking" />}
+            {isOpen && (
+              <BookingModal
+                setIsOpen={setIsOpen}
+                type="booking"
+                setBookingStatus={setBookingStatus}
+              />
+            )}
             <button
               type="button"
               className={`${s.Hero__button} ${s.Hero__button_gift}`}
@@ -56,6 +62,7 @@ function Hero() {
               <BookingModal
                 type="giftcard"
                 setGiftcardModal={setGiftcardModal}
+                setBookingStatus={setBookingStatus}
               />
             )}
           </div>

@@ -3,7 +3,7 @@ import s from "./Body.module.scss";
 import data from "data/services.json";
 import { nanoid } from "nanoid";
 
-function Body() {
+function Body({ setBookingStatus }) {
   const body = data.find(({ typeValue }) => typeValue === "body");
   const availableServices = body.services.filter(
     ({ available }) => available === true
@@ -19,6 +19,7 @@ function Body() {
               description={description}
               types={types}
               details={details}
+              setBookingStatus={setBookingStatus}
             />
           </li>
         ))}

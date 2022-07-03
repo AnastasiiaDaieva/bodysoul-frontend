@@ -2,7 +2,7 @@ import data from "data/services.json";
 import ServiceCard from "components/Services/ServiceCard/ServiceCard";
 import { nanoid } from "nanoid";
 import s from "./AllServices.module.scss";
-function AllServices() {
+function AllServices({ setBookingStatus }) {
   return (
     <ul className={s.AllServices}>
       {data.map(({ typeLabel, typeValue, services }) => (
@@ -22,6 +22,7 @@ function AllServices() {
                       components={components}
                       effect={effect}
                       types={types}
+                      setBookingStatus={setBookingStatus}
                     />
                   </li>
                 )

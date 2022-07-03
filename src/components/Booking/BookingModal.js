@@ -7,7 +7,7 @@ import s from "./BookingModal.module.scss";
 
 const modalRoot = document.getElementById("modal-root");
 
-function BookingModal({ setIsOpen, setGiftcardModal, type }) {
+function BookingModal({ setIsOpen, setGiftcardModal, type, setBookingStatus }) {
   const closeModal = () => {
     if (type === "booking") {
       setIsOpen(false);
@@ -44,14 +44,20 @@ function BookingModal({ setIsOpen, setGiftcardModal, type }) {
             <>
               {" "}
               <h2 className={s.BookingModal__heading}>Записатися</h2>
-              <BookingForm closeModal={closeModal} />
+              <BookingForm
+                closeModal={closeModal}
+                setBookingStatus={setBookingStatus}
+              />
             </>
           )}
           {type === "giftcard" && (
             <>
               {" "}
               <h2 className={s.BookingModal__heading}>Придбати сертифікат</h2>
-              <OrderGiftcard closeModal={closeModal} />
+              <OrderGiftcard
+                closeModal={closeModal}
+                setBookingStatus={setBookingStatus}
+              />
             </>
           )}
         </div>

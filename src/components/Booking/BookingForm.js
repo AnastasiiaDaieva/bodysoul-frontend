@@ -1,69 +1,15 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import Datetime from "react-datetime";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 
 import { useForm, Controller } from "react-hook-form";
-
+import { bookingSelect } from "styles/selectStyles";
 import s from "./BookingForm.module.scss";
 import "react-datetime/css/react-datetime.css";
-import moment from "moment";
-import { useState, useEffect } from "react";
-import Error from "./Error";
 import Select from "react-select";
-import data from "data/services.json";
-import { nanoid } from "nanoid";
+import { spotsSelect } from "data/spotsSelect";
 
-const selectStyles = {
-  control: (styles) => ({
-    ...styles,
-    backgroundColor: "transparent",
-    border: "1px solid rgb(52, 33, 19)",
-    fontWeight: "400",
-    borderRadius: "0px",
-    fontFamily: "var(--main-font)",
-    fontSize: "12px",
-    "@media screen and (min-width: 768px)": { width: "330px" },
-  }),
-
-  dropdownIndicator: (styles) => ({
-    ...styles,
-    color: "var(--text-color)",
-  }),
-  indicatorSeparator: (styles) => ({
-    ...styles,
-    all: "unset",
-  }),
-
-  container: (styles) => ({
-    ...styles,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "var(--add-light-color)",
-    paddingRight: "0",
-  }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    return {
-      ...styles,
-      backgroundColor: isDisabled ? "grey" : "var(--add-light-color)",
-      color: "var(--text-color)",
-      fontFamily: "var(--main-font)",
-      fontSize: "12px",
-      cursor: isDisabled ? "not-allowed" : "default",
-    };
-  },
-};
-
-function BookingForm({ closeModal }) {
-  const spotsOptions = [
-    {
-      value: "svyatopetrivske",
-      label: "ЖК Петрівський квартал (Святопетрівське/Софіївська Борщагівка)",
-    },
-    { value: "vyshneve", label: "ЖК Піонерський квартал (Вишневе/Крюківщина)" },
-  ];
+function BookingForm({ closeModal, setBookingStatus }) {
   const {
     register,
     handleSubmit,
@@ -88,16 +34,16 @@ function BookingForm({ closeModal }) {
     axios
       .post("/emails/sendemail", { order, type: "order" })
       .then((response) => {
-        if (response.data.msg === "success") {
-          alert("Email sent, awesome!");
-          this.resetForm();
-        } else if (response.data.msg === "fail") {
-          alert("Oops, something went wrong. Try again");
+        if (response.status === 200) {
+          setBookingStatus("success");
+          closeModal();
+          reset();
         }
+      })
+      .catch((error) => {
+        console.log(error);
+        setBookingStatus("fail");
       });
-    closeModal();
-    reset();
-    console.log(data);
   };
 
   return (
@@ -185,13 +131,13 @@ function BookingForm({ closeModal }) {
             })}
             render={({ field: { onChange, onBlur, value, ref } }) => (
               <Select
-                options={spotsOptions}
+                options={spotsSelect}
                 placeholder="Оберіть адресу"
                 className={`${s.BookingForm__select}`}
                 onChange={onChange}
                 onBlur={onBlur}
                 selected={value}
-                styles={selectStyles}
+                styles={bookingSelect}
               />
             )}
           />

@@ -3,7 +3,7 @@ import s from "./SpaPrograms.module.scss";
 import data from "data/services.json";
 import { nanoid } from "nanoid";
 
-function SpaPrograms() {
+function SpaPrograms({ setBookingStatus }) {
   const spa = data.find(({ typeValue }) => typeValue === "spa");
   const availableServices = spa.services.filter(
     ({ available }) => available === true
@@ -19,6 +19,7 @@ function SpaPrograms() {
               details={details}
               components={components}
               effect={effect}
+              setBookingStatus={setBookingStatus}
             />
           </li>
         ))}

@@ -2,7 +2,6 @@ import ContentLoader from "components/ContentLoader/ContentLoader";
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
-import { useEffect } from "react";
 import { AiOutlineArrowUp } from "react-icons/ai";
 import Header from "components/Header/Header";
 import s from "./App.module.scss";
