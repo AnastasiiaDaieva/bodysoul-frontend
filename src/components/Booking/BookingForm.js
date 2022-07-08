@@ -21,16 +21,21 @@ function BookingForm({ closeModal, setBookingStatus }) {
   const onSubmit = (data) => {
     const { comment, length, date, service, location, name, phone, time } =
       data;
+    console.log(date);
+    const newDate = JSON.stringify(date.toLocaleString("uk-UA"))
+      .split(" ")[0]
+      .slice(1, -1);
     const order = {
       name: name,
       phone: phone,
       service: service,
       length: length,
-      date: date,
+      date: newDate,
       time: time,
       location: location.label,
       comment: comment,
     };
+
     axios
       .post("/emails/sendemail", { order, type: "order" })
       .then((response) => {
