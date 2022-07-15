@@ -25,8 +25,12 @@ function OrderGiftcard({ closeModal, setBookingStatus }) {
       additional: additional,
     };
     axios
-      .post("/emails/sendemail", { order, type: "giftcard" })
+      .post("https://bodysoul-backend.herokuapp.com/emails/sendemail", {
+        order,
+        type: "giftcard",
+      })
       .then((response) => {
+        console.log("cert", response);
         if (response.status === 200) {
           setBookingStatus("success");
           closeModal();

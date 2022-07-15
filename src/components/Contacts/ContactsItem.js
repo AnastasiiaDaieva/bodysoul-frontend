@@ -9,8 +9,19 @@ import {
 } from "api/api";
 
 function ContactsItem({ spot }) {
-  const { where, address, tel, img, phone, hours, linkGoogle, frame, value } =
-    spot;
+  const { attributes } = spot;
+  const {
+    where,
+    address,
+    tel,
+    img,
+    phone,
+    hours,
+    linkGoogle,
+    linkFrame,
+    frameTitle,
+    value,
+  } = attributes;
   const [isActive, setIsActive] = useState("svyatopetrivske");
 
   const [showMap, setShowMap] = useState(false);
@@ -53,8 +64,8 @@ function ContactsItem({ spot }) {
         {/* <img src={IMG_LINK} alt="studio" width="600" /> */}
         {/* {showMap && ( */}
         <iframe
-          src={frame.link}
-          title={frame.title}
+          src={linkFrame}
+          title={frameTitle}
           width="800"
           height="450"
           style={{ border: "0", borderRadius: "5px" }}

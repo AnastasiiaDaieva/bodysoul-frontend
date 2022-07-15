@@ -20,6 +20,7 @@ import tropicalSpa from "img/services-photo/tropical_phone.jpg";
 import wrapping from "img/services-photo/wrapping.jpg";
 import peeling from "img/services-photo/peeling.jpg";
 import phitoter from "img/services-photo/phitoter.jpg";
+import couple from "img/services-photo/couple.jpg";
 
 function ServiceCard({
   name,
@@ -37,7 +38,7 @@ function ServiceCard({
       case "Медовий масаж":
         return honeyMassage;
       case "Парний масаж":
-        return placeholder;
+        return couple;
       case "Комбінований масаж стоп":
         return feetMassage;
       case "Вісцеральний масаж":
@@ -76,6 +77,7 @@ function ServiceCard({
         return wrapping;
       case "Фітотерапія":
         return phitoter;
+
       default:
         break;
     }

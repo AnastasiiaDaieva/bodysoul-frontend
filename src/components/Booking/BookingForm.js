@@ -37,8 +37,12 @@ function BookingForm({ closeModal, setBookingStatus }) {
     };
 
     axios
-      .post("/emails/sendemail", { order, type: "order" })
+      .post("https://bodysoul-backend.herokuapp.com/emails/sendemail", {
+        order,
+        type: "order",
+      })
       .then((response) => {
+        console.log(response);
         if (response.status === 200) {
           setBookingStatus("success");
           closeModal();
