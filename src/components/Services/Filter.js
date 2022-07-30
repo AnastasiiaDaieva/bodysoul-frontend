@@ -12,7 +12,8 @@ function Filter({ path }) {
     <ul
       className={s.Filter}
       style={{
-        marginTop: path === "/services/*" ? "120px" : "0",
+        marginTop: path === "/services/*" ? "-5px" : "0",
+        marginBottom: path === "/services/*" ? "50px" : "0",
       }}
     >
       {data.map(({ label, path }) => (

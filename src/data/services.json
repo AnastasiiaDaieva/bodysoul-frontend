@@ -149,7 +149,6 @@
     "services": [
       {
         "name": "SPA Orient-Express",
-        "type": "SPA програма",
         "available": false,
 
         "components": [
@@ -163,7 +162,6 @@
       },
       {
         "name": "SPA Тропічний релакс",
-        "type": "SPA програма",
         "available": true,
 
         "components": [
@@ -177,7 +175,6 @@
       },
       {
         "name": "Кокосове SPA",
-        "type": "SPA програма",
         "available": false,
 
         "components": [
@@ -192,7 +189,6 @@
       },
       {
         "name": "SPA Самурай",
-        "type": "SPA програма",
         "available": false,
 
         "components": [
@@ -208,7 +204,6 @@
       },
       {
         "name": "SPA Афродіта",
-        "type": "SPA програма",
         "available": true,
 
         "components": [
@@ -224,7 +219,6 @@
       },
       {
         "name": "SPA Таємниці Клеопатри",
-        "type": "SPA програма",
         "available": true,
 
         "components": [

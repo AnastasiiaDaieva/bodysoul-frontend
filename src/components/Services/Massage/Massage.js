@@ -2,27 +2,27 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import s from "./Massage.module.scss";
-import data from "data/services.json";
 
 import { nanoid } from "nanoid";
 
-function Massage({ setBookingStatus }) {
-  const massage = data.find(({ typeValue }) => typeValue === "massage");
-  const availableServices = massage.services.filter(
-    ({ available }) => available === true
+function Massage({ setBookingStatus, data }) {
+  // setloading
+
+  // const massage = data.find(({ typeValue }) => typeValue === "massage");
+  const availableServices = data.filter(
+    ({ attributes }) => attributes.available === true
   );
+
   return (
     <div>
       <ul className={s.Massage__list}>
-        {availableServices.map(({ name, description, types, details }) => (
-          <li key={nanoid()} className={s.Massage__item}>
+        {availableServices.map(({ id, attributes }) => (
+          <li key={id} className={s.Massage__item}>
             <ServiceCard
               type="massage"
-              name={name}
-              description={description}
-              types={types}
-              details={details}
               setBookingStatus={setBookingStatus}
+              data={attributes}
+              imgObj={attributes.image.data.attributes}
             />
           </li>
         ))}

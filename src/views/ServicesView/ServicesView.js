@@ -8,17 +8,44 @@ import SpaPrograms from "components/Services/SpaPrograms/SpaPrograms";
 import Body from "components/Services/Body/Body";
 import Giftcards from "components/Services/Giftcards/Giftcards";
 import AllServices from "components/Services/AllServices";
-import HeroReusable from "components/Hero/HeroReusable";
-import massage from "img/massage-hero-bg.png";
-import spa from "img/spa-hero-bg.png";
-import body from "img/body-hero-bg.png";
-import giftcards from "img/cert.png";
+
+import axios from "axios";
+
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BookingError } from "components/Booking/BookingError";
+import { useState, useEffect } from "react";
 
 function ServicesView() {
+  const [massageData, setMassageData] = useState([]);
+  const [spaData, setSpaData] = useState([]);
+  const [bodyData, setBodyData] = useState([]);
+  const [allData, setAllData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://bodysoul-strapi.herokuapp.com/api/massages?populate=*")
+      .then((res) => {
+        console.log("massage", res.data.data);
+        setMassageData(res.data.data);
+      });
+
+    axios
+      .get("https://bodysoul-strapi.herokuapp.com/api/body-services?populate=*")
+      .then((res) => {
+        console.log("body", res.data.data);
+        setBodyData(res.data.data);
+      });
+
+    axios
+      .get("https://bodysoul-strapi.herokuapp.com/api/spa-programs?populate=*")
+      .then((res) => {
+        console.log("spa", res.data.data);
+        setSpaData(res.data.data);
+      });
+  }, []);
+
   const setBookingStatus = (status) => {
     if (status === "success") {
       toast.success(
@@ -47,37 +74,58 @@ function ServicesView() {
   // };
 
   return (
-    <main className={s.ServicesView}>
-      {/* {location.pathname !== "/services/*" && (
+    <>
+      {allData && (
+        <main className={s.ServicesView}>
+          {/* {location.pathname !== "/services/*" && (
         <HeroReusable heading={getHeroContent()[0]} img={getHeroContent()[1]} />
       )} */}
-      <div className={`container ${s.ServicesView__container}`}>
-        <Filter path={location.pathname} />
-        <ToastContainer />
+          <div className={`container ${s.ServicesView__container}`}>
+            <Filter path={location.pathname} />
+            <ToastContainer />
 
-        <Suspense fallback={<ContentLoader />}>
-          <Routes>
-            <Route
-              path={`/*`}
-              element={<AllServices setBookingStatus={setBookingStatus} />}
-            />
-            <Route
-              path={`massage`}
-              element={<Massage setBookingStatus={setBookingStatus} />}
-            />
-            <Route
-              path={`spa`}
-              element={<SpaPrograms setBookingStatus={setBookingStatus} />}
-            />
-            <Route
-              path={`body`}
-              element={<Body setBookingStatus={setBookingStatus} />}
-            />
-            <Route path={`giftcards`} element={<Giftcards />} />
-          </Routes>
-        </Suspense>
-      </div>
-    </main>
+            <Suspense fallback={<ContentLoader />}>
+              <Routes>
+                <Route
+                  path={`/*`}
+                  element={
+                    <AllServices
+                      setBookingStatus={setBookingStatus}
+                      data={[massageData, spaData, bodyData]}
+                    />
+                  }
+                />
+                <Route
+                  path={`massage`}
+                  element={
+                    <Massage
+                      setBookingStatus={setBookingStatus}
+                      data={massageData}
+                    />
+                  }
+                />
+                <Route
+                  path={`spa`}
+                  element={
+                    <SpaPrograms
+                      setBookingStatus={setBookingStatus}
+                      data={spaData}
+                    />
+                  }
+                />
+                <Route
+                  path={`body`}
+                  element={
+                    <Body setBookingStatus={setBookingStatus} data={bodyData} />
+                  }
+                />
+                <Route path={`giftcards`} element={<Giftcards />} />
+              </Routes>
+            </Suspense>
+          </div>
+        </main>
+      )}
+    </>
   );
 }
 
