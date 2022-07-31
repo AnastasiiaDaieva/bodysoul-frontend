@@ -28,6 +28,11 @@
     background-color: var(--add-light-color);
     color: var(--add-dark-color);
   }
+  &:disabled {
+    background: rgb(186, 186, 186);
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
 }
 .BookingForm__send {
   //   border: none;

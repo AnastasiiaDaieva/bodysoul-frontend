@@ -1,19 +1,24 @@
-.ContentLoader{
-    position: absolute;
-        left: 50%;
-        top: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
+.ContentLoader {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
-
-.ContentLoader__image{
-width: 40vmin;height: 40vmin;
-    border-radius: 40%;
-    animation: spin 7s linear infinite;
+.ContentLoader__image {
+  width: 40vmin;
+  height: 40vmin;
+  border-radius: 40%;
+  animation: spin 7s linear infinite;
 }
 
-@keyframes spin{
-    0%{transform: rotate(0deg);}
-    100%{transform: rotate(360deg);}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

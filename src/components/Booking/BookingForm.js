@@ -8,8 +8,10 @@ import s from "./BookingForm.module.scss";
 import "react-datetime/css/react-datetime.css";
 import Select from "react-select";
 import { spotsSelect } from "data/spotsSelect";
+import { useState } from "react";
 
 function BookingForm({ closeModal, setBookingStatus }) {
+  const [isLoading, setIsLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -19,9 +21,10 @@ function BookingForm({ closeModal, setBookingStatus }) {
   } = useForm();
 
   const onSubmit = (data) => {
+    setIsLoading(true);
     const { comment, length, date, service, location, name, phone, time } =
       data;
-    console.log(date);
+    // console.log(date);
     const newDate = JSON.stringify(date.toLocaleString("uk-UA"))
       .split(" ")[0]
       .slice(1, -1);
@@ -52,7 +55,8 @@ function BookingForm({ closeModal, setBookingStatus }) {
       .catch((error) => {
         console.log(error);
         setBookingStatus("fail");
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -180,6 +184,7 @@ function BookingForm({ closeModal, setBookingStatus }) {
           <input
             type="submit"
             value="Надіслати"
+            disabled={isLoading}
             className={`${s.BookingForm__button} ${s.BookingForm__send}`}
           />
         </div>

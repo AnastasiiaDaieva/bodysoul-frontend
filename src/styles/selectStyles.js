@@ -7,7 +7,8 @@ export const bookingSelect = {
     borderRadius: "0px",
     fontFamily: "var(--main-font)",
     fontSize: "12px",
-    "@media screen and (min-width: 768px)": { width: "330px" },
+    "@media screen and (min-width: 768px)": { width: "332px" },
+    "@media screen and (max-width: 767px)": { width: "275px" },
   }),
 
   dropdownIndicator: (styles) => ({
@@ -44,7 +45,8 @@ export const giftcardSelect = {
     backgroundColor: "transparent",
     border: "1px solid var(--text-color)",
     borderRadius: "0px",
-    "@media screen and (min-width: 768px)": { width: "297px" },
+    "@media screen and (min-width: 768px)": { width: "423px" },
+    "@media screen and (max-width: 767px)": { width: "275px" },
     fontFamily: "var(--main-font)",
     fontSize: "12px",
   }),

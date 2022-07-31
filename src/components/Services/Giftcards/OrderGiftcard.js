@@ -5,8 +5,11 @@ import Select from "react-select";
 import axios from "axios";
 import { giftcardSelect } from "styles/selectStyles";
 import { giftcardsOptions } from "data/giftcardsOptions";
+import { useState } from "react";
 
 function OrderGiftcard({ closeModal, setBookingStatus }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -16,6 +19,7 @@ function OrderGiftcard({ closeModal, setBookingStatus }) {
   } = useForm();
 
   const onSubmit = (data) => {
+    setIsLoading(true);
     const { additional, certtype, name, phone } = data;
     const order = {
       name: name,
@@ -30,7 +34,7 @@ function OrderGiftcard({ closeModal, setBookingStatus }) {
         type: "giftcard",
       })
       .then((response) => {
-        console.log("cert", response);
+        // console.log("cert", response);
         if (response.status === 200) {
           setBookingStatus("success");
           closeModal();
@@ -40,7 +44,8 @@ function OrderGiftcard({ closeModal, setBookingStatus }) {
       .catch((error) => {
         console.log(error);
         setBookingStatus("fail");
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
@@ -115,6 +120,7 @@ function OrderGiftcard({ closeModal, setBookingStatus }) {
           <input
             type="submit"
             value="Надіслати"
+            disabled={isLoading}
             className={`${s.OrderGiftcard__button} ${s.OrderGiftcard__send}`}
           />
         </div>

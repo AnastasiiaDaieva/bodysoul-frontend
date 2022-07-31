@@ -3,24 +3,25 @@ import ServiceCard from "components/Services/ServiceCard/ServiceCard";
 import { nanoid } from "nanoid";
 import s from "./AllServices.module.scss";
 function AllServices({ setBookingStatus, data }) {
-  const mergeData = (...args) => {
-    let finalArray = [];
-    for (let arg of args) {
-      console.log("arg", arg);
-      let object = {};
-      object.typeValue = arg[0].attributes.typeValue;
-      object.typeLabel = arg[0].attributes.typeLabel;
-      object.services = [...arg];
-      finalArray.push(object);
-    }
-    return finalArray;
-  };
+  // const mergeData = (...args) => {
+  //   let finalArray = [];
+  //   for (let arg of args) {
+  //     console.log("arg", arg);
+  //     let object = {};
+  //     object.typeValue = arg[0].attributes.typeValue;
+  //     object.typeLabel = arg[0].attributes.typeLabel;
+  //     object.services = [...arg];
+  //     finalArray.push(object);
+  //   }
+  //   console.log(finalArray);
+  //   return finalArray;
+  // };
 
   return (
     <>
       {data && (
         <ul className={s.AllServices}>
-          {mergeData(...data).map(({ typeLabel, typeValue, services }) => (
+          {data.map(({ typeLabel, typeValue, services }) => (
             <li key={nanoid()} className={s.AllServices__type}>
               <h2 className={s.AllServices__heading}>{typeLabel}</h2>
               <ul className={s.AllServices__type_list}>
