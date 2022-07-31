@@ -42,28 +42,28 @@ function ServicesView() {
     axios
       .get("https://bodysoul-strapi.herokuapp.com/api/massages?populate=*")
       .then((res) => {
-        console.log("massage", res.data.data);
+        // console.log("massage", res.data.data);
         setMassageData(res.data.data);
         createNewItem(res.data.data, 1);
-        console.log("all data 1", allData);
+        // console.log("all data 1", allData);
       });
 
     axios
       .get("https://bodysoul-strapi.herokuapp.com/api/body-services?populate=*")
       .then((res) => {
-        console.log("body", res.data.data);
+        // console.log("body", res.data.data);
         setBodyData(res.data.data);
         createNewItem(res.data.data, 2);
-        console.log("all data 2", allData);
+        // console.log("all data 2", allData);
       });
 
     axios
       .get("https://bodysoul-strapi.herokuapp.com/api/spa-programs?populate=*")
       .then((res) => {
-        console.log("spa", res.data.data);
+        // console.log("spa", res.data.data);
         setSpaData(res.data.data);
         createNewItem(res.data.data, 3);
-        console.log("all data 3", allData);
+        // console.log("all data 3", allData);
       })
       .finally(() => setIsLoading(false));
   }, []);

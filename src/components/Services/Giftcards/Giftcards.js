@@ -9,7 +9,7 @@ import ContentLoader from "components/ContentLoader/ContentLoader";
 function Giftcards() {
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  console.log("images", images);
+  // console.log("images", images);
 
   useEffect(() => {
     setIsLoading(true);

@@ -19,9 +19,9 @@ function Contacts() {
     axios
       .get("https://bodysoul-strapi.herokuapp.com/api/locations")
       .then((res) => {
-        console.log("strapi locations", res.data.data);
+        // console.log("strapi locations", res.data.data);
         setData(res.data.data);
-        console.log(data);
+        // console.log(data);
       })
       .finally(() => setLoading(false));
   }, []);
