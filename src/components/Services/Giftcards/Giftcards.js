@@ -70,7 +70,7 @@ function Giftcards() {
             {images.map(({ id, attributes }) => (
               <img
                 key={id}
-                src={`http://localhost:1337${attributes.image.data.attributes.url}`}
+                src={`https://bodysoul-strapi.herokuapp.com${attributes.image.data.attributes.url}`}
                 alt="giftcard"
                 className={s.Giftcards__picture}
               />
