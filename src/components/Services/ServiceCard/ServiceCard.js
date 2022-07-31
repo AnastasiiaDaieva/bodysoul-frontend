@@ -15,7 +15,7 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
     <>
       <article className={s.ServiceCard}>
         <img
-          src={`https://bodysoul-strapi.herokuapp.com${imgObj.url}`}
+          src={`${imgObj.url}`}
           alt={imgObj.alternativeText}
           className={s.ServiceCard__image}
         />

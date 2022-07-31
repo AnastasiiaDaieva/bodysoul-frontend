@@ -14,7 +14,7 @@ function Giftcards() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get("http://localhost:1337/api/giftcards?populate=*")
+      .get("https://bodysoul-strapi.herokuapp.com/api/giftcards?populate=*")
       .then((res) => setImages(res.data.data))
       .finally(() => setIsLoading(false));
   }, []);
@@ -70,7 +70,7 @@ function Giftcards() {
             {images.map(({ id, attributes }) => (
               <img
                 key={id}
-                src={`https://bodysoul-strapi.herokuapp.com${attributes.image.data.attributes.url}`}
+                src={`${attributes.image.data.attributes.url}`}
                 alt="giftcard"
                 className={s.Giftcards__picture}
               />

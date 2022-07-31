@@ -24,8 +24,12 @@ function ServicesView() {
   const [allData, setAllData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const createNewItem = (newArray) => {
+  const createNewItem = (newArray, id) => {
+    if (allData.find((item) => item.id === id)) {
+      return;
+    }
     let object = {};
+    object.id = id;
     object.typeValue = newArray[0].attributes.typeValue;
     object.typeLabel = newArray[0].attributes.typeLabel;
     object.services = [...newArray];
@@ -40,7 +44,7 @@ function ServicesView() {
       .then((res) => {
         console.log("massage", res.data.data);
         setMassageData(res.data.data);
-        createNewItem(res.data.data);
+        createNewItem(res.data.data, 1);
         console.log("all data 1", allData);
       });
 
@@ -49,7 +53,7 @@ function ServicesView() {
       .then((res) => {
         console.log("body", res.data.data);
         setBodyData(res.data.data);
-        createNewItem(res.data.data);
+        createNewItem(res.data.data, 2);
         console.log("all data 2", allData);
       });
 
@@ -58,7 +62,7 @@ function ServicesView() {
       .then((res) => {
         console.log("spa", res.data.data);
         setSpaData(res.data.data);
-        createNewItem(res.data.data);
+        createNewItem(res.data.data, 3);
         console.log("all data 3", allData);
       })
       .finally(() => setIsLoading(false));
