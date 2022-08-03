@@ -3,7 +3,7 @@ import s from "./Hero.module.scss";
 import { useState } from "react";
 import BookingModal from "components/Booking/BookingModal";
 
-function Hero({ setBookingStatus }) {
+function Hero({ setBookingStatus, text }) {
   const [isOpen, setIsOpen] = useState(false);
   const [giftcardModal, setGiftcardModal] = useState(false);
 
@@ -30,11 +30,7 @@ function Hero({ setBookingStatus }) {
             Пориньте у світ масажу та SPA
           </h1>
           <MediaQuery query="(min-width: 768px)">
-            <p className={s.Hero__description}>
-              Широкий вибір процедур та досвідчених масажистів для ваших
-              здоров'я, краси та душевного спокою. Довірте свої проблеми
-              турботливим рукам та будьте щасливі.
-            </p>
+            <p className={s.Hero__description}>{text}</p>
           </MediaQuery>
           <div className={s.Hero__buttons}>
             <button

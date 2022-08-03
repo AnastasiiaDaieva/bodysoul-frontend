@@ -18,20 +18,20 @@ function ServicesHome() {
         <ul className={s.ServicesHome__list}>
           {data.map(({ typeLabel, typeValue, img }) => (
             <li key={nanoid()} className={s.ServicesHome__item}>
-              {typeValue === "massage" && (
-                <img
-                  className={s.ServicesHome__img}
-                  src={Massage}
-                  alt="massage"
-                />
-              )}
-              {typeValue === "spa" && (
-                <img className={s.ServicesHome__img} src={Spa} alt="spa" />
-              )}
-              {typeValue === "body" && (
-                <img className={s.ServicesHome__img} src={Body} alt="body" />
-              )}
               <Link to={`/services/${typeValue}`}>
+                {typeValue === "massage" && (
+                  <img
+                    className={s.ServicesHome__img}
+                    src={Massage}
+                    alt="massage"
+                  />
+                )}
+                {typeValue === "spa" && (
+                  <img className={s.ServicesHome__img} src={Spa} alt="spa" />
+                )}
+                {typeValue === "body" && (
+                  <img className={s.ServicesHome__img} src={Body} alt="body" />
+                )}
                 <h3 className={s.ServicesHome__heading}>{typeLabel}</h3>
               </Link>
             </li>

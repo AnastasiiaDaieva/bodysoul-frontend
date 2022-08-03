@@ -1,0 +1,30 @@
+.GiftcardsText__number {
+  font-weight: 500;
+}
+
+.GiftcardsText__list {
+  list-style-type: disc;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.GiftcardsText__description {
+  &:first-child {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .GiftcardsText__description {
+    text-align: left;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    margin-right: 70px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1279.99px) {
+}
+
+@media screen and (min-width: 1280px) {
+}

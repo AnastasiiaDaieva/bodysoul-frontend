@@ -2,9 +2,6 @@
   flex: 1 0 20em;
 }
 
-.GiftcardsHome__picture {
-}
-
 .GiftcardsHome__number {
   font-weight: 500;
 }
@@ -26,12 +23,6 @@
   }
 }
 
-.GiftcardsHome__description {
-  &:first-child {
-    margin-top: 30px;
-  }
-}
-
 @media screen and (max-width: 767.99px) {
   .GiftcardsHome__visual {
     width: 250px;
@@ -45,13 +36,7 @@
     display: flex;
     justify-content: space-around;
   }
-  .GiftcardsHome__description {
-    text-align: left;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 130%;
-    margin-right: 70px;
-  }
+
   .GiftcardsHome__picture {
     min-height: 400px;
     max-height: 400px;

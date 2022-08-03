@@ -22,6 +22,8 @@ function ServicesView() {
   const [spaData, setSpaData] = useState([]);
   const [bodyData, setBodyData] = useState([]);
   const [allData, setAllData] = useState([]);
+  const [images, setImages] = useState([]);
+  const [giftcardsText, setGiftcardsText] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const createNewItem = (newArray, id) => {
@@ -38,6 +40,14 @@ function ServicesView() {
 
   useEffect(() => {
     setIsLoading(true);
+
+    axios
+      .get("https://bodysoul-strapi.herokuapp.com/api/giftcards?populate=*")
+      .then((res) => {
+        setImages([res.data.data[0], res.data.data[1]]);
+        const textArray = res.data.data[2].attributes.description.split("**");
+        setGiftcardsText(textArray);
+      });
 
     axios
       .get("https://bodysoul-strapi.herokuapp.com/api/massages?populate=*")
@@ -64,8 +74,9 @@ function ServicesView() {
         setSpaData(res.data.data);
         createNewItem(res.data.data, 3);
         // console.log("all data 3", allData);
-      })
-      .finally(() => setIsLoading(false));
+      });
+
+    setIsLoading(false);
   }, []);
 
   const setBookingStatus = (status) => {
@@ -142,7 +153,10 @@ function ServicesView() {
                   <Body setBookingStatus={setBookingStatus} data={bodyData} />
                 }
               />
-              <Route path={`giftcards`} element={<Giftcards />} />
+              <Route
+                path={`giftcards`}
+                element={<Giftcards images={images} text={giftcardsText} />}
+              />
             </Routes>
           </Suspense>
         </div>
