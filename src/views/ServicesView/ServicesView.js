@@ -46,7 +46,19 @@ function ServicesView() {
       .then((res) => {
         setImages([res.data.data[0], res.data.data[1]]);
         const textArray = res.data.data[2].attributes.description.split("**");
-        setGiftcardsText(textArray);
+        const addText = [
+          ...textArray[0].split("\n"),
+          textArray[1],
+          textArray[2],
+          textArray[3],
+
+          ...textArray[4].split("\n"),
+        ];
+        const finalText = addText.filter((_, index) => index !== 6);
+        finalText.splice(1, 1, finalText[1].slice(2));
+        finalText.splice(2, 1, finalText[2].slice(2));
+        finalText.splice(6, 1, finalText[6].slice(2));
+        setGiftcardsText(finalText);
       });
 
     axios

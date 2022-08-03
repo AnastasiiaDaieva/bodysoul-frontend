@@ -1,8 +1,18 @@
 import s from "./GiftcardsText.module.scss";
+import { useLocation } from "react-router-dom";
 
 function GiftcardsText({ array }) {
+  let location = useLocation();
   return (
-    <>
+    <div
+      className={s.GiftcardsText__container}
+      style={{
+        marginBottom:
+          location.pathname === "/" || location.pathname === "/*"
+            ? "0"
+            : "15px",
+      }}
+    >
       {" "}
       <p className={s.GiftcardsText__description}>{array[0]}</p>
       <ul
@@ -22,7 +32,7 @@ function GiftcardsText({ array }) {
         <li className={s.GiftcardsText__list_item}>{array[6]} </li>
       </ul>
       <p className={s.GiftcardsText__description}>{array[7]}</p>
-    </>
+    </div>
   );
 }
 
