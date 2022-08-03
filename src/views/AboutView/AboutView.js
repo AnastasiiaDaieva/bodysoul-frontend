@@ -13,7 +13,9 @@ function AboutView() {
 
     axios
       .get("https://bodysoul-strapi.herokuapp.com/api/sections?populate=*")
-      .then((res) => setAboutData(res.data.data[0].attributes.description));
+      .then((res) =>
+        setAboutData(res.data.data[0].attributes.description.split("\n"))
+      );
 
     setIsLoading(false);
   }, []);
