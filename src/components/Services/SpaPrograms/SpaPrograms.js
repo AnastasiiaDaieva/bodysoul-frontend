@@ -1,9 +1,5 @@
 import ServiceCard from "../ServiceCard/ServiceCard";
 import s from "./SpaPrograms.module.scss";
-import data from "data/services.json";
-import { nanoid } from "nanoid";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
 function SpaPrograms({ setBookingStatus, data }) {
   // const spa = data.find(({ typeValue }) => typeValue === "spa");

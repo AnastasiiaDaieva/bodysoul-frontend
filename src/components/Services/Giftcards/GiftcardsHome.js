@@ -9,7 +9,7 @@ function GiftcardsHome({ text }) {
       <div className={s.GiftcardsHome__info}>
         <H2Home text="Сертифікати" />
         <div className={s.GiftcardsHome__text}>
-          <GiftcardsText array={text} />
+          <GiftcardsText text={text} />
         </div>
       </div>
       <div className={s.GiftcardsHome__visual}>

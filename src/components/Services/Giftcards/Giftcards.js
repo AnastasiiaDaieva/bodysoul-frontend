@@ -9,7 +9,7 @@ function Giftcards({ images, text }) {
       <div className={`container ${s.Giftcards__container}`}>
         <div className={s.Giftcards__info}>
           <H2Home text="Сертифікати" addClass={s.Giftcards__heading} />
-          <GiftcardsText array={text} />
+          <GiftcardsText text={text} />
         </div>
         <div className={s.Giftcards__visual}>
           {images.map(({ id, attributes }) => (

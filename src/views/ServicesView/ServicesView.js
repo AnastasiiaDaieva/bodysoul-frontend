@@ -44,21 +44,16 @@ function ServicesView() {
     axios
       .get("https://bodysoul-strapi.herokuapp.com/api/giftcards?populate=*")
       .then((res) => {
-        setImages([res.data.data[0], res.data.data[1]]);
-        const textArray = res.data.data[2].attributes.description.split("**");
-        const addText = [
-          ...textArray[0].split("\n"),
-          textArray[1],
-          textArray[2],
-          textArray[3],
+        console.log("res", res.data.data);
+        const { data } = res.data;
+        const getImages = data.filter(
+          (item) => item.id === 1 || item.id === 12
+        );
+        console.log("get", getImages);
+        setImages(getImages);
+        const text = res.data.data.find((item) => item.id === 11);
 
-          ...textArray[4].split("\n"),
-        ];
-        const finalText = addText.filter((_, index) => index !== 6);
-        finalText.splice(1, 1, finalText[1].slice(2));
-        finalText.splice(2, 1, finalText[2].slice(2));
-        finalText.splice(6, 1, finalText[6].slice(2));
-        setGiftcardsText(finalText);
+        setGiftcardsText(text.attributes.description);
       });
 
     axios
@@ -101,7 +96,6 @@ function ServicesView() {
     }
   };
   let location = useLocation();
-  // const getLocation = location.pathname.slice(10);
 
   // const getHeroContent = () => {
   //   switch (getLocation) {
@@ -120,9 +114,6 @@ function ServicesView() {
 
   return (
     <main className={s.ServicesView}>
-      {/* {location.pathname !== "/services/*" && (
-        <HeroReusable heading={getHeroContent()[0]} img={getHeroContent()[1]} />
-      )} */}
       {isLoading ? (
         <ContentLoader />
       ) : (

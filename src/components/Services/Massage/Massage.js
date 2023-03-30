@@ -1,9 +1,5 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import s from "./Massage.module.scss";
-
-import { nanoid } from "nanoid";
 
 function Massage({ setBookingStatus, data }) {
   // setloading

@@ -1,14 +1,12 @@
 import ServiceCard from "../ServiceCard/ServiceCard";
 import s from "./Body.module.scss";
-import data from "data/services.json";
-import { nanoid } from "nanoid";
-import axios from "axios";
-import { useEffect, useState } from "react";
 
 function Body({ setBookingStatus, data }) {
   const availableServices = data.filter(
     ({ attributes }) => attributes.available === true
   );
+
+  // console.log("data", data);
 
   return (
     <div>

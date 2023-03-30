@@ -1,4 +1,3 @@
-import ContactsHeading from "./ContactsHeading";
 import ContactsItem from "./ContactsItem";
 // import data from "data/spots.json";
 import { nanoid } from "nanoid";

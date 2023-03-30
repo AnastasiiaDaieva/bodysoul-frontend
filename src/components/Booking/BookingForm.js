@@ -10,6 +10,9 @@ import Select from "react-select";
 import { spotsSelect } from "data/spotsSelect";
 import { useState } from "react";
 
+// const API_URL = process.env.HEROKU_PRODUCTION;
+const API_URL = process.env.LOCAL_HOST_FOR_TESTING;
+
 function BookingForm({ closeModal, setBookingStatus }) {
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -40,7 +43,7 @@ function BookingForm({ closeModal, setBookingStatus }) {
     };
 
     axios
-      .post("https://bodysoul-backend.herokuapp.com/emails/sendemail", {
+      .post(`${API_URL}emails/sendemail`, {
         order,
         type: "order",
       })
@@ -99,6 +102,7 @@ function BookingForm({ closeModal, setBookingStatus }) {
             {...register("date", {
               required: true,
             })}
+            ref={null}
             render={({ field: { onChange, onBlur, value } }) => (
               <ReactDatePicker
                 onChange={onChange}
@@ -142,7 +146,8 @@ function BookingForm({ closeModal, setBookingStatus }) {
             {...register("location", {
               required: true,
             })}
-            render={({ field: { onChange, onBlur, value, ref } }) => (
+            ref={null}
+            render={({ field: { onChange, onBlur, value } }) => (
               <Select
                 options={spotsSelect}
                 placeholder="Оберіть адресу"
