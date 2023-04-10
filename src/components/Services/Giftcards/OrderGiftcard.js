@@ -7,8 +7,8 @@ import { giftcardSelect } from "styles/selectStyles";
 import { giftcardsOptions } from "data/giftcardsOptions";
 import { useState } from "react";
 
-// const API_URL = process.env.HEROKU_PRODUCTION;
-const API_URL = process.env.LOCAL_HOST_FOR_TESTING;
+const API_URL = process.env.REACT_APP_HEROKU_PRODUCTION;
+// const API_URL = process.env.REACT_APP_LOCAL_HOST_FOR_TESTING;
 
 function OrderGiftcard({ closeModal, setBookingStatus }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +32,7 @@ function OrderGiftcard({ closeModal, setBookingStatus }) {
       additional: additional,
     };
     axios
-      .post(`http://localhost:4000/emails/sendemail`, {
+      .post(`${API_URL}emails/sendemail`, {
         order,
         type: "giftcard",
       })

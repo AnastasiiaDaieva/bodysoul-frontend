@@ -6,17 +6,16 @@ import { nanoid } from "nanoid";
 import H2Home from "components/Headings/H2Home";
 import { useState, useEffect } from "react";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_STRAPI;
 
 function ContactsView() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios
-      .get("https://bodysoul-strapi.herokuapp.com/api/locations")
-      .then((res) => {
-        // console.log("strapi locations", res.data.data);
-        setData(res.data.data);
-        // console.log(data);
-      });
+    axios.get(`${API_URL}locations`).then((res) => {
+      // console.log("strapi locations", res.data.data);
+      setData(res.data.data);
+      // console.log(data);
+    });
   }, []);
 
   return (

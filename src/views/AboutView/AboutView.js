@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import s from "./AboutView.module.scss";
 import ContentLoader from "components/ContentLoader/ContentLoader";
+const API_URL = process.env.REACT_APP_STRAPI;
 
 function AboutView() {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +13,7 @@ function AboutView() {
     setIsLoading(true);
 
     axios
-      .get("https://bodysoul-strapi.herokuapp.com/api/sections?populate=*")
+      .get(`${API_URL}sections?populate=*`)
       .then((res) =>
         setAboutData(res.data.data[0].attributes.description.split("\n"))
       );

@@ -11,6 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BookingError } from "components/Booking/BookingError";
 
+const API_URL = process.env.REACT_APP_STRAPI;
+
 function HomeView() {
   const [isLoading, setIsLoading] = useState(false);
   const [aboutData, setAboutData] = useState("");
@@ -20,21 +22,19 @@ function HomeView() {
   useEffect(() => {
     setIsLoading(true);
 
-    axios
-      .get("https://bodysoul-strapi.herokuapp.com/api/giftcards?populate=*")
-      .then((res) => {
-        console.log("res", res.data.data);
-        const text = res.data.data.find((item) => item.id === 11);
+    axios.get(`${API_URL}giftcards?populate=*`).then((res) => {
+      console.log("res", res.data.data);
+      const text = res.data.data.find((item) => item.id === 11);
 
-        setGiftcardsText(text.attributes.description);
-      });
+      setGiftcardsText(text.attributes.description);
+    });
 
     axios
-      .get("https://bodysoul-strapi.herokuapp.com/api/heroes?populate=*")
+      .get(`${API_URL}heroes?populate=*`)
       .then((res) => setHeroText(res.data.data[0].attributes.description));
 
     axios
-      .get("https://bodysoul-strapi.herokuapp.com/api/sections?populate=*")
+      .get(`${API_URL}sections?populate=*`)
       .then((res) =>
         setAboutData(res.data.data[0].attributes.description.split("\n"))
       );

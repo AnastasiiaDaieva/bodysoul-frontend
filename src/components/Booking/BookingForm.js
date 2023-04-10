@@ -10,8 +10,8 @@ import Select from "react-select";
 import { spotsSelect } from "data/spotsSelect";
 import { useState } from "react";
 
-// const API_URL = process.env.HEROKU_PRODUCTION;
-const API_URL = process.env.LOCAL_HOST_FOR_TESTING;
+const API_URL = process.env.REACT_APP_HEROKU_PRODUCTION;
+// const API_URL = process.env.REACT_APP_LOCAL_HOST_FOR_TESTING;
 
 function BookingForm({ closeModal, setBookingStatus }) {
   const [isLoading, setIsLoading] = useState(false);
