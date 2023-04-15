@@ -41,8 +41,9 @@ function Header() {
           <Logo />
         </NavLink>
         <MediaQuery query="(min-width: 768px)">
-          {" "}
-          <p className={s.Header__name}>Студія масажу і SPA</p>
+          <a href="/*" className={s.Header__name}>
+            Студія масажу і SPA
+          </a>
         </MediaQuery>
 
         <nav className={s.Header__nav}>

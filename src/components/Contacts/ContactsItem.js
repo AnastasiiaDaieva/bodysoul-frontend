@@ -34,26 +34,52 @@ function ContactsItem({ spot }) {
   return (
     <li className={s.ContactsItem}>
       <div className={s.ContactsItem__controllers}>
-        <button
-          type="button"
-          onClick={() => setIsActive(value)}
-          className={s.ContactsItem__controller}
-        >
-          Студія масажу у <b>{where}</b>
-        </button>
-        <button
-          onClick={() => setShowMap(!showMap)}
-          className={s.ContactsItem__google}
-        >
-          <a
-            href={linkGoogle}
-            target="_blank"
-            rel="noreferrer noopener"
-            className={s.ContactsItem__lookmap}
+        <div className="mb-5">
+          <button
+            type="button"
+            onClick={() => setIsActive(value)}
+            className={s.ContactsItem__controller}
           >
-            Подивитися на мапі
-          </a>
-        </button>
+            Студія масажу у <b>{where}</b>
+          </button>
+          <button
+            onClick={() => setShowMap(!showMap)}
+            className={s.ContactsItem__google}
+          >
+            <a
+              href={linkGoogle}
+              target="_blank"
+              rel="noreferrer noopener"
+              className={s.ContactsItem__lookmap}
+            >
+              Подивитися на мапі
+            </a>
+          </button>
+        </div>
+        <div>
+          {value === "svyatopetrivske" && (
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/l1eFTesTjtI"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          )}
+          {value === "vyshneve" && (
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/jB4M1_zB4RU"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          )}
+        </div>
       </div>
 
       {/* {isActive === value && ( */}
