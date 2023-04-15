@@ -7,6 +7,7 @@ import {
   PLACE_PHOTO_PARAMS,
   REF_EXAMPLE,
 } from "api/api";
+import MediaQuery from "react-responsive";
 
 function ContactsItem({ spot }) {
   const { attributes } = spot;
@@ -21,6 +22,7 @@ function ContactsItem({ spot }) {
     linkFrame,
     frameTitle,
     value,
+    VideoLink,
   } = attributes;
   const [isActive, setIsActive] = useState("svyatopetrivske");
 
@@ -57,28 +59,28 @@ function ContactsItem({ spot }) {
           </button>
         </div>
         <div>
-          {value === "svyatopetrivske" && (
+          <MediaQuery query="(max-width: 768px)">
+            <iframe
+              width="300"
+              height="auto"
+              src={VideoLink}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          </MediaQuery>
+          <MediaQuery query="(min-width: 768px)">
             <iframe
               width="560"
               height="315"
-              src="https://www.youtube.com/embed/l1eFTesTjtI"
+              src={VideoLink}
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
-          )}
-          {value === "vyshneve" && (
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/jB4M1_zB4RU"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          )}
+          </MediaQuery>
         </div>
       </div>
 
