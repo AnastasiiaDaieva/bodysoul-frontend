@@ -13,7 +13,7 @@ import { useState } from "react";
 const API_URL = process.env.REACT_APP_HEROKU_PRODUCTION;
 // const API_URL = process.env.REACT_APP_LOCAL_HOST_FOR_TESTING;
 
-function BookingForm({ closeModal, setBookingStatus }) {
+function BookingForm({ closeModal, setBookingStatus, servicesSelect }) {
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -25,22 +25,21 @@ function BookingForm({ closeModal, setBookingStatus }) {
 
   const onSubmit = (data) => {
     setIsLoading(true);
-    const { comment, length, date, service, location, name, phone, time } =
-      data;
-    // console.log(date);
+    const { comment, date, service, location, name, phone, time } = data;
+    // console.log("values", data);
     const newDate = JSON.stringify(date.toLocaleString("uk-UA"))
       .split(" ")[0]
       .slice(1, -1);
     const order = {
       name: name,
       phone: phone,
-      service: service,
-      length: length,
+      service: service.label,
       date: newDate,
       time: time,
       location: location.label,
       comment: comment,
     };
+    // console.log("o", order);
 
     axios
       .post(`${API_URL}emails/sendemail`, {
@@ -83,14 +82,27 @@ function BookingForm({ closeModal, setBookingStatus }) {
           {errors.name && <span>Заповніть поле</span>}
         </div>
         <div className={s.BookingForm__container}>
-          <input
-            type="text"
+          <Controller
+            control={control}
             name="service"
-            placeholder="Яка послуга Вас цікавить?"
-            className={`${s.BookingForm__input}`}
             {...register("service", {
               required: true,
             })}
+            ref={null}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <>
+                {" "}
+                <Select
+                  options={servicesSelect}
+                  placeholder="Яка послуга Вас цікавить?"
+                  className={`${s.BookingForm__select}`}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  selected={value}
+                  styles={bookingSelect}
+                />
+              </>
+            )}
           />
 
           {errors.name && <span>Заповніть поле</span>}
@@ -128,17 +140,7 @@ function BookingForm({ closeModal, setBookingStatus }) {
 
           {errors.date && <span>Заповніть поле</span>}
         </div>
-        <div className={s.BookingForm__container}>
-          <input
-            type="text"
-            name="length"
-            placeholder="Оберіть тривалість"
-            className={`${s.BookingForm__input}`}
-            {...register("length", {
-              required: false,
-            })}
-          />
-        </div>
+        <div className={s.BookingForm__container}></div>
         <div className={s.BookingForm__container}>
           <Controller
             control={control}

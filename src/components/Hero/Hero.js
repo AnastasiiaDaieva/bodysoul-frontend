@@ -3,9 +3,10 @@ import s from "./Hero.module.scss";
 import { useState } from "react";
 import BookingModal from "components/Booking/BookingModal";
 
-function Hero({ setBookingStatus, text }) {
+function Hero({ setBookingStatus, text, allServices }) {
   const [isOpen, setIsOpen] = useState(false);
   const [giftcardModal, setGiftcardModal] = useState(false);
+  // console.log("allServices", allServices);
 
   const scrollToTop = () => {
     if (window.matchMedia("(max-width: 768px)").matches) {
@@ -22,6 +23,7 @@ function Hero({ setBookingStatus, text }) {
     scrollToTop();
     // document.body.style.overflow = "hidden";
   };
+
   return (
     <div className={s.Hero}>
       <div className={`container ${s.Hero__container}`}>
@@ -45,6 +47,16 @@ function Hero({ setBookingStatus, text }) {
                 setIsOpen={setIsOpen}
                 type="booking"
                 setBookingStatus={setBookingStatus}
+                servicesSelect={[
+                  ...allServices
+                    .map((service) => {
+                      return service.details.map((item, index) => ({
+                        value: `${service.id}-${index}`,
+                        label: `${service.name} ${item.time} (${item.price})`,
+                      }));
+                    })
+                    .flat(),
+                ]}
               />
             )}
             <button

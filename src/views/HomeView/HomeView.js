@@ -18,12 +18,13 @@ function HomeView() {
   const [aboutData, setAboutData] = useState("");
   const [giftcardsText, setGiftcardsText] = useState("");
   const [heroText, setHeroText] = useState("");
+  const [allData, setAllData] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
 
     axios.get(`${API_URL}giftcards?populate=*`).then((res) => {
-      console.log("res", res.data.data);
+      // console.log("res", res.data.data);
       const text = res.data.data.find((item) => item.id === 11);
 
       setGiftcardsText(text.attributes.description);
@@ -40,6 +41,33 @@ function HomeView() {
       );
 
     setIsLoading(false);
+
+    const fetchData = async () => {
+      try {
+        const masRes = await axios.get(`${API_URL}massages?populate=*`);
+
+        const bodyRes = await axios.get(`${API_URL}body-services?populate=*`);
+
+        const spaRes = await axios.get(`${API_URL}spa-programs?populate=*`);
+
+        const transformed = [
+          ...masRes.data.data,
+          ...bodyRes.data.data,
+          ...spaRes.data.data,
+        ]
+          .map((item) => {
+            return { ...item.attributes, id: item.id };
+          })
+          .filter(({ available }) => available === true);
+        setAllData(transformed);
+
+        // console.log("all data", allData);
+      } catch (error) {
+        console.log("hero allData error", error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const setBookingStatus = (status) => {
@@ -55,7 +83,11 @@ function HomeView() {
     <main className={s.HomeView}>
       {isLoading && <ContentLoader />}
 
-      <Hero setBookingStatus={setBookingStatus} text={heroText} />
+      <Hero
+        setBookingStatus={setBookingStatus}
+        text={heroText}
+        allServices={allData}
+      />
       <ToastContainer />
       <About text={aboutData} />
       <ServicesHome />

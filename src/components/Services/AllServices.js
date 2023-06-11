@@ -16,6 +16,7 @@ function AllServices({ setBookingStatus, data }) {
   //   console.log(finalArray);
   //   return finalArray;
   // };
+  // console.log("alls data", data);
 
   return (
     <>
@@ -32,7 +33,7 @@ function AllServices({ setBookingStatus, data }) {
                       <ServiceCard
                         type={typeValue}
                         setBookingStatus={setBookingStatus}
-                        data={attributes}
+                        data={{ ...attributes, id }}
                         imgObj={attributes.image.data.attributes}
                       />
                     </li>
