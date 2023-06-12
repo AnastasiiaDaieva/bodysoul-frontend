@@ -140,7 +140,7 @@ function BookingForm({ closeModal, setBookingStatus, servicesSelect }) {
 
           {errors.date && <span>Заповніть поле</span>}
         </div>
-        <div className={s.BookingForm__container}></div>
+
         <div className={s.BookingForm__container}>
           <Controller
             control={control}

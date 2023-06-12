@@ -43,6 +43,7 @@
 .BookingForm__select {
   background-color: transparent;
   width: 100%;
+  height: auto !important;
   &::placeholder {
     font-family: var(--main-font);
     font-size: 12px;

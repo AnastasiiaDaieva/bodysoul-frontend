@@ -7,8 +7,8 @@ export const bookingSelect = {
     borderRadius: "0px",
     fontFamily: "var(--main-font)",
     fontSize: "12px",
-    "@media screen and (min-width: 768px)": { width: "332px" },
-    "@media screen and (max-width: 767px)": { width: "275px" },
+    "@media screen and (min-width: 768px)": { width: "331px" },
+    "@media screen and (max-width: 767px)": { width: "267px" },
   }),
 
   dropdownIndicator: (styles) => ({
