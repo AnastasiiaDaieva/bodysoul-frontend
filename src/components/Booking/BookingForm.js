@@ -1,14 +1,11 @@
-import ReactDatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-
 import { useForm, Controller } from "react-hook-form";
 import { bookingSelect } from "styles/selectStyles";
 import s from "./BookingForm.module.scss";
-import "react-datetime/css/react-datetime.css";
 import Select from "react-select";
 import { spotsSelect } from "data/spotsSelect";
 import { useState } from "react";
+import { DatePicker } from "partials/ReactDatePicker";
 
 const API_URL = process.env.REACT_APP_HEROKU_PRODUCTION;
 // const API_URL = process.env.REACT_APP_LOCAL_HOST_FOR_TESTING;
@@ -25,21 +22,25 @@ function BookingForm({ closeModal, setBookingStatus, servicesSelect }) {
 
   const onSubmit = (data) => {
     setIsLoading(true);
-    const { comment, date, service, location, name, phone, time } = data;
-    // console.log("values", data);
+    const { comment, date, service, location, name, phone } = data;
+    console.log("values", data);
     const newDate = JSON.stringify(date.toLocaleString("uk-UA"))
       .split(" ")[0]
       .slice(1, -1);
+    const newTime = date.toLocaleTimeString("uk-UA", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
     const order = {
       name: name,
       phone: phone,
       service: service.label,
       date: newDate,
-      time: time,
+      time: newTime,
       location: location.label,
       comment: comment,
     };
-    // console.log("o", order);
+    console.log("o", order);
 
     axios
       .post(`${API_URL}emails/sendemail`, {
@@ -116,28 +117,9 @@ function BookingForm({ closeModal, setBookingStatus, servicesSelect }) {
             })}
             ref={null}
             render={({ field: { onChange, onBlur, value } }) => (
-              <ReactDatePicker
-                onChange={onChange}
-                onBlur={onBlur}
-                placeholderText="Оберіть дату"
-                selected={value}
-                className={`${s.BookingForm__input}`}
-              />
+              <DatePicker onBlur={onBlur} onChange={onChange} value={value} />
             )}
           />
-          {errors.date && <span>Заповніть поле</span>}
-        </div>
-        <div className={s.BookingForm__container}>
-          <input
-            name="time"
-            type="text"
-            {...register("time", {
-              required: true,
-            })}
-            placeholder="Вкажіть зручний для Вас час"
-            className={`${s.BookingForm__input}`}
-          />
-
           {errors.date && <span>Заповніть поле</span>}
         </div>
 

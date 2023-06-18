@@ -43,7 +43,6 @@
 .BookingForm__select {
   background-color: transparent;
   width: 100%;
-  height: auto !important;
   &::placeholder {
     font-family: var(--main-font);
     font-size: 12px;
@@ -66,6 +65,45 @@
     font-size: 12px;
   }
 }
+.custom_datepicker_calendar .react-datepicker__time-list {
+  background-color: orange;
+}
+
+.custom_datepicker_calendar,
+.custom_datepicker__popper,
+.custom_datepicker__month,
+.custom_datepicker__time,
+.custom_datepicker_wrapper {
+  // background-color: rebeccapurple !important;
+  border: none !important;
+  font-family: var(--main-font) !important;
+}
+
+.custom_datepicker__time {
+  border: none !important;
+
+  &:hover {
+    background-color: var(--add-light-color) !important;
+    color: black !important;
+  }
+}
+
+// .custom_datepicker__time::-webkit-scrollbar {
+//   width: 1px !important; /* Width of the scrollbar */
+// }
+
+// .custom_datepicker__time::-webkit-scrollbar-track {
+//   background-color: #f1f1f1 !important; /* Background color of the scrollbar track */
+// }
+
+// .custom_datepicker__time::-webkit-scrollbar-thumb {
+//   background-color: #888 !important; /* Color of the scrollbar thumb */
+// }
+
+// .custom_datepicker__time::-webkit-scrollbar-thumb:hover {
+//   background-color: #555 !important; /* Color of the scrollbar thumb on hover */
+// }
+
 @media screen and (max-width: 767.99px) {
   .BookingForm {
     width: 100vw;
