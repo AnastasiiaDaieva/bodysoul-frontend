@@ -67,14 +67,15 @@ function ServicesView() {
       // console.log("all data 2", allData);
     });
 
-    axios.get(`${API_URL}spa-programs?populate=*`).then((res) => {
-      // console.log("spa", res.data.data);
-      setSpaData(res.data.data);
-      createNewItem(res.data.data, 3);
-      // console.log("all data 3", allData);
-    });
-
-    setIsLoading(false);
+    axios
+      .get(`${API_URL}spa-programs?populate=*`)
+      .then((res) => {
+        // console.log("spa", res.data.data);
+        setSpaData(res.data.data);
+        createNewItem(res.data.data, 3);
+        // console.log("all data 3", allData);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   const setBookingStatus = (status) => {

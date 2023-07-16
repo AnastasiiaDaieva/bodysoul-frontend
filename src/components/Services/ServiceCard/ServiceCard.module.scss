@@ -1,7 +1,7 @@
 .ServiceCard {
   border-radius: 5px;
   height: 100%;
-  max-width: 410px;
+  // max-width: 410px;
   display: flex;
   flex-direction: column;
   box-shadow: var(--card-shadow);
@@ -44,17 +44,17 @@
 .ServiceCard__bullets {
   text-align: left;
   list-style-type: disc;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   margin-left: 0;
   margin-right: 0;
-  padding-left: 40px;
+  padding-left: 20px;
   & > *:not(:last-child) {
     margin-bottom: 10px;
   }
 }
 
 .ServiceCard__content {
-  padding: 40px 30px;
+  padding: 15px 20px;
   font-size: 1rem;
   text-align: left;
   display: flex;
@@ -71,6 +71,7 @@
   margin-bottom: 15px;
   line-height: 80%;
   color: var(--accent-color);
+  text-align: center;
 }
 
 @media screen and (max-width: 767px) {

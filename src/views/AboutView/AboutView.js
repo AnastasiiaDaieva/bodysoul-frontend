@@ -16,14 +16,12 @@ function AboutView() {
       .get(`${API_URL}sections?populate=*`)
       .then((res) =>
         setAboutData(res.data.data[0].attributes.description.split("\n"))
-      );
-
-    setIsLoading(false);
+      )
+      .finally(() => setIsLoading(false));
   }, []);
   return (
     <main className={s.AboutView}>
-      {isLoading && <ContentLoader />}
-      <About text={aboutData} />
+      {isLoading ? <ContentLoader /> : <About text={aboutData} />}
     </main>
   );
 }
