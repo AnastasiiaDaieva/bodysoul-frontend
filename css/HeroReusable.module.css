@@ -1,7 +1,7 @@
 .HeroReusable {
   width: 100vw;
-  min-height: 500px;
-  max-height: 500px;
+  min-height: 300px;
+  max-height: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,28 +18,26 @@
 }
 
 @media screen and (max-width: 767.99px) {
-  .HeroReusable__heading {
-    font-size: 22px;
-  }
-  .HeroReusable__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-image: -webkit-gradient(
-      linear,
-      left top,
-      left bottom,
-      from(var(--hero-gradient))
-    );
-    background-image: linear-gradient(var(--hero-gradient));
+  .HeroReusable {
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 50%;
+  }
+  .HeroReusable__heading {
+    font-size: 22px;
+    color: var(--add-dark-color);
+    text-shadow: var(--add-light-color) 1px 1px 1px;
+  }
+  .HeroReusable__background {
+    display: none;
   }
 }
 
 @media screen and (min-width: 768px) {
+  .HeroReusable {
+    min-height: 500px;
+    max-height: 500px;
+  }
   .HeroReusable__container {
     display: -webkit-box;
     display: -ms-flexbox;

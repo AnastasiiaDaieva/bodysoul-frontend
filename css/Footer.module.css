@@ -1,7 +1,8 @@
 .Footer {
   width: 100vw;
   text-align: left;
-  background-color: var(--sec-bg-color);
+  color: var(--add-light-color);
+  background-color: var(--add-dark-color);
   margin-top: 100px;
 }
 
@@ -22,7 +23,7 @@
 
 .Footer__contacts {
   border-top: 1px solid var(--add-dark-color);
-  padding-top: 35px;
+  padding: 35px;
 }
 
 .Footer__phone,
@@ -40,6 +41,7 @@
 
 .Footer__marker {
   position: absolute;
+  fill: var(--add-light-color);
   top: -12px;
   left: -35px;
 }
@@ -55,14 +57,11 @@
   margin-bottom: 16px;
 }
 
-.Footer__nav_item:not(:last-child) {
-  margin-right: 65px;
-}
-
 .Footer__nav_title {
   font-family: var(--main-font);
   font-weight: 500;
   font-size: 14px;
+  color: var(--accent-color);
 }
 
 .Footer__main {
@@ -76,11 +75,34 @@
 }
 
 @media screen and (max-width: 767px) {
+  .Footer__main {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+  .Footer__nav {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
   .Footer__spots {
     margin-bottom: 20px;
   }
-  .Footer__spot:not(:last-child) {
-    margin-bottom: 20px;
+  .Footer__spot:first-child {
+    margin-bottom: 30px;
+  }
+  .Footer__nav_item:not(:last-child) {
+    margin-bottom: 40px;
   }
 }
 
@@ -99,6 +121,9 @@
     -ms-flex-align: center;
     align-items: center;
   }
+  .Footer__nav_item:not(:last-child) {
+    margin-right: 65px;
+  }
   .Footer__nav {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -113,8 +138,8 @@
     display: -ms-flexbox;
     display: flex;
   }
-  .Footer__spot:first-child {
-    margin-right: 10%;
+  .Footer__address_block {
+    margin-right: 5%;
   }
   .Footer__main {
     display: -webkit-box;

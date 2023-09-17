@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,sBAAsB,CAAC;EACrB,WAAW,EAAE,GAAG;CACjB;;AAED,AAAA,oBAAoB,CAAC;EACnB,eAAe,EAAE,IAAI;EACrB,YAAY,EAAE,IAAI;EAClB,UAAU,EAAE,IAAI;CACjB;;AAED,AACE,2BADyB,AACxB,YAAY,CAAC;EACZ,UAAU,EAAE,IAAI;CACjB;;AAGH,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EACjC,AAAA,2BAA2B,CAAC;IAC1B,UAAU,EAAE,IAAI;IAChB,WAAW,EAAE,GAAG;IAChB,SAAS,EAAE,IAAI;IACf,WAAW,EAAE,IAAI;IACjB,YAAY,EAAE,IAAI;GACnB",
+    "sources": [
+        "../src/components/Services/Giftcards/GiftcardsText.module.scss"
+    ],
+    "names": [],
+    "file": "GiftcardsText.module.css"
+}

@@ -27,7 +27,7 @@ function HomeView() {
       // console.log("res", res.data.data);
       const text = res.data.data.find((item) => item.id === 11);
 
-      setGiftcardsText(text.attributes.description);
+      setGiftcardsText(text?.attributes?.description || "");
     });
 
     axios
@@ -37,7 +37,7 @@ function HomeView() {
     axios
       .get(`${API_URL}sections?populate=*`)
       .then((res) =>
-        setAboutData(res.data.data[0].attributes.description.split("\n"))
+        setAboutData(res.data.data[0].attributes?.description.split("\n"))
       );
 
     setIsLoading(false);

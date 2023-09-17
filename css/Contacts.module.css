@@ -1,4 +1,8 @@
 .Contacts__heading {
   margin-bottom: 50px;
 }
+
+.Contacts__section {
+  position: relative;
+}
 /*# sourceMappingURL=Contacts.module.css.map */

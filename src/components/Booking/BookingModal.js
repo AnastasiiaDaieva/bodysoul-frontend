@@ -1,11 +1,13 @@
 import { createPortal } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IoCloseOutline as CloseModal } from "react-icons/io5";
 import BookingForm from "./BookingForm";
 import OrderGiftcard from "components/Services/Giftcards/OrderGiftcard";
 import s from "./BookingModal.module.scss";
+import axios from "axios";
 
 const modalRoot = document.getElementById("modal-root");
+const API_URL = process.env.REACT_APP_STRAPI;
 
 function BookingModal({
   setIsOpen,
@@ -36,6 +38,22 @@ function BookingModal({
     };
   });
 
+  const [spotsSelect, setSpotsSelect] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${API_URL}locations`).then((res) => {
+      console.log("strapi locations", res.data.data);
+      setSpotsSelect(
+        res.data.data.map((item) => ({
+          value: item.attributes.value,
+          label: `${item.attributes.name} (${item.attributes.city})`,
+          id: item.id,
+        }))
+      );
+      console.log(spotsSelect);
+    });
+  }, []);
+
   const closeOverlay = (e) => {
     if (e.currentTarget === e.target || e.code === "Escape") {
       closeModal();
@@ -54,6 +72,7 @@ function BookingModal({
                 closeModal={closeModal}
                 setBookingStatus={setBookingStatus}
                 servicesSelect={servicesSelect}
+                spotsSelect={spotsSelect}
               />
             </>
           )}

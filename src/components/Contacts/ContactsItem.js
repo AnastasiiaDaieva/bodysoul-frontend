@@ -10,7 +10,7 @@ import {
 import MediaQuery from "react-responsive";
 
 function ContactsItem({ spot }) {
-  const { attributes } = spot;
+  const { attributes, id } = spot;
   const {
     where,
     address,

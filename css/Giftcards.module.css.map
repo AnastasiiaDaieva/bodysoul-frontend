@@ -1,9 +1,9 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,OAAO,EAAE,IAAI;CACd;;AAID,AAAA,uBAAuB,CAAC;EACtB,UAAU,EAAE,IAAI;CACjB",
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,OAAO,EAAE,IAAI;CACd;;AAED,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EACjC,AACE,mBADiB,AAChB,IAAK,CAAA,WAAW,EAAE;IACjB,aAAa,EAAE,IAAI;GACpB;;;AAGL,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EACjC,AAAA,yBAAyB,CAAC;IACxB,OAAO,EAAE,IAAI;GACd;EACD,AACE,mBADiB,AAChB,IAAK,CAAA,WAAW,EAAE;IACjB,YAAY,EAAE,IAAI;GACnB;EAGH,AAAA,kBAAkB,CAAC;IACjB,KAAK,EAAE,GAAG;IACV,OAAO,EAAE,IAAI;GACd",
     "sources": [
-        "../src/components/Services/GiftCards/GiftCards.module.scss"
+        "../src/components/Services/Giftcards/Giftcards.module.scss"
     ],
     "names": [],
-    "file": "GiftCards.module.css"
+    "file": "Giftcards.module.css"
 }

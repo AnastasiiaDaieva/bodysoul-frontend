@@ -8,16 +8,12 @@
   max-width: 200px;
 }
 
-.About__picture {
-  display: none;
-}
-
 .About__description {
-  text-align: center;
   font-weight: 400;
   font-size: 14px;
   line-height: 130%;
-  margin-top: 30px;
+  text-indent: 25px;
+  text-align: justify;
 }
 
 @media screen and (max-width: 767.99px) {
@@ -25,6 +21,9 @@
     margin-left: auto;
     margin-right: auto;
     width: 200px;
+  }
+  .About__background {
+    display: none;
   }
 }
 
@@ -51,11 +50,9 @@
     right: -80px;
   }
   .About__description {
-    text-align: left;
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
-    margin-top: 30px;
   }
 }
 /*# sourceMappingURL=About.module.css.map */

@@ -26,12 +26,11 @@
 }
 
 .NavigationList__item:hover {
-  background-color: var(--add-light-color);
-  color: var(--text-color);
+  color: var(--accent-color);
 }
 
 .NavigationList__item:hover .NavigationList__arrow {
-  fill: var(--add-dark-color);
+  fill: var(--accent-color);
 }
 
 .NavigationList__item ~ .NavigationList__subitem {
@@ -44,12 +43,16 @@
 
 .NavigationList__item_sec {
   padding: 10px 15px;
+  text-shadow: none;
+}
+
+.NavigationList__item_sec:hover {
+  color: var(--accent-color);
 }
 
 .NavigationList__arrow {
   fill: var(--add-light-color);
   margin-left: 5px;
-  fill: var(--add-dark-color);
 }
 
 @media screen and (max-width: 767px) {
@@ -170,11 +173,6 @@
     margin-top: 20px;
     z-index: 30;
     color: var(--add-dark-color);
-  }
-  .NavigationList__item {
-    -webkit-box-shadow: var(--card-shadow);
-    box-shadow: var(--card-shadow);
-    text-shadow: #000000 1px 1px 1px;
   }
 }
 /*# sourceMappingURL=NavigationList.module.css.map */

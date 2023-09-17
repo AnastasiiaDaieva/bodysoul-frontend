@@ -4,8 +4,26 @@ import { ReactComponent as Marker } from "img/icons/map-marker.svg";
 import { Link } from "react-router-dom";
 import data from "data/spots.json";
 import { nanoid } from "nanoid";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+const API_URL = process.env.REACT_APP_STRAPI;
 
 function Footer() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`${API_URL}locations`)
+      .then((res) => {
+        console.log("strapi locations", res.data.data);
+        setData(res.data.data);
+        // console.log(data);
+      })
+      .finally(() => setLoading(false));
+  }, []);
   return (
     <footer className={s.Footer}>
       <div className={`container ${s.Footer__container}`}>
@@ -94,16 +112,16 @@ function Footer() {
         </div>
         <div className={s.Footer__contacts}>
           <div className={s.Footer__spots}>
-            {data.map(({ name, address, tel, phone }) => (
+            {data.map(({ attributes }) => (
               <address key={nanoid()} className={s.Footer__address_block}>
                 <div className={s.Footer__spot}>
                   <Link to="/contacts">
                     <Marker className={s.Footer__marker} />
-                    <p className={s.Footer__building}>{name}</p>
-                    <p className={s.Footer__address}>{address}</p>
+                    <p className={s.Footer__building}>{attributes.name}</p>
+                    <p className={s.Footer__address}>{attributes.address}</p>
                   </Link>
                   <p className={s.Footer__phone}>
-                    <a href={`tel:${tel}`}>{phone}</a>
+                    <a href={`tel:${attributes.tel}`}>{attributes.phone}</a>
                   </p>
                 </div>
               </address>

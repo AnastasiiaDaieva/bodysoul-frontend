@@ -19,11 +19,12 @@
 }
 
 .Filter__item {
-  padding: 16px 60px;
-  background-color: var(--sec-bg-color);
-  -webkit-box-shadow: var(--button-shadow);
-  box-shadow: var(--button-shadow);
+  padding: 10px;
   margin-bottom: 20px;
+}
+
+.Filter__item:hover {
+  color: var(--accent-color);
 }
 
 .Filter__arrow {

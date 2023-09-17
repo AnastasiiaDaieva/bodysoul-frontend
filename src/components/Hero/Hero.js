@@ -50,9 +50,13 @@ function Hero({ setBookingStatus, text, allServices }) {
                 servicesSelect={[
                   ...allServices
                     .map((service) => {
-                      return service.details.map((item, index) => ({
+                      return service.details?.map((item, index) => ({
                         value: `${service.id}-${index}`,
                         label: `${service.name} ${item.time} (${item.price})`,
+                        locations:
+                          service?.relatedLocations?.data?.map(
+                            (location) => location?.id
+                          ) || [],
                       }));
                     })
                     .flat(),

@@ -4,7 +4,26 @@
   display: flex;
 }
 
-.Giftcards__description {
-  text-align: left;
+@media screen and (max-width: 768px) {
+  .Giftcards__picture:not(:last-child) {
+    margin-bottom: 20px;
+  }
 }
-/*# sourceMappingURL=GiftCards.module.css.map */
+
+@media screen and (min-width: 768px) {
+  .GiftcardsHome__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .Giftcards__picture:not(:last-child) {
+    margin-right: 20px;
+  }
+  .Giftcards__visual {
+    width: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+/*# sourceMappingURL=Giftcards.module.css.map */

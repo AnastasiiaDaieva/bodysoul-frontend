@@ -1,6 +1,4 @@
 .BookingForm {
-  width: 100vw;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -33,6 +31,7 @@
 .BookingForm__button {
   font-size: 16px;
   width: 100px;
+  border-radius: 5px;
   padding: 10px;
   background-color: var(--add-dark-color);
   color: var(--accent-color);
@@ -46,23 +45,108 @@
   color: var(--add-dark-color);
 }
 
+.BookingForm__button:disabled {
+  background: #bababa;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 .BookingForm__send {
   font-family: var(--accent-font);
   font-size: 16px;
 }
 
+.BookingForm__select {
+  background-color: transparent;
+  width: 100%;
+}
+
+.BookingForm__select::-webkit-input-placeholder {
+  font-family: var(--main-font);
+  font-size: 12px;
+}
+
+.BookingForm__select:-ms-input-placeholder {
+  font-family: var(--main-font);
+  font-size: 12px;
+}
+
+.BookingForm__select::-ms-input-placeholder {
+  font-family: var(--main-font);
+  font-size: 12px;
+}
+
+.BookingForm__select::placeholder {
+  font-family: var(--main-font);
+  font-size: 12px;
+}
+
 .BookingForm__input {
   all: unset;
+  font-family: var(--main-font);
   width: 100%;
   padding: 5px;
   text-align: center;
+  font-family: var(--accent-font);
   border: 1px solid var(--add-dark-color);
   border-radius: 1px;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1279.99px) {
+.BookingForm__input::-webkit-input-placeholder {
+  font-family: var(--main-font);
+  font-size: 12px;
+}
+
+.BookingForm__input:-ms-input-placeholder {
+  font-family: var(--main-font);
+  font-size: 12px;
+}
+
+.BookingForm__input::-ms-input-placeholder {
+  font-family: var(--main-font);
+  font-size: 12px;
+}
+
+.BookingForm__input::placeholder {
+  font-family: var(--main-font);
+  font-size: 12px;
+}
+
+.custom_datepicker_calendar .react-datepicker__time-list {
+  background-color: orange;
+}
+
+.custom_datepicker_calendar,
+.custom_datepicker__popper,
+.custom_datepicker__month,
+.custom_datepicker__time,
+.custom_datepicker_wrapper {
+  border: none !important;
+  font-family: var(--main-font) !important;
+}
+
+.custom_datepicker__time {
+  border: none !important;
+}
+
+.custom_datepicker__time:hover {
+  background-color: var(--add-light-color) !important;
+  color: black !important;
+}
+
+@media screen and (max-width: 767.99px) {
   .BookingForm {
-    width: 40vw;
+    width: 100vw;
+    height: 90vh;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .BookingForm {
+    width: 400px;
   }
 }
 /*# sourceMappingURL=BookingForm.module.css.map */

@@ -3,22 +3,40 @@ import { useForm, Controller } from "react-hook-form";
 import { bookingSelect } from "styles/selectStyles";
 import s from "./BookingForm.module.scss";
 import Select from "react-select";
-import { spotsSelect } from "data/spotsSelect";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DatePicker } from "partials/ReactDatePicker";
 
 const API_URL = process.env.REACT_APP_HEROKU_PRODUCTION;
 // const API_URL = process.env.REACT_APP_LOCAL_HOST_FOR_TESTING;
 
-function BookingForm({ closeModal, setBookingStatus, servicesSelect }) {
+function BookingForm({
+  closeModal,
+  setBookingStatus,
+  servicesSelect,
+  spotsSelect,
+}) {
   const [isLoading, setIsLoading] = useState(false);
+  const [availableServices, setAvailableServices] = useState([]);
+  console.log("form", spotsSelect);
+
   const {
     register,
     handleSubmit,
     reset,
     control,
     formState: { errors },
+    getValues,
   } = useForm();
+  console.log(getValues());
+
+  const customOnChange = (val, onChange) => {
+    onChange(val);
+    console.log("sel loc", val);
+    console.log("serv", availableServices);
+    setAvailableServices(
+      servicesSelect.filter((item) => item.locations.includes(val.id))
+    );
+  };
 
   const onSubmit = (data) => {
     setIsLoading(true);
@@ -85,29 +103,58 @@ function BookingForm({ closeModal, setBookingStatus, servicesSelect }) {
         <div className={s.BookingForm__container}>
           <Controller
             control={control}
-            name="service"
-            {...register("service", {
+            name="location"
+            {...register("location", {
               required: true,
             })}
             ref={null}
             render={({ field: { onChange, onBlur, value } }) => (
-              <>
-                {" "}
-                <Select
-                  options={servicesSelect}
-                  placeholder="Яка послуга Вас цікавить?"
-                  className={`${s.BookingForm__select}`}
-                  onChange={onChange}
-                  onBlur={onBlur}
-                  selected={value}
-                  styles={bookingSelect}
-                />
-              </>
+              <Select
+                options={spotsSelect}
+                placeholder="Оберіть адресу"
+                className={`${s.BookingForm__select}`}
+                onChange={(val) => customOnChange(val, onChange)}
+                onBlur={onBlur}
+                selected={value}
+                styles={bookingSelect}
+              />
             )}
           />
-
-          {errors.name && <span>Заповніть поле</span>}
+          {errors.name && <span>Оберіть адресу</span>}
         </div>
+        {availableServices.length > 0 && (
+          <div className={s.BookingForm__container}>
+            <Controller
+              control={control}
+              name="service"
+              {...register("service", {
+                required: true,
+              })}
+              ref={null}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <>
+                  {" "}
+                  <Select
+                    options={availableServices}
+                    placeholder="Яка послуга Вас цікавить?"
+                    className={`${s.BookingForm__select}`}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    selected={value}
+                    styles={bookingSelect}
+                  />
+                </>
+              )}
+            />{" "}
+            {errors.name && <span>Заповніть поле</span>}
+          </div>
+        )}{" "}
+        {/* {!getValues().location.value && (
+          <p className="mb-3">
+            {" "}
+            На обраній Вами локації поки нема доступних послуг
+          </p>
+        )} */}
         <div className={s.BookingForm__container}>
           <Controller
             control={control}
@@ -121,29 +168,6 @@ function BookingForm({ closeModal, setBookingStatus, servicesSelect }) {
             )}
           />
           {errors.date && <span>Заповніть поле</span>}
-        </div>
-
-        <div className={s.BookingForm__container}>
-          <Controller
-            control={control}
-            name="location"
-            {...register("location", {
-              required: true,
-            })}
-            ref={null}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Select
-                options={spotsSelect}
-                placeholder="Оберіть адресу"
-                className={`${s.BookingForm__select}`}
-                onChange={onChange}
-                onBlur={onBlur}
-                selected={value}
-                styles={bookingSelect}
-              />
-            )}
-          />
-          {errors.name && <span>Оберіть адресу</span>}
         </div>
         <div className={s.BookingForm__container}>
           <input

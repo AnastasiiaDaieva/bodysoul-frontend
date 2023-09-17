@@ -1,0 +1,45 @@
+.OrderGiftcard {
+  composes: BookingForm from "../../Booking/BookingForm.module.scss";
+}
+
+.OrderGiftcard__container {
+  composes: BookingForm__container from "../../Booking/BookingForm.module.scss";
+}
+
+.OrderGiftcard__controllers {
+  composes: BookingForm__controllers from "../../Booking/BookingForm.module.scss";
+}
+
+.OrderGiftcard__button {
+  composes: BookingForm__button from "../../Booking/BookingForm.module.scss";
+}
+
+.OrderGiftcard__send {
+  composes: BookingForm__send from "../../Booking/BookingForm.module.scss";
+}
+
+.OrderGiftcard__select {
+  composes: BookingForm__select from "../../Booking/BookingForm.module.scss";
+}
+
+.OrderGiftcard__input {
+  composes: BookingForm__input from "../../Booking/BookingForm.module.scss";
+}
+
+@media screen and (max-width: 767.99px) {
+  .OrderGiftcard {
+    width: 100vw;
+    height: 90vh;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .OrderGiftcard {
+    width: 40vw;
+    height: 40vh;
+  }
+}
+/*# sourceMappingURL=OrderGiftcard.module.css.map */

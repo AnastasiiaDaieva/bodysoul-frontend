@@ -7,7 +7,6 @@
   -ms-flex-direction: column;
   flex-direction: column;
   text-align: center;
-  padding: 35px 25px;
   font-family: var(--accent-font);
   font-weight: 400;
   font-size: 18px;
@@ -57,5 +56,21 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.25);
   z-index: 100;
+}
+
+@media screen and (max-width: 767px) {
+  .BookingModal {
+    height: 100vh;
+    width: 100vw;
+  }
+  .BookingModal__body {
+    padding-top: 70px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .BookingModal {
+    padding: 35px 25px;
+  }
 }
 /*# sourceMappingURL=BookingModal.module.css.map */
