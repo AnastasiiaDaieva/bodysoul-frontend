@@ -149,12 +149,6 @@ function BookingForm({
             {errors.name && <span>Заповніть поле</span>}
           </div>
         )}{" "}
-        {/* {!getValues().location.value && (
-          <p className="mb-3">
-            {" "}
-            На обраній Вами локації поки нема доступних послуг
-          </p>
-        )} */}
         <div className={s.BookingForm__container}>
           <Controller
             control={control}

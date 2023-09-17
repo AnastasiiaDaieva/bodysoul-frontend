@@ -7,7 +7,6 @@ import { useState } from "react";
 
 function ServiceCard({ data, imgObj, setBookingStatus, type }) {
   const [isOpen, setIsOpen] = useState(false);
-  console.log("ser d", data);
 
   const modalOpen = () => {
     setIsOpen(true);
@@ -16,8 +15,8 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
     <>
       <article className={s.ServiceCard}>
         <img
-          src={`${imgObj.url}`}
-          alt={imgObj.alternativeText}
+          src={`${imgObj?.url}`}
+          alt={imgObj?.alternativeText}
           className={s.ServiceCard__image}
         />
 
@@ -54,7 +53,6 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
               type="booking"
               setBookingStatus={setBookingStatus}
               servicesSelect={data.details.map((item, index) => {
-                console.log(data.details);
                 return {
                   value: `${data.id}-${index}`,
                   label: `${data.name} ${item.time} (${item.price})`,

@@ -53,15 +53,26 @@ function ServicesView() {
       setGiftcardsText(text.attributes.description);
     });
 
+    // const locFilters =
+    //   location?.state?.id && location.state.id.length > 1
+    //     ? location.state.id.map(
+    //         (id, index) =>
+    //           `filters$[or][${index}][relatedLocations][id][$eq]=${id}`
+    //       )
+    //     : location?.state?.id.length === 1
+    //     ? [`filters[relatedLocations][id][$eq]=${location.state.id[0]}`]
+    //     : [];
+
+    // console.log("lf", locFilters);
     axios.get(`${API_URL}massages?populate=*`).then((res) => {
-      // console.log("massage", res.data.data);
+      console.log("massage", res.data.data);
       setMassageData(res.data.data);
       createNewItem(res.data.data, 1);
       // console.log("all data 1", allData);
     });
 
     axios.get(`${API_URL}body-services?populate=*`).then((res) => {
-      // console.log("body", res.data.data);
+      console.log("body", res.data.data);
       setBodyData(res.data.data);
       createNewItem(res.data.data, 2);
       // console.log("all data 2", allData);
@@ -88,6 +99,7 @@ function ServicesView() {
     }
   };
   let location = useLocation();
+  // console.log("state", location.state);
 
   // const getHeroContent = () => {
   //   switch (getLocation) {
@@ -104,6 +116,7 @@ function ServicesView() {
   //   }
   // };
 
+  const pathname = `/${location?.state?.location}` || "/*";
   return (
     <main className={s.ServicesView}>
       {isLoading ? (
@@ -125,27 +138,43 @@ function ServicesView() {
                 }
               />
               <Route
-                path={`massage`}
+                path={`massage${pathname}`}
                 element={
                   <Massage
                     setBookingStatus={setBookingStatus}
-                    data={massageData}
+                    data={massageData.filter((item) =>
+                      item.attributes?.relatedLocations?.data?.some((loc) => {
+                        console.log("loc", location, "id", location?.state?.id);
+                        return +loc.id === +location?.state?.id[0];
+                      })
+                    )}
                   />
                 }
               />
               <Route
-                path={`spa`}
+                path={`spa${pathname}`}
                 element={
                   <SpaPrograms
                     setBookingStatus={setBookingStatus}
-                    data={spaData}
+                    data={spaData.filter((item) =>
+                      item.attributes?.relatedLocations?.data?.some(
+                        (loc) => +loc.id === +location?.state?.id[0]
+                      )
+                    )}
                   />
                 }
               />
               <Route
-                path={`body`}
+                path={`body${pathname}`}
                 element={
-                  <Body setBookingStatus={setBookingStatus} data={bodyData} />
+                  <Body
+                    setBookingStatus={setBookingStatus}
+                    data={bodyData.filter((item) =>
+                      item.attributes?.relatedLocations?.data?.some(
+                        (loc) => +loc.id === +location?.state?.id[0]
+                      )
+                    )}
+                  />
                 }
               />
               <Route

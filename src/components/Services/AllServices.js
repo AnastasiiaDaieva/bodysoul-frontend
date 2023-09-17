@@ -16,7 +16,7 @@ function AllServices({ setBookingStatus, data }) {
   //   console.log(finalArray);
   //   return finalArray;
   // };
-  // console.log("alls data", data);
+  console.log("alls data", data);
 
   return (
     <>

@@ -60,14 +60,14 @@ function Footer() {
               <h2 className={s.Footer__nav_title}>Послуги</h2>
               <ul className={s.Footer__list}>
                 <li className={s.Footer__list_item}>
-                  <Link to="/services/massage">Масаж </Link>
+                  <Link to="/services/massage/kyiv">Масаж </Link>
                 </li>
                 <li className={s.Footer__list_item}>
-                  <Link to="/services/spa">SPA-процедури</Link>
+                  <Link to="/services/spa/kyiv">SPA-процедури</Link>
                 </li>
 
                 <li className={s.Footer__list_item}>
-                  <Link to="/services/body">Естетика тіла </Link>
+                  <Link to="/services/body/kyiv">Інші практики </Link>
                 </li>
 
                 <li className={s.Footer__list_item}>
@@ -92,11 +92,15 @@ function Footer() {
                     Facebook
                   </a>
                 </li>
-                {/* <li className={s.Footer__list_item}>
-                  <a href="/" target="_blank" rel="noopener noreferrer">
+                <li className={s.Footer__list_item}>
+                  <a
+                    href="https://www.instagram.com/studio.massage.bs/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Instagram
                   </a>
-                </li> */}
+                </li>
                 <li className={s.Footer__list_item}>
                   <a
                     href="https://www.youtube.com/channel/UCuoTPgSRyht-ksQ0hu9K6TA"

@@ -1,15 +1,19 @@
 import { ReactComponent as MenuArrow } from "../../img/icons/menu-arrow.svg";
 import s from "./NavigationList.module.scss";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { activeStyle } from "helpers/activeStyle";
 import { ReactComponent as Logo } from "../../img/icons/logo-light.svg";
 
 function NavigationList({ setOpenMenu, openMenu }) {
-  const [openServices, setOpenServices] = useState(false);
+  const [openServices, setOpenServices] = useState({
+    bool: false,
+    location: 1,
+  });
   const [openSpots, setOpenSpots] = useState(false);
-  const showServices = () => {
-    setOpenServices(!openServices);
+  // type - 1 - kyiv, 3 - lviv
+  const showServices = (type) => {
+    setOpenServices({ bool: !openServices.bool, location: type });
   };
 
   const showSpots = () => {
@@ -24,6 +28,10 @@ function NavigationList({ setOpenMenu, openMenu }) {
       return;
     }
   };
+
+  useEffect(() => {
+    console.log(openServices);
+  }, [openServices]);
 
   return (
     <ul className={s.NavigationList}>
@@ -44,49 +52,97 @@ function NavigationList({ setOpenMenu, openMenu }) {
         <li>Про нас</li>
       </NavLink>
       <li
-        onClick={showServices}
+        onClick={() => showServices(1)}
         className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}
       >
         <div className={s.NavigationList__heading}>
-          <span className={s.NavigationList__span}>Послуги</span>
+          <span className={s.NavigationList__span}>Послуги (Київ)</span>
           <MenuArrow className={s.NavigationList__arrow} />
         </div>
-        {openServices && (
+        {openServices.bool === true && openServices.location === 1 && (
           <ul className={s.NavigationList__services}>
             <NavLink
-              to="/services/massage"
+              to="/services/massage/kyiv"
               onClick={() => setOpenMenu(!openMenu)}
               className={`${s.NavigationList__subitem}`}
               style={activeStyle}
+              state={{
+                location: "kyiv",
+                id: [1, 2],
+                heading: "Послуги у Київській обл.",
+              }}
             >
               <li className={s.NavigationList__item_sec}>Масаж</li>
             </NavLink>
 
             <NavLink
-              to="/services/spa"
+              to="/services/spa/kyiv"
               onClick={() => setOpenMenu(!openMenu)}
               className={s.NavigationList__subitem}
               style={activeStyle}
+              state={{
+                location: "kyiv",
+                id: [1, 2],
+                heading: "Послуги у Київській обл.",
+              }}
             >
               <li className={s.NavigationList__item_sec}> SPA програми</li>
             </NavLink>
 
             <NavLink
-              to="/services/body"
+              to="/services/body/kyiv"
               onClick={() => setOpenMenu(!openMenu)}
               className={s.NavigationList__subitem}
               style={activeStyle}
+              state={{
+                location: "kyiv",
+                id: [1, 2],
+                heading: "Послуги у Київській обл.",
+              }}
             >
-              <li className={s.NavigationList__item_sec}>Естетика тіла </li>
+              <li className={s.NavigationList__item_sec}>Інші практики </li>
             </NavLink>
 
-            <NavLink
+            <Link
               to="/services/giftcards"
               onClick={() => setOpenMenu(!openMenu)}
               className={s.NavigationList__subitem}
-              style={activeStyle}
+              // style={activeStyle}
+              state={{ location: "kyiv" }}
             >
               <li className={s.NavigationList__item_sec}>Сертифікати </li>
+            </Link>
+          </ul>
+        )}
+      </li>
+      <li
+        onClick={() => showServices(3)}
+        className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}
+      >
+        <div className={s.NavigationList__heading}>
+          <span className={s.NavigationList__span}>Послуги (Львів)</span>
+          <MenuArrow className={s.NavigationList__arrow} />
+        </div>
+        {openServices.bool === true && openServices.location === 3 && (
+          <ul className={s.NavigationList__services}>
+            <NavLink
+              to="/services/massage/lviv"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={`${s.NavigationList__subitem}`}
+              style={activeStyle}
+              state={{ location: "lviv", id: [3], heading: "Послуги у Львові" }}
+            >
+              <li className={s.NavigationList__item_sec}>Масаж</li>
+            </NavLink>
+
+            <NavLink
+              to="/services/body/lviv"
+              onClick={() => setOpenMenu(!openMenu)}
+              className={s.NavigationList__subitem}
+              style={activeStyle}
+              state={{ location: "lviv", id: [3], heading: "Послуги у Львові" }}
+            >
+              <li className={s.NavigationList__item_sec}>Інші практики</li>
             </NavLink>
           </ul>
         )}

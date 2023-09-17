@@ -18,7 +18,7 @@ function Massage({ setBookingStatus, data }) {
               type="massage"
               setBookingStatus={setBookingStatus}
               data={attributes}
-              imgObj={attributes.image.data.attributes}
+              imgObj={attributes?.image?.data?.attributes}
             />
           </li>
         ))}
