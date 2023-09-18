@@ -5,6 +5,7 @@ import BookingForm from "./BookingForm";
 import OrderGiftcard from "components/Services/Giftcards/OrderGiftcard";
 import s from "./BookingModal.module.scss";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const modalRoot = document.getElementById("modal-root");
 const API_URL = process.env.REACT_APP_STRAPI;
@@ -25,6 +26,8 @@ function BookingModal({
     document.body.style.overflow = "unset";
   };
 
+  const location = useLocation();
+
   useEffect(() => {
     const handleEscClose = (e) => {
       if (e.code === "Escape") {
@@ -41,14 +44,21 @@ function BookingModal({
   const [spotsSelect, setSpotsSelect] = useState([]);
 
   useEffect(() => {
+    console.log("fff", location?.state?.id[0]);
     axios.get(`${API_URL}locations`).then((res) => {
       console.log("strapi locations", res.data.data);
       setSpotsSelect(
-        res.data.data.map((item) => ({
-          value: item.attributes.value,
-          label: `${item.attributes.name} (${item.attributes.city})`,
-          id: item.id,
-        }))
+        res.data.data
+          .filter(
+            (item) =>
+              +item.id === +location?.state?.id[0] ||
+              +item.id === +location?.state?.id[1]
+          )
+          .map((item) => ({
+            value: item.attributes.value,
+            label: `${item.attributes.name} (${item.attributes.city})`,
+            id: item.id,
+          }))
       );
       console.log(spotsSelect);
     });

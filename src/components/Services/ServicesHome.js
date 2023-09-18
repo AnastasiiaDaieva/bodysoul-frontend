@@ -18,7 +18,14 @@ function ServicesHome() {
         <ul className={s.ServicesHome__list}>
           {data.map(({ typeLabel, typeValue, img }) => (
             <li key={nanoid()} className={s.ServicesHome__item}>
-              <Link to={`/services/${typeValue}/kyiv`}>
+              <Link
+                to={`/services/${typeValue}/kyiv`}
+                state={{
+                  location: "kyiv",
+                  id: [1, 2],
+                  heading: "Послуги у Київській обл.",
+                }}
+              >
                 {typeValue === "massage" && (
                   <img
                     className={s.ServicesHome__img}
