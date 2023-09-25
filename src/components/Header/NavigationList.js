@@ -151,6 +151,14 @@ function NavigationList({ setOpenMenu, openMenu }) {
        Галерея
       </li></NavLink> */}
       <NavLink
+        to="/specialists"
+        onClick={() => setOpenMenu(!openMenu)}
+        className={s.NavigationList__item}
+        style={activeStyle}
+      >
+        <li>Майстри</li>
+      </NavLink>
+      <NavLink
         to="/contacts"
         onClick={() => setOpenMenu(!openMenu)}
         className={s.NavigationList__item}
@@ -158,9 +166,7 @@ function NavigationList({ setOpenMenu, openMenu }) {
       >
         <li>Контакти </li>
       </NavLink>
-      {/* <NavLink to="/specialists" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}>
-        <li >Масажисти</li>
-      </NavLink> */}
+
       {/* <NavLink
         to="/contacts"
         className={s.NavigationList__item}

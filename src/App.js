@@ -26,6 +26,12 @@ const ServicesView = lazy(() =>
   )
 );
 
+const SpecialistsView = lazy(() =>
+  import(
+    "views/SpecialistsView/SpecialistsView" /*webpackChunkName: "specialists-view" */
+  )
+);
+
 const Massage = lazy(() =>
   import(
     "components/Services/Massage/Massage" /*webpackChunkName: "services-massage" */
@@ -80,6 +86,7 @@ function App() {
               <Route path={`body`} element={<Body />} />
               <Route path={`giftcards`} element={<Giftcards />} />
             </Route>
+            <Route path="/specialists" element={<SpecialistsView />} />
             <Route path="/contacts" element={<ContactsView />} />
           </Routes>
         </ScrollToTop>
