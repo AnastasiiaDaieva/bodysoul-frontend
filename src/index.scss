@@ -87,6 +87,42 @@ h6 {
   font-family: var(--accent-font);
 }
 
+.owl-nav {
+  position: absolute;
+  top: 42%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  & > * {
+    font-size: 35px !important;
+    background-color: var(--accent-color) !important;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 0 0 5px 0;
+    box-shadow: var(--button-shadow);
+  }
+}
+
+.owl-stage-outer {
+  @media screen and (min-width: 768px) {
+    padding: 50px;
+  }
+}
+
+.owl-stage {
+  display: flex;
+  align-items: stretch; /* Ensures all items have the same height */
+}
+
+.owl-item > * {
+  flex: 1; /* Make each item take up equal space */
+  padding: 0 15px; /* Add spacing between items if needed */
+  min-height: 100%; /* Ensure items take up the full width of the container */
+  transition: all 0.45s ease 0s; /* Add any necessary transitions */
+}
+
 .App__goback {
   position: fixed;
   bottom: 5%;

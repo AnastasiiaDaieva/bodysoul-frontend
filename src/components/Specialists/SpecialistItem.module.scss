@@ -21,7 +21,7 @@
 
 @media screen and (min-width: 768px) {
   .SpecialistItem {
-    width: calc(100% / 2 - 20px);
+    margin-right: 10%;
   }
 }
 
@@ -39,7 +39,7 @@
 }
 
 .SpecialistItem__card_wrapper {
-  margin-bottom: 40%;
+  margin-bottom: 35%;
 }
 
 .SpecialistItem__img_wrapper {
@@ -50,7 +50,7 @@
 
 .SpecialistItem__img {
   height: 95%;
-  width: 95%;
+  width: 95% !important;
   box-shadow: var(--card-shadow);
   position: absolute;
   top: 50%;
@@ -59,7 +59,7 @@
 }
 .SpecialistItem__name {
   text-transform: uppercase;
-  bottom: -22%;
+  bottom: -25%;
   left: 50%;
   transform: translateX(-50%);
   padding: 10% 25%;
@@ -73,9 +73,6 @@
   text-align: center;
   font-family: var(--accent-font);
   font-size: 14px;
-  & > * {
-    width: inherit;
-  }
 }
 
 .SpecialistItem__location {

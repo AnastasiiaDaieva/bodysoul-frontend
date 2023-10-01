@@ -1,11 +1,7 @@
 import s from "./SpecialistItem.module.scss";
 import { ReactComponent as Logo } from "../../img/icons/logo.svg";
-import st from "../Services/ServiceCard/ServiceCard.module.scss";
 
-import {
-  IoLocationSharp,
-  IoLocationSharp as LocationIcon,
-} from "react-icons/io5";
+import { IoLocationSharp as LocationIcon } from "react-icons/io5";
 const SpecialistItem = ({ spec }) => {
   const { attributes: data, id } = spec;
   return (
