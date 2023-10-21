@@ -1,6 +1,6 @@
 import s from "./ServicesView.module.scss";
 import { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import ContentLoader from "components/ContentLoader/ContentLoader";
 import Filter from "components/Services/Filter";
 import Massage from "components/Services/Massage/Massage";
@@ -9,16 +9,21 @@ import Body from "components/Services/Body/Body";
 import Giftcards from "components/Services/Giftcards/Giftcards";
 import AllServices from "components/Services/AllServices";
 
-import axios from "axios";
-
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BookingError } from "components/Booking/BookingError";
 import { useState, useEffect } from "react";
-const API_URL = process.env.REACT_APP_STRAPI;
+import {
+  getBodyList,
+  getGiftcardsList,
+  getMassagesList,
+  getServiceTypes,
+  getSpaList,
+} from "api/strApi";
 
 function ServicesView() {
+  const [serviceTypes, setServiceTypes] = useState([]);
   const [massageData, setMassageData] = useState([]);
   const [spaData, setSpaData] = useState([]);
   const [bodyData, setBodyData] = useState([]);
@@ -42,15 +47,17 @@ function ServicesView() {
   useEffect(() => {
     setIsLoading(true);
 
-    axios.get(`${API_URL}giftcards?populate=*`).then((res) => {
-      console.log("res", res.data.data);
-      const { data } = res.data;
-      const getImages = data.filter((item) => item.id === 1 || item.id === 12);
-      console.log("get", getImages);
-      setImages(getImages);
-      const text = res.data.data.find((item) => item.id === 11);
+    getServiceTypes()
+      .then((res) => setServiceTypes(res))
+      .finally(() => setIsLoading(false));
 
-      setGiftcardsText(text.attributes.description);
+    getGiftcardsList().then((res) => {
+      const getImages = res.filter((item) => item.id === 1 || item.id === 12);
+      console.log("getGiftcardImages", getImages);
+      setImages(getImages);
+      const text = res.find((item) => item.id === 11);
+
+      setGiftcardsText(text?.attributes?.description || "");
     });
 
     // const locFilters =
@@ -64,26 +71,38 @@ function ServicesView() {
     //     : [];
 
     // console.log("lf", locFilters);
-    axios.get(`${API_URL}massages?populate=*`).then((res) => {
-      console.log("massage", res.data.data);
-      setMassageData(res.data.data);
-      createNewItem(res.data.data, 1);
+    getMassagesList().then((res) => {
+      const filteredRes = res.filter((item) =>
+        item.attributes?.relatedLocations?.data?.some(
+          (loc) => +loc.id === +location?.state?.location?.id
+        )
+      );
+      setMassageData(filteredRes);
+      createNewItem(filteredRes, 1);
       // console.log("all data 1", allData);
     });
 
-    axios.get(`${API_URL}body-services?populate=*`).then((res) => {
-      console.log("body", res.data.data);
-      setBodyData(res.data.data);
-      createNewItem(res.data.data, 2);
+    getBodyList().then((res) => {
+      const filteredRes = res.filter((item) =>
+        item.attributes?.relatedLocations?.data?.some(
+          (loc) => +loc.id === +location?.state?.location?.id
+        )
+      );
+      setBodyData(filteredRes);
+      createNewItem(filteredRes, 2);
       // console.log("all data 2", allData);
     });
 
-    axios
-      .get(`${API_URL}spa-programs?populate=*`)
+    getSpaList()
       .then((res) => {
         // console.log("spa", res.data.data);
-        setSpaData(res.data.data);
-        createNewItem(res.data.data, 3);
+        const filteredRes = res.filter((item) =>
+          item.attributes?.relatedLocations?.data?.some(
+            (loc) => +loc.id === +location?.state?.location?.id
+          )
+        );
+        setSpaData(filteredRes);
+        createNewItem(filteredRes, 3);
         // console.log("all data 3", allData);
       })
       .finally(() => setIsLoading(false));
@@ -117,13 +136,14 @@ function ServicesView() {
   // };
 
   const pathname = `/${location?.state?.location}` || "/*";
+  console.log("servpath", location);
   return (
     <main className={s.ServicesView}>
       {isLoading ? (
         <ContentLoader />
       ) : (
         <div className={`container ${s.ServicesView__container}`}>
-          <Filter path={location.pathname} />
+          <Filter />
           <ToastContainer />
 
           <Suspense fallback={<ContentLoader />}>
@@ -138,48 +158,40 @@ function ServicesView() {
                 }
               />
               <Route
-                path={`massage${pathname}`}
+                path={`massage`}
                 element={
                   <Massage
                     setBookingStatus={setBookingStatus}
-                    data={massageData.filter((item) =>
-                      item.attributes?.relatedLocations?.data?.some((loc) => {
-                        console.log("loc", location, "id", location?.state?.id);
-                        return +loc.id === +location?.state?.id[0];
-                      })
-                    )}
+                    data={massageData}
                   />
                 }
               />
               <Route
-                path={`spa${pathname}`}
+                path={`spa`}
                 element={
                   <SpaPrograms
                     setBookingStatus={setBookingStatus}
-                    data={spaData.filter((item) =>
-                      item.attributes?.relatedLocations?.data?.some(
-                        (loc) => +loc.id === +location?.state?.id[0]
-                      )
-                    )}
+                    data={spaData}
                   />
                 }
               />
               <Route
-                path={`body${pathname}`}
+                path={`body`}
                 element={
-                  <Body
-                    setBookingStatus={setBookingStatus}
-                    data={bodyData.filter((item) =>
-                      item.attributes?.relatedLocations?.data?.some(
-                        (loc) => +loc.id === +location?.state?.id[0]
-                      )
-                    )}
-                  />
+                  <Body setBookingStatus={setBookingStatus} data={bodyData} />
                 }
               />
               <Route
                 path={`giftcards`}
                 element={<Giftcards images={images} text={giftcardsText} />}
+              />
+              <Route
+                index
+                element={
+                  <Navigate
+                    to={`/${location?.state?.location.attributes.value}`}
+                  />
+                }
               />
             </Routes>
           </Suspense>

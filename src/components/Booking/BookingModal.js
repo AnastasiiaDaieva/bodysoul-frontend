@@ -4,11 +4,10 @@ import { IoCloseOutline as CloseModal } from "react-icons/io5";
 import BookingForm from "./BookingForm";
 import OrderGiftcard from "components/Services/Giftcards/OrderGiftcard";
 import s from "./BookingModal.module.scss";
-import axios from "axios";
 import { useLocation } from "react-router-dom";
+import { getLocations } from "api/strApi";
 
 const modalRoot = document.getElementById("modal-root");
-const API_URL = process.env.REACT_APP_STRAPI;
 
 function BookingModal({
   setIsOpen,
@@ -44,15 +43,14 @@ function BookingModal({
   const [spotsSelect, setSpotsSelect] = useState([]);
 
   useEffect(() => {
-    console.log("fff", location?.state?.id[0]);
-    axios.get(`${API_URL}locations`).then((res) => {
-      console.log("strapi locations", res.data.data);
+    getLocations().then((res) => {
       setSpotsSelect(
-        res.data.data
-          .filter(
-            (item) =>
-              +item.id === +location?.state?.id[0] ||
-              +item.id === +location?.state?.id[1]
+        res
+          .filter((item) =>
+            location?.state?.id === undefined
+              ? item
+              : +item.id === +location?.state?.id[0] ||
+                +item.id === +location?.state?.id[1]
           )
           .map((item) => ({
             value: item.attributes.value,
@@ -60,7 +58,6 @@ function BookingModal({
             id: item.id,
           }))
       );
-      console.log(spotsSelect);
     });
   }, []);
 

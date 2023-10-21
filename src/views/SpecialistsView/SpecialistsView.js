@@ -1,10 +1,8 @@
-import About from "components/About/About";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import s from "./SpecialistsView.module.scss";
 import ContentLoader from "components/ContentLoader/ContentLoader";
 import Specialists from "components/Specialists/Specialists";
-const API_URL = process.env.REACT_APP_STRAPI;
+import { getSpecialistsList } from "api/strApi";
 
 function SpecialistsView() {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,11 +11,10 @@ function SpecialistsView() {
   useEffect(() => {
     setIsLoading(true);
 
-    axios
-      .get(`${API_URL}specialists?populate=*`)
+    getSpecialistsList()
       .then((res) => {
-        console.log("spec", res.data.data);
-        setSpecialists(res.data.data);
+        console.log("spec", res);
+        setSpecialists(res);
       })
       .finally(() => setIsLoading(false));
   }, []);

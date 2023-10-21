@@ -1,7 +1,0 @@
-[
-  { "label": "Усі", "path": "*" },
-  { "label": "Масаж", "path": "massage" },
-  { "label": "SPA-програми", "path": "spa" },
-  { "label": "Інші практики", "path": "body" },
-  { "label": "Сертифікати", "path": "giftcards" }
-]

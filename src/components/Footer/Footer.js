@@ -2,12 +2,9 @@ import s from "./Footer.module.scss";
 import { ReactComponent as Logo } from "img/icons/logo-light.svg";
 import { ReactComponent as Marker } from "img/icons/map-marker.svg";
 import { Link } from "react-router-dom";
-import data from "data/spots.json";
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import axios from "axios";
-
-const API_URL = process.env.REACT_APP_STRAPI;
+import { getLocations } from "api/strApi";
 
 function Footer() {
   const [data, setData] = useState([]);
@@ -15,13 +12,8 @@ function Footer() {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`${API_URL}locations`)
-      .then((res) => {
-        console.log("strapi locations", res.data.data);
-        setData(res.data.data);
-        // console.log(data);
-      })
+    getLocations()
+      .then((res) => setData(res))
       .finally(() => setLoading(false));
   }, []);
   return (
@@ -45,10 +37,6 @@ function Footer() {
                   <Link to="/about">Про нас </Link>
                 </li>
 
-                <li className={s.Footer__list_item}>
-                  <Link to="/services/*">Послуги </Link>
-                </li>
-
                 {/* <li className={s.Footer__list_item}> <Link to="/gallery"> Галерея</Link></li> */}
 
                 <li className={s.Footer__list_item}>
@@ -56,30 +44,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div className={s.Footer__nav_item}>
-              <h2 className={s.Footer__nav_title}>Послуги</h2>
-              <ul className={s.Footer__list}>
-                <li className={s.Footer__list_item}>
-                  <Link to="/services/massage/kyiv">Масаж </Link>
-                </li>
-                <li className={s.Footer__list_item}>
-                  <Link to="/services/spa/kyiv">SPA-процедури</Link>
-                </li>
 
-                <li className={s.Footer__list_item}>
-                  <Link to="/services/body/kyiv">Інші практики </Link>
-                </li>
-
-                <li className={s.Footer__list_item}>
-                  <Link to="/services/giftcards">Сертифікати </Link>
-                </li>
-
-                {/* 
-                  
-                  <li className={s.Footer__list_item}><Link to="/*">Протипоказання
-                </Link></li> */}
-              </ul>
-            </div>
             <div className={s.Footer__nav_item}>
               <h2 className={s.Footer__nav_title}>Ми у соц.мережах</h2>
               <ul className={s.Footer__list}>

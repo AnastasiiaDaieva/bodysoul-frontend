@@ -4,10 +4,11 @@ import s from "./ServiceCard.module.scss";
 import Prices from "../MassagePrices/Prices";
 import BookingModal from "components/Booking/BookingModal";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function ServiceCard({ data, imgObj, setBookingStatus, type }) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { state } = useLocation();
   const modalOpen = () => {
     setIsOpen(true);
   };
@@ -44,7 +45,11 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
           {data.effect && <p>Ефекти: {data.effect}</p>}
           <div className="divider"></div>
 
-          <Prices details={data.details} />
+          <Prices
+            details={data.details.find(
+              (loc) => loc.location === state?.location?.attributes?.value
+            )}
+          />
 
           <div className="divider"></div>
           {isOpen && (

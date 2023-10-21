@@ -6,7 +6,8 @@ function Body({ setBookingStatus, data }) {
     ({ attributes }) => attributes.available === true
   );
 
-  console.log("data", availableServices);
+  // console.log("data", availableServices);
+  console.log("body rendered");
 
   return (
     <div>

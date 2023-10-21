@@ -1,12 +1,7 @@
 import ContentLoader from "components/ContentLoader/ContentLoader";
 import s from "./ContactsItem.module.scss";
-import { useState, useEffect } from "react";
-import {
-  API_KEY_GOOGLE_MAPS,
-  PLACE_PHOTO_BASE,
-  PLACE_PHOTO_PARAMS,
-  REF_EXAMPLE,
-} from "api/api";
+import { useState } from "react";
+
 import MediaQuery from "react-responsive";
 
 function ContactsItem({ spot }) {
@@ -27,11 +22,6 @@ function ContactsItem({ spot }) {
   const [isActive, setIsActive] = useState("svyatopetrivske");
 
   const [showMap, setShowMap] = useState(false);
-  const IMG_LINK = `${
-    PLACE_PHOTO_BASE + PLACE_PHOTO_PARAMS + img
-  }&key=${API_KEY_GOOGLE_MAPS}`;
-  // console.log(IMG_LINK);
-  useEffect(() => {}, []);
 
   return (
     <li className={s.ContactsItem}>

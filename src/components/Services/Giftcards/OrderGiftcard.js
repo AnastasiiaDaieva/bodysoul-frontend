@@ -1,14 +1,10 @@
 import { useForm, Controller } from "react-hook-form";
-
 import s from "./OrderGiftcard.module.scss";
 import Select from "react-select";
-import axios from "axios";
 import { giftcardSelect } from "styles/selectStyles";
 import { giftcardsOptions } from "data/giftcardsOptions";
 import { useState } from "react";
-
-const API_URL = process.env.REACT_APP_HEROKU_PRODUCTION;
-// const API_URL = process.env.REACT_APP_LOCAL_HOST_FOR_TESTING;
+import { sendEmail } from "api/backendApi";
 
 function OrderGiftcard({ closeModal, setBookingStatus }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,13 +27,9 @@ function OrderGiftcard({ closeModal, setBookingStatus }) {
       type: certtype.label,
       additional: additional,
     };
-    axios
-      .post(`${API_URL}emails/sendemail`, {
-        order,
-        type: "giftcard",
-      })
+
+    sendEmail(order, "giftcard")
       .then((response) => {
-        // console.log("cert", response);
         if (response.status === 200) {
           setBookingStatus("success");
           closeModal();

@@ -1,7 +1,7 @@
 import "../../index.scss";
 import { ReactComponent as Logo } from "../../img/icons/logo-light.svg";
 import { ReactComponent as DarkLogo } from "../../img/icons/logo-dark.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./Header.module.scss";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoCloseOutline } from "react-icons/io5";
@@ -9,9 +9,13 @@ import { useLocation } from "react-router-dom";
 import MediaQuery from "react-responsive";
 import NavigationList from "./NavigationList";
 import { NavLink } from "react-router-dom";
+import { getLocations, getServiceTypes } from "api/strApi";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
+  const [locations, setLocations] = useState([]);
+  const [serviceTypes, setServiceTypes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   let location = useLocation();
   const headerBackground = () => {
@@ -31,6 +35,14 @@ function Header() {
     // }
   };
 
+  useEffect(() => {
+    setLoading(true);
+    getLocations().then((res) => setLocations(res));
+    getServiceTypes()
+      .then((res) => setServiceTypes(res))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <header
       className={s.Header}
@@ -45,10 +57,14 @@ function Header() {
             Студія масажу і SPA
           </a>
         </MediaQuery>
-
         <nav className={s.Header__nav}>
           <MediaQuery query="(min-width: 768px)">
-            <NavigationList setOpenMenu={toggleMenu} openMenu={openMenu} />
+            <NavigationList
+              setOpenMenu={toggleMenu}
+              openMenu={openMenu}
+              locations={locations}
+              serviceTypes={serviceTypes}
+            />
           </MediaQuery>
           <MediaQuery query="(max-width: 767.99px)">
             <div className={s.Header__mob}>
@@ -57,6 +73,8 @@ function Header() {
                   <NavigationList
                     setOpenMenu={toggleMenu}
                     openMenu={openMenu}
+                    locations={locations}
+                    serviceTypes={serviceTypes}
                   />
                   <IoCloseOutline
                     onClick={toggleMenu}

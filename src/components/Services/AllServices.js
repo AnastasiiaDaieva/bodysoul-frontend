@@ -1,4 +1,3 @@
-import data from "data/services.json";
 import ServiceCard from "components/Services/ServiceCard/ServiceCard";
 import { nanoid } from "nanoid";
 import s from "./AllServices.module.scss";
@@ -16,6 +15,8 @@ function AllServices({ setBookingStatus, data }) {
   //   console.log(finalArray);
   //   return finalArray;
   // };
+  console.log("all serv rendered");
+
   console.log("alls data", data);
 
   return (

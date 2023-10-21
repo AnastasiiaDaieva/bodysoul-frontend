@@ -1,13 +1,10 @@
-import axios from "axios";
 import { useForm, Controller } from "react-hook-form";
 import { bookingSelect } from "styles/selectStyles";
 import s from "./BookingForm.module.scss";
 import Select from "react-select";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { DatePicker } from "partials/ReactDatePicker";
-
-const API_URL = process.env.REACT_APP_HEROKU_PRODUCTION;
-// const API_URL = process.env.REACT_APP_LOCAL_HOST_FOR_TESTING;
+import { sendEmail } from "api/backendApi";
 
 function BookingForm({
   closeModal,
@@ -17,7 +14,7 @@ function BookingForm({
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [availableServices, setAvailableServices] = useState([]);
-  console.log("form", spotsSelect);
+  // console.log("form", spotsSelect);
 
   const {
     register,
@@ -27,21 +24,23 @@ function BookingForm({
     formState: { errors },
     getValues,
   } = useForm();
-  console.log(getValues());
+  // console.log(getValues());
+  // console.log("servicesSelect", servicesSelect);
 
   const customOnChange = (val, onChange) => {
     onChange(val);
-    console.log("sel loc", val);
-    console.log("serv", availableServices);
+    // console.log("sel loc", val);
+    // console.log("serv", availableServices);
     setAvailableServices(
       servicesSelect.filter((item) => item.locations.includes(val.id))
     );
+    // console.log("serv2", availableServices);
   };
 
   const onSubmit = (data) => {
     setIsLoading(true);
     const { comment, date, service, location, name, phone } = data;
-    console.log("values", data);
+    // console.log("values", data);
     const newDate = JSON.stringify(date.toLocaleString("uk-UA"))
       .split(" ")[0]
       .slice(1, -1);
@@ -58,13 +57,9 @@ function BookingForm({
       location: location.label,
       comment: comment,
     };
-    console.log("o", order);
+    // console.log("o", order);
 
-    axios
-      .post(`${API_URL}emails/sendemail`, {
-        order,
-        type: "order",
-      })
+    sendEmail(order, "order")
       .then((response) => {
         // console.log(response);
         if (response.status === 200) {

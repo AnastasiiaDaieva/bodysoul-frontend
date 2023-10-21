@@ -5,9 +5,8 @@ import s from "./Contacts.module.scss";
 import H2Home from "components/Headings/H2Home";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import ContentLoader from "components/ContentLoader/ContentLoader";
-const API_URL = process.env.REACT_APP_STRAPI;
+import { getLocations } from "api/strApi";
 
 function Contacts() {
   const [data, setData] = useState([]);
@@ -16,12 +15,9 @@ function Contacts() {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`${API_URL}locations`)
+    getLocations()
       .then((res) => {
-        // console.log("strapi locations", res.data.data);
-        setData(res.data.data);
-        // console.log(data);
+        setData(res);
       })
       .finally(() => setLoading(false));
   }, []);
