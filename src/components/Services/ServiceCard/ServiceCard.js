@@ -4,14 +4,17 @@ import s from "./ServiceCard.module.scss";
 import Prices from "../MassagePrices/Prices";
 import BookingModal from "components/Booking/BookingModal";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 function ServiceCard({ data, imgObj, setBookingStatus, type }) {
   const [isOpen, setIsOpen] = useState(false);
   const { state } = useLocation();
+  const { location: paramsLocation } = useParams();
   const modalOpen = () => {
     setIsOpen(true);
   };
+
+  console.log("data.details", state);
   return (
     <>
       <article className={s.ServiceCard}>
@@ -56,17 +59,20 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
             <BookingModal
               setIsOpen={setIsOpen}
               type="booking"
+              address={state.location}
               setBookingStatus={setBookingStatus}
-              servicesSelect={data.details.map((item, index) => {
-                return {
-                  value: `${data.id}-${index}`,
-                  label: `${data.name} ${item.time} (${item.price})`,
-                  locations:
-                    data?.relatedLocations?.data?.map(
-                      (location) => location?.id
-                    ) || [],
-                };
-              })}
+              servicesSelect={data.details
+                .find((item) => item.location === paramsLocation)
+                .prices.map((item, index) => {
+                  return {
+                    value: `${data.id}-${index}`,
+                    label: `${data.name} ${item.time} (${item.price})`,
+                    // locations:
+                    //   data?.relatedLocations?.data?.map(
+                    //     (location) => location?.id
+                    //   ) || [],
+                  };
+                })}
             />
           )}
           <button

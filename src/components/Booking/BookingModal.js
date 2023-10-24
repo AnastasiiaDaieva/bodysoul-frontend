@@ -15,6 +15,7 @@ function BookingModal({
   type,
   setBookingStatus,
   servicesSelect,
+  address,
 }) {
   const closeModal = () => {
     if (type === "booking") {
@@ -80,6 +81,7 @@ function BookingModal({
                 setBookingStatus={setBookingStatus}
                 servicesSelect={servicesSelect}
                 spotsSelect={spotsSelect}
+                address={address}
               />
             </>
           )}

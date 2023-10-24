@@ -68,9 +68,13 @@ img {
   height: auto;
 }
 
-a {
+a,
+a.nav-link {
   text-decoration: none;
   color: var(--main-color);
+  &:hover {
+    color: var(--accent-color);
+  }
 }
 
 article {

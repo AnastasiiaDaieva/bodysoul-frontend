@@ -33,7 +33,6 @@ function NavigationList({ setOpenMenu, openMenu, locations, serviceTypes }) {
       >
         {locations.map((loc, index) => (
           <DropdownSubmenu
-            href="/services/*"
             title={loc.attributes.city}
             key={index}
             className={s.NavigationList__item_sec}

@@ -2,7 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { bookingSelect } from "styles/selectStyles";
 import s from "./BookingForm.module.scss";
 import Select from "react-select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DatePicker } from "partials/ReactDatePicker";
 import { sendEmail } from "api/backendApi";
 
@@ -11,10 +11,11 @@ function BookingForm({
   setBookingStatus,
   servicesSelect,
   spotsSelect,
+  address,
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [availableServices, setAvailableServices] = useState([]);
-  // console.log("form", spotsSelect);
+  console.log("address", address);
 
   const {
     register,
@@ -25,14 +26,32 @@ function BookingForm({
     getValues,
   } = useForm();
   // console.log(getValues());
-  // console.log("servicesSelect", servicesSelect);
+  console.log("servicesSelect", servicesSelect);
+
+  useEffect(() => {
+    if (address && address?.id) {
+      setAvailableServices(servicesSelect);
+    }
+  }, [address?.id]);
 
   const customOnChange = (val, onChange) => {
     onChange(val);
-    // console.log("sel loc", val);
-    // console.log("serv", availableServices);
+    console.log("sel loc", val);
+    console.log("serv", availableServices);
     setAvailableServices(
-      servicesSelect.filter((item) => item.locations.includes(val.id))
+      servicesSelect
+        .filter((item) =>
+          item.relatedLocations.data.find((item) => +item.id === +val.id)
+        )
+        .map((service) => {
+          return service.details
+            ?.find((item) => item.location === val.value)
+            .prices.map((item, index) => ({
+              value: `${service.id}-${index}`,
+              label: `${service.name} ${item.time} (${item.price})`,
+            }));
+        })
+        .flat()
     );
     // console.log("serv2", availableServices);
   };
@@ -54,7 +73,9 @@ function BookingForm({
       service: service.label,
       date: newDate,
       time: newTime,
-      location: location.label,
+      location: address
+        ? `${address.attributes.name}, ${address.attributes.city}`
+        : location.label,
       comment: comment,
     };
     // console.log("o", order);
@@ -95,28 +116,30 @@ function BookingForm({
           />
           {errors.name && <span>Заповніть поле</span>}
         </div>
-        <div className={s.BookingForm__container}>
-          <Controller
-            control={control}
-            name="location"
-            {...register("location", {
-              required: true,
-            })}
-            ref={null}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Select
-                options={spotsSelect}
-                placeholder="Оберіть адресу"
-                className={`${s.BookingForm__select}`}
-                onChange={(val) => customOnChange(val, onChange)}
-                onBlur={onBlur}
-                selected={value}
-                styles={bookingSelect}
-              />
-            )}
-          />
-          {errors.name && <span>Оберіть адресу</span>}
-        </div>
+        {!address?.id && (
+          <div className={s.BookingForm__container}>
+            <Controller
+              control={control}
+              name="location"
+              {...register("location", {
+                required: true,
+              })}
+              ref={null}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Select
+                  options={spotsSelect}
+                  placeholder="Оберіть адресу"
+                  className={`${s.BookingForm__select}`}
+                  onChange={(val) => customOnChange(val, onChange)}
+                  onBlur={onBlur}
+                  selected={value}
+                  styles={bookingSelect}
+                />
+              )}
+            />
+            {errors.name && <span>Оберіть адресу</span>}
+          </div>
+        )}
         {availableServices.length > 0 && (
           <div className={s.BookingForm__container}>
             <Controller

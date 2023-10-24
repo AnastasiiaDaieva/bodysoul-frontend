@@ -44,6 +44,8 @@ function ServicesView() {
     allData.unshift(object);
   };
 
+  let location = useLocation();
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -106,7 +108,7 @@ function ServicesView() {
         // console.log("all data 3", allData);
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [location?.state?.location?.id]);
 
   const setBookingStatus = (status) => {
     if (status === "success") {
@@ -117,7 +119,6 @@ function ServicesView() {
       toast.error(BookingError);
     }
   };
-  let location = useLocation();
   // console.log("state", location.state);
 
   // const getHeroContent = () => {
@@ -148,17 +149,17 @@ function ServicesView() {
 
           <Suspense fallback={<ContentLoader />}>
             <Routes>
-              <Route
-                path={`/*`}
+              {/* <Route
+                path={`/:location`}
                 element={
                   <AllServices
                     setBookingStatus={setBookingStatus}
                     data={allData}
                   />
                 }
-              />
+              /> */}
               <Route
-                path={`massage`}
+                path={`/:location/massage`}
                 element={
                   <Massage
                     setBookingStatus={setBookingStatus}
@@ -167,7 +168,7 @@ function ServicesView() {
                 }
               />
               <Route
-                path={`spa`}
+                path={`/:location/spa`}
                 element={
                   <SpaPrograms
                     setBookingStatus={setBookingStatus}
@@ -176,20 +177,20 @@ function ServicesView() {
                 }
               />
               <Route
-                path={`body`}
+                path={`/:location/body`}
                 element={
                   <Body setBookingStatus={setBookingStatus} data={bodyData} />
                 }
               />
               <Route
-                path={`giftcards`}
+                path={`/:location/giftcards`}
                 element={<Giftcards images={images} text={giftcardsText} />}
               />
               <Route
                 index
                 element={
                   <Navigate
-                    to={`/${location?.state?.location.attributes.value}`}
+                    to={`/${location?.state?.location.attributes.value}/massage`}
                   />
                 }
               />

@@ -23,8 +23,8 @@ function Filter() {
           marginBottom: location.pathname === "/services/*" ? "50px" : "0",
         }}
       >
-        <NavLink
-          to={`/services/${physLocation.attributes.value}/*`}
+        {/* <NavLink
+          to={`/services/${physLocation.attributes.value}/`}
           style={activeStyle}
           className={s.Filter__link}
           state={{
@@ -38,7 +38,7 @@ function Filter() {
               <Arrow className={s.Filter__arrow} />
             )}
           </li>
-        </NavLink>
+        </NavLink> */}
         {physLocation.attributes.service_types.data.map((service) => (
           <NavLink
             to={`/services/${physLocation.attributes.value}/${service.attributes.value}`}
