@@ -40,11 +40,14 @@ function NavigationList({ setOpenMenu, openMenu, locations, serviceTypes }) {
             {loc.attributes.service_types.data.map((service) => (
               <NavDropdown.Item
                 to={`/services/${loc.attributes.value}/${service.attributes.value}`}
+                onClick={() => setOpenMenu(!openMenu)}
                 key={service.id}
+                className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
                 as={NavLink}
                 state={{
                   location: loc,
                 }}
+                style={activeStyle}
               >
                 {service.attributes.label}
               </NavDropdown.Item>

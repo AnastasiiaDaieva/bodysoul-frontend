@@ -12,9 +12,7 @@ function AboutView() {
     setIsLoading(true);
 
     getAboutText()
-      .then((res) =>
-        setAboutData(res.data.data[0].attributes.description.split("\n"))
-      )
+      .then((res) => setAboutData(res[0].attributes.description.split("\n")))
       .finally(() => setIsLoading(false));
   }, []);
   return (

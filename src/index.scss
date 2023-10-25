@@ -72,7 +72,9 @@ a,
 a.nav-link {
   text-decoration: none;
   color: var(--main-color);
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     color: var(--accent-color);
   }
 }
@@ -127,6 +129,11 @@ h6 {
   transition: all 0.45s ease 0s; /* Add any necessary transitions */
 }
 
+.dropdown-menu,
+.dropdown-menu * {
+  background-color: var(--background-color);
+}
+
 .App__goback {
   position: fixed;
   bottom: 5%;
@@ -169,6 +176,29 @@ h6 {
   }
 }
 
+.dropdown-item.active,
+.dropdown-item:active,
+.dropdown-item:hover,
+.dropdown-submenu:active,
+.dropdown-submenu:hover {
+  color: var(--accent-color);
+  background-color: transparent;
+}
+.dropdown-submenu:active .dropdown-submenu-container,
+.dropdown-submenu:hover .dropdown-submenu-container {
+  background-color: var(--add-dark-color);
+}
+
+@media screen and (max-width: 767.99px) {
+  .dropdown-menu {
+    position: static;
+    width: 100vw;
+
+    text-align: center;
+    padding: 15px 0;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .GiftcardsText__description {
     text-align: left;
@@ -176,6 +206,17 @@ h6 {
     font-size: 16px;
     line-height: 130%;
     margin-right: 70px;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+
+  .dropdown-submenu {
+    width: 100%;
+    padding: 10px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 1279.99px) {

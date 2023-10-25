@@ -28,11 +28,6 @@ function Header() {
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
-    // if (openMenu) {
-    //   document.body.style.overflow = "hidden";
-    // } else {
-    //   document.body.style.overflow = "unset";
-    // }
   };
 
   useEffect(() => {
@@ -42,6 +37,14 @@ function Header() {
       .then((res) => setServiceTypes(res))
       .finally(() => setLoading(false));
   }, []);
+
+  useEffect(() => {
+    if (openMenu === true) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [openMenu]);
 
   return (
     <header
