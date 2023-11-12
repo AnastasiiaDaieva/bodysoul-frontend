@@ -14,7 +14,56 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
     setIsOpen(true);
   };
 
-  console.log("data.details", state);
+  const htmlTable = data?.prices;
+
+  const extractColumnByValue = (html, value) => {
+    const tempElement = document.createElement("div");
+    tempElement.innerHTML = html;
+    const headerRow = tempElement?.querySelector("table tr");
+
+    if (headerRow) {
+      const headerCells = headerRow.querySelectorAll("td, th");
+      const headers = Array.from(headerCells).map((cell) => cell.textContent);
+
+      const tableData = {};
+      headers.forEach((header) => {
+        tableData[header] = [];
+      });
+
+      const dataRows = Array.from(
+        tempElement.querySelectorAll("table tr")
+      ).slice(1);
+
+      headers.forEach((header, columnIndex) => {
+        dataRows.forEach((row) => {
+          const cell = row.children[columnIndex];
+          if (cell) {
+            tableData[header].push(cell.textContent);
+          }
+        });
+      });
+
+      const extractedColumn = tableData[value];
+
+      const jsxTable = (
+        <table>
+          <tbody>
+            {extractedColumn.map((value, index) => (
+              <tr key={index}>
+                <td>{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      );
+
+      return jsxTable;
+    } else {
+      return;
+    }
+  };
+
+  const extractedColumnJSX = extractColumnByValue(htmlTable, paramsLocation);
   return (
     <>
       <article className={s.ServiceCard}>
@@ -53,6 +102,8 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
               (loc) => loc.location === state?.location?.attributes?.value
             )}
           />
+
+          {/* {extractedColumnJSX && extractedColumnJSX} */}
 
           <div className="divider"></div>
           {isOpen && (

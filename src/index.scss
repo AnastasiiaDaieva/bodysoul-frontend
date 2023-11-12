@@ -93,6 +93,10 @@ h6 {
   font-family: var(--accent-font);
 }
 
+.force-overflow {
+  min-height: 50px;
+}
+
 .owl-nav {
   position: absolute;
   top: 42%;
@@ -184,10 +188,6 @@ h6 {
   color: var(--accent-color);
   background-color: transparent;
 }
-.dropdown-submenu:active .dropdown-submenu-container,
-.dropdown-submenu:hover .dropdown-submenu-container {
-  background-color: var(--add-dark-color);
-}
 
 @media screen and (max-width: 767.99px) {
   .dropdown-menu {
@@ -196,6 +196,20 @@ h6 {
 
     text-align: center;
     padding: 15px 0;
+  }
+
+  .dropdown-toggle + .dropdown-menu {
+    background-color: var(--add-dark-color);
+    padding: 0;
+  }
+
+  .dropdown-toggle + .dropdown-menu * {
+    color: var(--hero-text-color);
+    background-color: var(--add-dark-color);
+  }
+
+  .dropdown .dropdown-toggle + .dropdown-menu {
+    inset: 0 0 0 0 !important;
   }
 }
 

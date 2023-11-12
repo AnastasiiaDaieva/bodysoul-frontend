@@ -5,31 +5,33 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-const options = {
-  loop: true,
-  center: true,
-  items: 3,
-  margin: 0,
-  autoHeight: true,
-  autoplayHoverPause: true,
-  lazyLoad: true,
-  autoplay: true,
-  dots: true,
-  autoplayTimeout: 8500,
-  smartSpeed: 450,
-  nav: true,
-  navClass: [""],
-  responsive: {
-    0: {
-      items: 1,
+const options = (total) => {
+  return {
+    loop: total >= 3 ? true : false,
+    center: true,
+    items: 3,
+    margin: 0,
+    autoHeight: true,
+    autoplayHoverPause: true,
+    lazyLoad: true,
+    autoplay: true,
+    dots: true,
+    autoplayTimeout: 8500,
+    smartSpeed: 450,
+    nav: true,
+    navClass: [""],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 3,
+      },
+      1000: {
+        items: 4,
+      },
     },
-    600: {
-      items: 3,
-    },
-    1000: {
-      items: 4,
-    },
-  },
+  };
 };
 
 const Specialists = ({ specialists }) => {
@@ -40,7 +42,7 @@ const Specialists = ({ specialists }) => {
   return (
     <OwlCarousel
       className={`owl-carousel owl-theme ${s.BodyList}`}
-      {...options}
+      {...options(specialists.length)}
     >
       {specialists.map((item) => (
         <SpecialistItem key={item.id} spec={item} />

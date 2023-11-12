@@ -21,6 +21,7 @@ import {
   getServiceTypes,
   getSpaList,
 } from "api/strApi";
+import SpecialistsView from "views/SpecialistsView/SpecialistsView";
 
 function ServicesView() {
   const [serviceTypes, setServiceTypes] = useState([]);
@@ -36,15 +37,19 @@ function ServicesView() {
     if (allData.find((item) => item.id === id)) {
       return;
     }
-    let object = {};
-    object.id = id;
-    object.typeValue = newArray[0].attributes.typeValue;
-    object.typeLabel = newArray[0].attributes.typeLabel;
-    object.services = [...newArray];
-    allData.unshift(object);
+    if (newArray[0]) {
+      let object = {};
+      object.id = id;
+      object.typeValue = newArray[0].attributes.typeValue;
+      object.typeLabel = newArray[0].attributes.typeLabel;
+      object.services = [...newArray];
+      allData.unshift(object);
+    }
+    console.log("allData", allData);
   };
 
   let location = useLocation();
+  const { location: physLocation } = location.state;
 
   useEffect(() => {
     setIsLoading(true);
@@ -55,7 +60,7 @@ function ServicesView() {
 
     getGiftcardsList().then((res) => {
       const getImages = res.filter((item) => item.id === 1 || item.id === 12);
-      console.log("getGiftcardImages", getImages);
+      // console.log("getGiftcardImages", getImages);
       setImages(getImages);
       const text = res.find((item) => item.id === 11);
 
@@ -63,12 +68,12 @@ function ServicesView() {
     });
 
     // const locFilters =
-    //   location?.state?.id && location.state.id.length > 1
+    //   physLocation?.id && location.state.id.length > 1
     //     ? location.state.id.map(
     //         (id, index) =>
     //           `filters$[or][${index}][relatedLocations][id][$eq]=${id}`
     //       )
-    //     : location?.state?.id.length === 1
+    //     : physLocation?.id.length === 1
     //     ? [`filters[relatedLocations][id][$eq]=${location.state.id[0]}`]
     //     : [];
 
@@ -76,7 +81,7 @@ function ServicesView() {
     getMassagesList().then((res) => {
       const filteredRes = res.filter((item) =>
         item.attributes?.relatedLocations?.data?.some(
-          (loc) => +loc.id === +location?.state?.location?.id
+          (loc) => +loc.id === +physLocation?.id
         )
       );
       setMassageData(filteredRes);
@@ -87,7 +92,7 @@ function ServicesView() {
     getBodyList().then((res) => {
       const filteredRes = res.filter((item) =>
         item.attributes?.relatedLocations?.data?.some(
-          (loc) => +loc.id === +location?.state?.location?.id
+          (loc) => +loc.id === +physLocation?.id
         )
       );
       setBodyData(filteredRes);
@@ -100,7 +105,7 @@ function ServicesView() {
         // console.log("spa", res.data.data);
         const filteredRes = res.filter((item) =>
           item.attributes?.relatedLocations?.data?.some(
-            (loc) => +loc.id === +location?.state?.location?.id
+            (loc) => +loc.id === +physLocation?.id
           )
         );
         setSpaData(filteredRes);
@@ -108,7 +113,7 @@ function ServicesView() {
         // console.log("all data 3", allData);
       })
       .finally(() => setIsLoading(false));
-  }, [location?.state?.location?.id]);
+  }, [physLocation?.id]);
 
   const setBookingStatus = (status) => {
     if (status === "success") {
@@ -119,7 +124,7 @@ function ServicesView() {
       toast.error(BookingError);
     }
   };
-  // console.log("state", location.state);
+  console.log("state", location);
 
   // const getHeroContent = () => {
   //   switch (getLocation) {
@@ -136,15 +141,24 @@ function ServicesView() {
   //   }
   // };
 
-  const pathname = `/${location?.state?.location}` || "/*";
-  console.log("servpath", location);
   return (
     <main className={s.ServicesView}>
       {isLoading ? (
         <ContentLoader />
       ) : (
-        <div className={`container ${s.ServicesView__container}`}>
-          <Filter />
+        <div
+          className={`container ${
+            location.pathname.includes("specialists") ? "p-0" : ""
+          }`}
+        >
+          <div
+            className={`d-flex flex-column flex-md-row d-md-flex mt-4 ${
+              location.pathname.includes("specialists") ? "px-3 px-md-5" : ""
+            } ${physLocation ? "justify-content-between" : ""}`}
+          >
+            <h3 className="mb-5">Послуги у {physLocation?.attributes.where}</h3>
+            <Filter />
+          </div>
           <ToastContainer />
 
           <Suspense fallback={<ContentLoader />}>
@@ -183,15 +197,13 @@ function ServicesView() {
                 }
               />
               <Route
-                path={`/:location/giftcards`}
-                element={<Giftcards images={images} text={giftcardsText} />}
+                path={`/:location/specialists`}
+                element={<SpecialistsView />}
               />
               <Route
                 index
                 element={
-                  <Navigate
-                    to={`/${location?.state?.location.attributes.value}/massage`}
-                  />
+                  <Navigate to={`/${physLocation?.attributes.value}/massage`} />
                 }
               />
             </Routes>

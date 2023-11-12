@@ -1,9 +1,15 @@
 import MediaQuery from "react-responsive";
 import s from "./Hero.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookingModal from "components/Booking/BookingModal";
+import { getLocations } from "api/strApi";
+import { DropdownSubmenu, NavDropdownMenu } from "react-bootstrap-submenu";
+import { NavDropdown } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import { activeStyle } from "helpers/activeStyle";
+import Discount from "./Discount";
 
-function Hero({ setBookingStatus, text, allServices }) {
+function Hero({ setBookingStatus, text, allServices, discount }) {
   const [isOpen, setIsOpen] = useState(false);
   const [giftcardModal, setGiftcardModal] = useState(false);
   // console.log("allServices", allServices);
@@ -14,6 +20,17 @@ function Hero({ setBookingStatus, text, allServices }) {
     }
   };
 
+  const [locations, setLocations] = useState([]);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    getLocations()
+      .then((res) => setLocations(res))
+      .finally(() => setLoading(false));
+  }, []);
+
   const modalOpen = (type) => {
     if (type === "booking") {
       setIsOpen(true);
@@ -23,14 +40,50 @@ function Hero({ setBookingStatus, text, allServices }) {
     scrollToTop();
     // document.body.style.overflow = "hidden";
   };
+  console.log("disc", discount);
 
   return (
     <div className={s.Hero}>
+      <MediaQuery query="(min-width: 768px)">
+        {" "}
+        {discount && <Discount data={discount} />}
+      </MediaQuery>
       <div className={`container ${s.Hero__container}`}>
         <div className={s.Hero__info}>
           <h1 className={`heading ${s.Hero__heading}`}>
             Пориньте у світ масажу та SPA
           </h1>
+          <MediaQuery query="(max-width: 767.99px)">
+            {/* <NavDropdownMenu
+              title="Послуги"
+              id="collapsible-nav-dropdown"
+              className={s.NavigationList__item}
+            >
+              {locations.map((loc, index) => (
+                <DropdownSubmenu
+                  title={loc.attributes.city}
+                  key={index}
+                  className={s.NavigationList__item_sec}
+                >
+                  {loc.attributes.service_types.data.map((service) => (
+                    <NavDropdown.Item
+                      to={`/services/${loc.attributes.value}/${service.attributes.value}`}
+                      // onClick={() => setOpenMenu(false)}
+                      key={service.id}
+                      className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
+                      as={NavLink}
+                      state={{
+                        location: loc,
+                      }}
+                      style={activeStyle}
+                    >
+                      {service.attributes.label}
+                    </NavDropdown.Item>
+                  ))}
+                </DropdownSubmenu>
+              ))}
+            </NavDropdownMenu> */}
+          </MediaQuery>
           <MediaQuery query="(min-width: 768px)">
             <p className={s.Hero__description}>{text}</p>
           </MediaQuery>
@@ -66,7 +119,11 @@ function Hero({ setBookingStatus, text, allServices }) {
             )}
           </div>
         </div>
-      </div>
+      </div>{" "}
+      <MediaQuery query="(max-width: 767.99px)">
+        {" "}
+        {discount && <Discount data={discount} />}
+      </MediaQuery>
     </div>
   );
 }

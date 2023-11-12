@@ -7,7 +7,6 @@ function Body({ setBookingStatus, data }) {
   );
 
   // console.log("data", availableServices);
-  console.log("body rendered");
 
   return (
     <div>

@@ -27,7 +27,16 @@ function Header() {
   };
 
   const toggleMenu = () => {
+    console.log("set", !openMenu);
     setOpenMenu(!openMenu);
+    // const elements = document.querySelectorAll(
+    //   ".dropdown .dropdown-toggle + .dropdown-menu"
+    // );
+
+    // elements.forEach((element) => {
+    //   element.style.inset = "0 0 0 0";
+    //   element.style.transform = "translate3d(0px, 50px, 0px)";
+    // });
   };
 
   useEffect(() => {
@@ -40,8 +49,19 @@ function Header() {
 
   useEffect(() => {
     if (openMenu === true) {
+      console.log("open", openMenu, "sethidden");
+      // const elements = document.querySelectorAll(
+      //   ".dropdown .dropdown-toggle + .dropdown-menu"
+      // );
+
+      // elements.forEach((element) => {
+      //   element.style.inset = "0 0 0 0";
+      //   element.style.transform = "translate3d(0px, 50px, 0px)";
+      // });
       document.body.style.overflow = "hidden";
     } else {
+      console.log("open", openMenu, "unset");
+
       document.body.style.overflow = "unset";
     }
   }, [openMenu]);
@@ -63,7 +83,7 @@ function Header() {
         <nav className={s.Header__nav}>
           <MediaQuery query="(min-width: 768px)">
             <NavigationList
-              setOpenMenu={toggleMenu}
+              setOpenMenu={setOpenMenu}
               openMenu={openMenu}
               locations={locations}
               serviceTypes={serviceTypes}
@@ -75,7 +95,6 @@ function Header() {
                 <>
                   <NavigationList
                     setOpenMenu={toggleMenu}
-                    openMenu={openMenu}
                     locations={locations}
                     serviceTypes={serviceTypes}
                   />

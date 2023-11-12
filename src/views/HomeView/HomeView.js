@@ -11,6 +11,7 @@ import { BookingError } from "components/Booking/BookingError";
 import {
   getAboutText,
   getBodyList,
+  getDiscount,
   getGiftcardsList,
   getHeroes,
   getMassagesList,
@@ -22,8 +23,8 @@ function HomeView() {
   const [aboutData, setAboutData] = useState("");
   const [giftcardsText, setGiftcardsText] = useState("");
   const [heroText, setHeroText] = useState("");
+  const [discount, setDiscount] = useState(null);
   const [allData, setAllData] = useState([]);
-
   useEffect(() => {
     setIsLoading(true);
 
@@ -34,11 +35,13 @@ function HomeView() {
       setGiftcardsText(text?.attributes?.description || "");
     });
 
-    getHeroes().then((res) => setHeroText(res[0].attributes.description));
+    // getHeroes().then((res) => setHeroText(res[0].attributes.description));
 
-    getAboutText().then((res) =>
-      setAboutData(res[0].attributes?.description.split("\n"))
-    );
+    // getAboutText().then((res) =>
+    //   setAboutData(res[0].attributes?.description.split("\n"))
+    // );
+
+    getDiscount().then((res) => setDiscount(res));
 
     setIsLoading(false);
 
@@ -49,13 +52,13 @@ function HomeView() {
         const bodyRes = await getBodyList();
 
         const spaRes = await getSpaList();
-
         const transformed = [...masRes, ...bodyRes, ...spaRes]
           .map((item) => {
             return { ...item.attributes, id: item.id };
           })
           .filter(({ available }) => available === true);
         setAllData(transformed);
+
         // console.log("all data", allData);
       } catch (error) {
         console.log("hero allData error", error);
@@ -77,11 +80,11 @@ function HomeView() {
   return (
     <main className={s.HomeView}>
       {isLoading && <ContentLoader />}
-
       <Hero
         setBookingStatus={setBookingStatus}
         text={heroText}
         allServices={allData}
+        discount={discount}
       />
       <ToastContainer />
       <About text={aboutData} />

@@ -4,9 +4,10 @@ import { Link, NavLink } from "react-router-dom";
 import { activeStyle } from "helpers/activeStyle";
 import { NavDropdown } from "react-bootstrap";
 import { DropdownSubmenu, NavDropdownMenu } from "react-bootstrap-submenu";
+import { nanoid } from "nanoid";
 
-function NavigationList({ setOpenMenu, openMenu, locations, serviceTypes }) {
-  // console.log("locations", locations, "serviceTypes", serviceTypes);
+function NavigationList({ setOpenMenu, locations, serviceTypes }) {
+  console.log("locations", locations);
 
   return (
     <ul className={s.NavigationList}>
@@ -14,7 +15,7 @@ function NavigationList({ setOpenMenu, openMenu, locations, serviceTypes }) {
         to="/*"
         className={s.NavigationList__item}
         style={activeStyle}
-        onClick={() => setOpenMenu(!openMenu)}
+        onClick={() => setOpenMenu(false)}
       >
         <li> Головна</li>
       </NavLink>
@@ -22,7 +23,7 @@ function NavigationList({ setOpenMenu, openMenu, locations, serviceTypes }) {
         to="/about"
         className={s.NavigationList__item}
         style={activeStyle}
-        onClick={() => setOpenMenu(!openMenu)}
+        onClick={() => setOpenMenu(false)}
       >
         <li>Про нас</li>
       </NavLink>
@@ -31,17 +32,35 @@ function NavigationList({ setOpenMenu, openMenu, locations, serviceTypes }) {
         id="collapsible-nav-dropdown"
         className={s.NavigationList__item}
       >
-        {locations.map((loc, index) => (
-          <DropdownSubmenu
-            title={loc.attributes.city}
-            key={index}
-            className={s.NavigationList__item_sec}
-          >
-            {loc.attributes.service_types.data.map((service) => (
+        {locations
+          .filter((loc) => loc.attributes.online === false)
+          .map((loc, index) => (
+            <DropdownSubmenu
+              title={loc.attributes.city}
+              key={index}
+              className={s.NavigationList__item_sec}
+            >
+              {loc.attributes.service_types.data.map((service) => (
+                <>
+                  <NavDropdown.Item
+                    to={`/services/${loc.attributes.value}/${service.attributes.value}`}
+                    onClick={() => setOpenMenu(false)}
+                    key={service.id}
+                    className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
+                    as={NavLink}
+                    state={{
+                      location: loc,
+                    }}
+                    style={activeStyle}
+                  >
+                    {service.attributes.label}
+                  </NavDropdown.Item>
+                </>
+              ))}
               <NavDropdown.Item
-                to={`/services/${loc.attributes.value}/${service.attributes.value}`}
-                onClick={() => setOpenMenu(!openMenu)}
-                key={service.id}
+                key={nanoid()}
+                to={`/services/${loc.attributes.value}/specialists`}
+                onClick={() => setOpenMenu(false)}
                 className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
                 as={NavLink}
                 state={{
@@ -49,118 +68,26 @@ function NavigationList({ setOpenMenu, openMenu, locations, serviceTypes }) {
                 }}
                 style={activeStyle}
               >
-                {service.attributes.label}
+                Майстри
               </NavDropdown.Item>
-            ))}
-          </DropdownSubmenu>
-        ))}
+            </DropdownSubmenu>
+          ))}
       </NavDropdownMenu>
-      {/*  <li className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}>
-        <div className={s.NavigationList__heading}>
-          <span className={s.NavigationList__span}>Послуги (Київ)</span>
-          <MenuArrow className={s.NavigationList__arrow} />
-        </div>
 
-        <ul className={s.NavigationList__services}>
-          <NavLink
-            to="/services/massage/kyiv"
-            onClick={() => setOpenMenu(!openMenu)}
-            className={`${s.NavigationList__subitem}`}
-            style={activeStyle}
-            state={{
-              location: "kyiv",
-              id: [1, 2],
-              heading: "Послуги у Київській обл.",
-            }}
-          >
-            <li className={s.NavigationList__item_sec}>Масаж</li>
-          </NavLink>
-
-          <NavLink
-            to="/services/spa/kyiv"
-            onClick={() => setOpenMenu(!openMenu)}
-            className={s.NavigationList__subitem}
-            style={activeStyle}
-            state={{
-              location: "kyiv",
-              id: [1, 2],
-              heading: "Послуги у Київській обл.",
-            }}
-          >
-            <li className={s.NavigationList__item_sec}> SPA програми</li>
-          </NavLink>
-
-          <NavLink
-            to="/services/body/kyiv"
-            onClick={() => setOpenMenu(!openMenu)}
-            className={s.NavigationList__subitem}
-            style={activeStyle}
-            state={{
-              location: "kyiv",
-              id: [1, 2],
-              heading: "Послуги у Київській обл.",
-            }}
-          >
-            <li className={s.NavigationList__item_sec}>Інші практики </li>
-          </NavLink>
-
-          <Link
-            to="/services/giftcards"
-            onClick={() => setOpenMenu(!openMenu)}
-            className={s.NavigationList__subitem}
-            // style={activeStyle}
-            state={{ location: "kyiv" }}
-          >
-            <li className={s.NavigationList__item_sec}>Сертифікати </li>
-          </Link>
-        </ul>
-      </li>
-        <li
-        onClick={() => showServices(3)}
-        className={`${s.NavigationList__item} ${s.NavigationList__sublist}`}
-      >
-        <div className={s.NavigationList__heading}>
-          <span className={s.NavigationList__span}>Послуги (Львів)</span>
-          <MenuArrow className={s.NavigationList__arrow} />
-        </div>
-        {openServices.bool === true && openServices.location === 3 && (
-          <ul className={s.NavigationList__services}>
-            <NavLink
-              to="/services/massage/lviv"
-              onClick={() => setOpenMenu(!openMenu)}
-              className={`${s.NavigationList__subitem}`}
-              style={activeStyle}
-              state={{ location: "lviv", id: [3], heading: "Послуги у Львові" }}
-            >
-              <li className={s.NavigationList__item_sec}>Масаж</li>
-            </NavLink>
-
-            <NavLink
-              to="/services/body/lviv"
-              onClick={() => setOpenMenu(!openMenu)}
-              className={s.NavigationList__subitem}
-              style={activeStyle}
-              state={{ location: "lviv", id: [3], heading: "Послуги у Львові" }}
-            >
-              <li className={s.NavigationList__item_sec}>Інші практики</li>
-            </NavLink>
-          </ul>
-        )}
-      </li> */}
       {/*  <NavLink to="/gallery" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}><li>
        Галерея
       </li></NavLink> */}
-      <NavLink
+      {/* <NavLink
         to="/specialists"
-        onClick={() => setOpenMenu(!openMenu)}
+        onClick={() => setOpenMenu(false)}
         className={s.NavigationList__item}
         style={activeStyle}
       >
         <li>Майстри</li>
-      </NavLink>
+      </NavLink> */}
       <NavLink
         to="/contacts"
-        onClick={() => setOpenMenu(!openMenu)}
+        onClick={() => setOpenMenu(false)}
         className={s.NavigationList__item}
         style={activeStyle}
       >

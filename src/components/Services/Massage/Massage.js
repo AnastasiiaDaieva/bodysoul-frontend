@@ -9,8 +9,6 @@ function Massage({ setBookingStatus, data }) {
     ({ attributes }) => attributes.available === true
   );
 
-  console.log("massage rendered");
-
   return (
     <div>
       <ul className={s.Massage__list}>

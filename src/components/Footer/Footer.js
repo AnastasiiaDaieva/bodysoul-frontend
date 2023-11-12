@@ -59,7 +59,7 @@ function Footer() {
                 </li>
                 <li className={s.Footer__list_item}>
                   <a
-                    href="https://www.instagram.com/studio.massage.bs/"
+                    href="https://www.instagram.com/body_soul_kyiv"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

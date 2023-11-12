@@ -21,7 +21,7 @@
 }
 
 .Hero__heading {
-  margin-bottom: 190px;
+  margin-bottom: 20px;
   font-size: 30px;
 }
 
@@ -53,7 +53,16 @@
 
 @media screen and (max-width: 767px) {
   .Hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .Hero__container {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -61,8 +70,16 @@
   .Hero {
     height: 900px;
     background-image: url(../../img/hero-photo_desktop.jpg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
 
-    padding-top: 330px;
+  .Hero__container {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .Hero__heading {
