@@ -21,20 +21,20 @@ export const getServiceTypes = () => {
 };
 
 export const getMassagesList = () => {
-  return axios.get(`${API_URL}massages?populate=*`).then((res) => {
+  return axios.get(`${API_URL}massages?sort=id&populate=*`).then((res) => {
     // console.log("strapi mas", res.data.data);
     return res.data.data;
   });
 };
 export const getSpaList = () => {
-  return axios.get(`${API_URL}spa-programs?populate=*`).then((res) => {
+  return axios.get(`${API_URL}spa-programs?sort=id&populate=*`).then((res) => {
     // console.log("strapi spa", res.data.data);
     return res.data.data;
   });
 };
 
 export const getBodyList = () => {
-  return axios.get(`${API_URL}body-services?populate=*`).then((res) => {
+  return axios.get(`${API_URL}body-services?sort=id&populate=*`).then((res) => {
     // console.log("strapi body", res.data.data);
     return res.data.data;
   });

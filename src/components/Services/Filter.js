@@ -8,7 +8,6 @@ import { nanoid } from "nanoid";
 function Filter() {
   let location = useLocation();
   const { location: physLocation } = location.state;
-  console.log("filter loc", physLocation);
   return (
     <ul
       className={s.Filter}

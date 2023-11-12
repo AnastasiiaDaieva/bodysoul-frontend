@@ -11,7 +11,7 @@ function ContactsView() {
   const [data, setData] = useState([]);
   useEffect(() => {
     getLocations().then((res) => {
-      setData(res);
+      setData(res.filter((item) => item.attributes.online === false));
     });
   }, []);
 

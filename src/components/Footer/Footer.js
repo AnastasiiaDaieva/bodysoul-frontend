@@ -81,20 +81,22 @@ function Footer() {
         </div>
         <div className={s.Footer__contacts}>
           <div className={s.Footer__spots}>
-            {data.map(({ attributes }) => (
-              <address key={nanoid()} className={s.Footer__address_block}>
-                <div className={s.Footer__spot}>
-                  <Link to="/contacts">
-                    <Marker className={s.Footer__marker} />
-                    <p className={s.Footer__building}>{attributes.name}</p>
-                    <p className={s.Footer__address}>{attributes.address}</p>
-                  </Link>
-                  <p className={s.Footer__phone}>
-                    <a href={`tel:${attributes.tel}`}>{attributes.phone}</a>
-                  </p>
-                </div>
-              </address>
-            ))}
+            {data
+              .filter((item) => item.attributes.online === false)
+              .map(({ attributes }) => (
+                <address key={nanoid()} className={s.Footer__address_block}>
+                  <div className={s.Footer__spot}>
+                    <Link to="/contacts">
+                      <Marker className={s.Footer__marker} />
+                      <p className={s.Footer__building}>{attributes.name}</p>
+                      <p className={s.Footer__address}>{attributes.address}</p>
+                    </Link>
+                    <p className={s.Footer__phone}>
+                      <a href={`tel:${attributes.tel}`}>{attributes.phone}</a>
+                    </p>
+                  </div>
+                </address>
+              ))}
           </div>
 
           <div className={s.Footer__hours}>

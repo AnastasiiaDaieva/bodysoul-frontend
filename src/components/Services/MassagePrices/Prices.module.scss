@@ -1,9 +1,12 @@
-.Prices__item {
+.Prices {
   text-align: center;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
   padding: 0 30px;
-  &:last-child {
+  width: 100%;
+  margin: 15px 0;
+  & div {
     margin-bottom: 10px;
   }
 }
@@ -12,5 +15,4 @@
   // border-bottom: 1px solid var(--add-light-color);
   padding: 5px 5px;
   display: flex;
-  align-content: center;
 }

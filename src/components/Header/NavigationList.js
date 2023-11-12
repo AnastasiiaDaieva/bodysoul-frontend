@@ -32,46 +32,44 @@ function NavigationList({ setOpenMenu, locations, serviceTypes }) {
         id="collapsible-nav-dropdown"
         className={s.NavigationList__item}
       >
-        {locations
-          .filter((loc) => loc.attributes.online === false)
-          .map((loc, index) => (
-            <DropdownSubmenu
-              title={loc.attributes.city}
-              key={index}
-              className={s.NavigationList__item_sec}
+        {locations.map((loc, index) => (
+          <DropdownSubmenu
+            title={loc.attributes.city}
+            key={index}
+            className={s.NavigationList__item_sec}
+          >
+            {loc.attributes.service_types.data.map((service) => (
+              <>
+                <NavDropdown.Item
+                  to={`/services/${loc.attributes.value}/${service.attributes.value}`}
+                  onClick={() => setOpenMenu(false)}
+                  key={service.id}
+                  className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
+                  as={NavLink}
+                  state={{
+                    location: loc,
+                  }}
+                  style={activeStyle}
+                >
+                  {service.attributes.label}
+                </NavDropdown.Item>
+              </>
+            ))}
+            <NavDropdown.Item
+              key={nanoid()}
+              to={`/services/${loc.attributes.value}/specialists`}
+              onClick={() => setOpenMenu(false)}
+              className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
+              as={NavLink}
+              state={{
+                location: loc,
+              }}
+              style={activeStyle}
             >
-              {loc.attributes.service_types.data.map((service) => (
-                <>
-                  <NavDropdown.Item
-                    to={`/services/${loc.attributes.value}/${service.attributes.value}`}
-                    onClick={() => setOpenMenu(false)}
-                    key={service.id}
-                    className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
-                    as={NavLink}
-                    state={{
-                      location: loc,
-                    }}
-                    style={activeStyle}
-                  >
-                    {service.attributes.label}
-                  </NavDropdown.Item>
-                </>
-              ))}
-              <NavDropdown.Item
-                key={nanoid()}
-                to={`/services/${loc.attributes.value}/specialists`}
-                onClick={() => setOpenMenu(false)}
-                className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
-                as={NavLink}
-                state={{
-                  location: loc,
-                }}
-                style={activeStyle}
-              >
-                Майстри
-              </NavDropdown.Item>
-            </DropdownSubmenu>
-          ))}
+              Майстри
+            </NavDropdown.Item>
+          </DropdownSubmenu>
+        ))}
       </NavDropdownMenu>
 
       {/*  <NavLink to="/gallery" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}><li>

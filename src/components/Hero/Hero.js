@@ -8,6 +8,7 @@ import { NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { activeStyle } from "helpers/activeStyle";
 import Discount from "./Discount";
+import { nanoid } from "nanoid";
 
 function Hero({ setBookingStatus, text, allServices, discount }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,23 +54,42 @@ function Hero({ setBookingStatus, text, allServices, discount }) {
           <h1 className={`heading ${s.Hero__heading}`}>
             Пориньте у світ масажу та SPA
           </h1>
-          <MediaQuery query="(max-width: 767.99px)">
-            {/* <NavDropdownMenu
-              title="Послуги"
-              id="collapsible-nav-dropdown"
-              className={s.NavigationList__item}
-            >
-              {locations.map((loc, index) => (
-                <DropdownSubmenu
-                  title={loc.attributes.city}
-                  key={index}
-                  className={s.NavigationList__item_sec}
-                >
-                  {loc.attributes.service_types.data.map((service) => (
+
+          <MediaQuery query="(min-width: 768px)">
+            <p className={s.Hero__description}>{text}</p>
+          </MediaQuery>
+          <div className={s.Hero__buttons}>
+            {" "}
+            <MediaQuery query="(max-width: 767.99px)">
+              <NavDropdownMenu
+                title="Послуги"
+                id="collapsible-nav-dropdown"
+                className={`${s.Hero__button} ${s.Hero__services_button}`}
+              >
+                {locations.map((loc, index) => (
+                  <DropdownSubmenu
+                    title={loc.attributes.city}
+                    key={index}
+                    className={s.Hero__services_button_ins}
+                  >
+                    {loc.attributes.service_types.data.map((service) => (
+                      <NavDropdown.Item
+                        to={`/services/${loc.attributes.value}/${service.attributes.value}`}
+                        // onClick={() => setOpenMenu(false)}
+                        key={service.id}
+                        className={`${s.Hero__services_button_subitem} fs-7`}
+                        as={NavLink}
+                        state={{
+                          location: loc,
+                        }}
+                        style={activeStyle}
+                      >
+                        {service.attributes.label}
+                      </NavDropdown.Item>
+                    ))}
                     <NavDropdown.Item
-                      to={`/services/${loc.attributes.value}/${service.attributes.value}`}
-                      // onClick={() => setOpenMenu(false)}
-                      key={service.id}
+                      key={nanoid()}
+                      to={`/services/${loc.attributes.value}/specialists`}
                       className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
                       as={NavLink}
                       state={{
@@ -77,17 +97,12 @@ function Hero({ setBookingStatus, text, allServices, discount }) {
                       }}
                       style={activeStyle}
                     >
-                      {service.attributes.label}
+                      Майстри
                     </NavDropdown.Item>
-                  ))}
-                </DropdownSubmenu>
-              ))}
-            </NavDropdownMenu> */}
-          </MediaQuery>
-          <MediaQuery query="(min-width: 768px)">
-            <p className={s.Hero__description}>{text}</p>
-          </MediaQuery>
-          <div className={s.Hero__buttons}>
+                  </DropdownSubmenu>
+                ))}
+              </NavDropdownMenu>
+            </MediaQuery>
             <button
               type="button"
               onClick={() => modalOpen("booking")}

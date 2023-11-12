@@ -51,6 +51,33 @@
   max-width: 45vw;
 }
 
+.Hero__services_button {
+  margin-bottom: 20px;
+  width: auto;
+  max-width: 150px;
+
+  & .dropdown-menu {
+    transform: translate-x(50%);
+  }
+}
+
+.Hero__services_button > a,
+.Hero__services_button_ins > a {
+  font-family: var(--accent-font) !important;
+  color: var(--accent-color) !important;
+}
+
+.Hero__services_button > * {
+  padding: 0;
+}
+
+.Hero__services_button_ins .Hero__services_button_subitem.dropdown-item {
+  color: var(--add-light-color) !important;
+  font-family: var(--main-font) !important;
+  font-size: 13px !important;
+  text-transform: none !important;
+}
+
 @media screen and (max-width: 767px) {
   .Hero {
     display: flex;

@@ -5,6 +5,8 @@ import Select from "react-select";
 import { useEffect, useState } from "react";
 import { DatePicker } from "partials/ReactDatePicker";
 import { sendEmail } from "api/backendApi";
+import extractColumnByValue from "api/transformPricesTable";
+import { useParams } from "react-router-dom";
 
 function BookingForm({
   closeModal,
@@ -15,7 +17,6 @@ function BookingForm({
 }) {
   const [isLoading, setIsLoading] = useState(false);
   const [availableServices, setAvailableServices] = useState([]);
-  console.log("address", address);
 
   const {
     register,
@@ -25,8 +26,6 @@ function BookingForm({
     formState: { errors },
     getValues,
   } = useForm();
-  // console.log(getValues());
-  console.log("servicesSelect", servicesSelect);
 
   useEffect(() => {
     if (address && address?.id) {
@@ -36,20 +35,27 @@ function BookingForm({
 
   const customOnChange = (val, onChange) => {
     onChange(val);
-    console.log("sel loc", val);
-    console.log("serv", availableServices);
     setAvailableServices(
       servicesSelect
         .filter((item) =>
           item.relatedLocations.data.find((item) => +item.id === +val.id)
         )
         .map((service) => {
-          return service.details
-            ?.find((item) => item.location === val.value)
-            .prices.map((item, index) => ({
+          console.log("serv", service);
+          const extractedColumn = extractColumnByValue(
+            service?.prices,
+            val.value,
+            false
+          );
+          service.prices = extractedColumn;
+          console.log("service.prices", service.prices);
+          return service.prices.map((item, index) => {
+            console.log("it", item);
+            return {
               value: `${service.id}-${index}`,
-              label: `${service.name} ${item.time} (${item.price})`,
-            }));
+              label: `${service.name} (${item})`,
+            };
+          });
         })
         .flat()
     );

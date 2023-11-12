@@ -17,7 +17,8 @@ function Contacts() {
     setLoading(true);
     getLocations()
       .then((res) => {
-        setData(res);
+        setData(res.filter((item) => item.attributes.online === false));
+        console.log("cr", data);
       })
       .finally(() => setLoading(false));
   }, []);

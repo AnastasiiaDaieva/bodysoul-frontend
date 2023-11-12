@@ -5,6 +5,8 @@ import Prices from "../MassagePrices/Prices";
 import BookingModal from "components/Booking/BookingModal";
 import { useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import transformPricesTable from "api/transformPricesTable";
+import extractColumnByValue from "api/transformPricesTable";
 
 function ServiceCard({ data, imgObj, setBookingStatus, type }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,56 +16,11 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
     setIsOpen(true);
   };
 
-  const htmlTable = data?.prices;
-
-  const extractColumnByValue = (html, value) => {
-    const tempElement = document.createElement("div");
-    tempElement.innerHTML = html;
-    const headerRow = tempElement?.querySelector("table tr");
-
-    if (headerRow) {
-      const headerCells = headerRow.querySelectorAll("td, th");
-      const headers = Array.from(headerCells).map((cell) => cell.textContent);
-
-      const tableData = {};
-      headers.forEach((header) => {
-        tableData[header] = [];
-      });
-
-      const dataRows = Array.from(
-        tempElement.querySelectorAll("table tr")
-      ).slice(1);
-
-      headers.forEach((header, columnIndex) => {
-        dataRows.forEach((row) => {
-          const cell = row.children[columnIndex];
-          if (cell) {
-            tableData[header].push(cell.textContent);
-          }
-        });
-      });
-
-      const extractedColumn = tableData[value];
-
-      const jsxTable = (
-        <table>
-          <tbody>
-            {extractedColumn.map((value, index) => (
-              <tr key={index}>
-                <td>{value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-
-      return jsxTable;
-    } else {
-      return;
-    }
-  };
-
-  const extractedColumnJSX = extractColumnByValue(htmlTable, paramsLocation);
+  const extractedColumnJSX = extractColumnByValue(
+    data?.prices,
+    paramsLocation,
+    true
+  );
   return (
     <>
       <article className={s.ServiceCard}>
@@ -97,13 +54,11 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
           {data.effect && <p>Ефекти: {data.effect}</p>}
           <div className="divider"></div>
 
-          <Prices
-            details={data.details.find(
-              (loc) => loc.location === state?.location?.attributes?.value
-            )}
-          />
-
-          {/* {extractedColumnJSX && extractedColumnJSX} */}
+          {!!extractedColumnJSX && (
+            <Prices
+              details={extractColumnByValue(data?.prices, paramsLocation, true)}
+            />
+          )}
 
           <div className="divider"></div>
           {isOpen && (
@@ -112,18 +67,16 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
               type="booking"
               address={state.location}
               setBookingStatus={setBookingStatus}
-              servicesSelect={data.details
-                .find((item) => item.location === paramsLocation)
-                .prices.map((item, index) => {
-                  return {
-                    value: `${data.id}-${index}`,
-                    label: `${data.name} ${item.time} (${item.price})`,
-                    // locations:
-                    //   data?.relatedLocations?.data?.map(
-                    //     (location) => location?.id
-                    //   ) || [],
-                  };
-                })}
+              servicesSelect={extractColumnByValue(
+                data?.prices,
+                paramsLocation,
+                false
+              ).map((item, index) => {
+                return {
+                  value: `${data.id}-${index}`,
+                  label: `${data.name} (${item})`,
+                };
+              })}
             />
           )}
           <button
