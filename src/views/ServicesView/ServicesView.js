@@ -79,21 +79,31 @@ function ServicesView() {
 
     // console.log("lf", locFilters);
     getMassagesList().then((res) => {
-      const filteredRes = res.filter((item) =>
-        item.attributes?.relatedLocations?.data?.some(
-          (loc) => +loc.id === +physLocation?.id
-        )
-      );
+      // const filteredRes = res.filter((item) =>
+      //   item.attributes?.relatedLocations?.data?.some(
+      //     (loc) => +loc.id === +physLocation?.id
+      //   )
+      // );
+      const filteredRes = res.filter((item) => {
+        console.log(item.attributes?.relatedLocations?.data?.length);
+        return item.attributes?.relatedLocations?.data?.length > 0;
+      });
+      console.log("mass 0", res.length);
+      console.log("mass", filteredRes.length);
+
       setMassageData(filteredRes);
       createNewItem(filteredRes, 1);
       // console.log("all data 1", allData);
     });
 
     getBodyList().then((res) => {
-      const filteredRes = res.filter((item) =>
-        item.attributes?.relatedLocations?.data?.some(
-          (loc) => +loc.id === +physLocation?.id
-        )
+      // const filteredRes = res.filter((item) =>
+      //   item.attributes?.relatedLocations?.data?.some(
+      //     (loc) => +loc.id === +physLocation?.id
+      //   )
+      // );
+      const filteredRes = res.filter(
+        (item) => item.attributes?.relatedLocations?.data?.length > 0
       );
       setBodyData(filteredRes);
       createNewItem(filteredRes, 2);
@@ -103,10 +113,13 @@ function ServicesView() {
     getSpaList()
       .then((res) => {
         // console.log("spa", res.data.data);
-        const filteredRes = res.filter((item) =>
-          item.attributes?.relatedLocations?.data?.some(
-            (loc) => +loc.id === +physLocation?.id
-          )
+        // const filteredRes = res.filter((item) =>
+        //   item.attributes?.relatedLocations?.data?.some(
+        //     (loc) => +loc.id === +physLocation?.id
+        //   )
+        // );
+        const filteredRes = res.filter(
+          (item) => item.attributes?.relatedLocations?.data?.length > 0
         );
         setSpaData(filteredRes);
         createNewItem(filteredRes, 3);

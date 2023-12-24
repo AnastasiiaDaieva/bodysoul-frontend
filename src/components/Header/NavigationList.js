@@ -75,14 +75,14 @@ function NavigationList({ setOpenMenu, locations, serviceTypes }) {
       {/*  <NavLink to="/gallery" onClick={()=>setOpenMenu(!openMenu)} className={s.NavigationList__item} style={activeStyle}><li>
        Галерея
       </li></NavLink> */}
-      {/* <NavLink
+      <NavLink
         to="/specialists"
         onClick={() => setOpenMenu(false)}
         className={s.NavigationList__item}
         style={activeStyle}
       >
         <li>Майстри</li>
-      </NavLink> */}
+      </NavLink>
       <NavLink
         to="/contacts"
         onClick={() => setOpenMenu(false)}
