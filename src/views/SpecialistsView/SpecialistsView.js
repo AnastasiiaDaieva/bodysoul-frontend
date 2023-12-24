@@ -13,7 +13,7 @@ function SpecialistsView() {
   useEffect(() => {
     setIsLoading(true);
 
-    getSpecialistsList(location?.state?.location?.id || 1)
+    getSpecialistsList()
       .then((res) => {
         console.log("spec", res);
         setSpecialists(res);
@@ -21,13 +21,13 @@ function SpecialistsView() {
       .finally(() => setIsLoading(false));
   }, []);
   return (
-    <>
+    <main className={s.SpecialistsView}>
       {isLoading || specialists.length === 0 ? (
         <ContentLoader />
       ) : (
         <Specialists specialists={specialists} />
       )}
-    </>
+    </main>
   );
 }
 

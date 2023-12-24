@@ -46,7 +46,14 @@ export const getGiftcardsList = () => {
   });
 };
 
-export const getSpecialistsList = (locationId) => {
+export const getSpecialistsList = () => {
+  return axios.get(`${API_URL}specialists?sort=id&populate=*`).then((res) => {
+    // console.log("strapi specialists", res.data.data);
+    return res.data.data;
+  });
+};
+
+export const getSpecialistsListQuery = (locationId) => {
   return axios
     .get(
       `${API_URL}specialists?filters[locations][id][$eq]=${locationId}&sort=id&populate=*`

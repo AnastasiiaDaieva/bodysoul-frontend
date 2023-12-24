@@ -15,7 +15,6 @@ function BookingModal({
   type,
   setBookingStatus,
   servicesSelect,
-  address,
 }) {
   const closeModal = () => {
     if (type === "booking") {
@@ -25,8 +24,6 @@ function BookingModal({
     }
     document.body.style.overflow = "unset";
   };
-
-  const location = useLocation();
 
   useEffect(() => {
     const handleEscClose = (e) => {
@@ -46,18 +43,11 @@ function BookingModal({
   useEffect(() => {
     getLocations().then((res) => {
       setSpotsSelect(
-        res
-          .filter((item) =>
-            location?.state?.id === undefined
-              ? item
-              : +item.id === +location?.state?.id[0] ||
-                +item.id === +location?.state?.id[1]
-          )
-          .map((item) => ({
-            value: item.attributes.value,
-            label: `${item.attributes.name} (${item.attributes.city})`,
-            id: item.id,
-          }))
+        res.map((item) => ({
+          value: item.attributes.value,
+          label: `${item.attributes.name} (${item.attributes.city})`,
+          id: item.id,
+        }))
       );
     });
   }, []);
@@ -81,7 +71,6 @@ function BookingModal({
                 setBookingStatus={setBookingStatus}
                 servicesSelect={servicesSelect}
                 spotsSelect={spotsSelect}
-                address={address}
               />
             </>
           )}

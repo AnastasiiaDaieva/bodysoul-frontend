@@ -13,11 +13,9 @@ function BookingForm({
   setBookingStatus,
   servicesSelect,
   spotsSelect,
-  address,
 }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [availableServices, setAvailableServices] = useState([]);
-
+  const [availableServices, setAvailableServices] = useState(servicesSelect);
   const {
     register,
     handleSubmit,
@@ -27,39 +25,14 @@ function BookingForm({
     getValues,
   } = useForm();
 
-  useEffect(() => {
-    if (address && address?.id) {
-      setAvailableServices(servicesSelect);
-    }
-  }, [address?.id]);
-
   const customOnChange = (val, onChange) => {
     onChange(val);
+    console.log("servicesSelect", servicesSelect);
     setAvailableServices(
-      servicesSelect
-        .filter((item) =>
-          item.relatedLocations.data.find((item) => +item.id === +val.id)
-        )
-        .map((service) => {
-          console.log("serv", service);
-          const extractedColumn = extractColumnByValue(
-            service?.prices,
-            val.value,
-            false
-          );
-          service.prices = extractedColumn;
-          console.log("service.prices", service.prices);
-          return service.prices.map((item, index) => {
-            console.log("it", item);
-            return {
-              value: `${service.id}-${index}`,
-              label: `${service.name} (${item})`,
-            };
-          });
-        })
-        .flat()
+      servicesSelect.filter((item) =>
+        item.relatedLocations.data.find((item) => +item.id === +val.id)
+      )
     );
-    // console.log("serv2", availableServices);
   };
 
   const onSubmit = (data) => {
@@ -79,9 +52,7 @@ function BookingForm({
       service: service.label,
       date: newDate,
       time: newTime,
-      location: address
-        ? `${address.attributes.name}, ${address.attributes.city}`
-        : location.label,
+      location: location.label,
       comment: comment,
     };
     // console.log("o", order);
@@ -122,30 +93,28 @@ function BookingForm({
           />
           {errors.name && <span>Заповніть поле</span>}
         </div>
-        {!address?.id && (
-          <div className={s.BookingForm__container}>
-            <Controller
-              control={control}
-              name="location"
-              {...register("location", {
-                required: true,
-              })}
-              ref={null}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Select
-                  options={spotsSelect}
-                  placeholder="Оберіть адресу"
-                  className={`${s.BookingForm__select}`}
-                  onChange={(val) => customOnChange(val, onChange)}
-                  onBlur={onBlur}
-                  selected={value}
-                  styles={bookingSelect}
-                />
-              )}
-            />
-            {errors.name && <span>Оберіть адресу</span>}
-          </div>
-        )}
+        <div className={s.BookingForm__container}>
+          <Controller
+            control={control}
+            name="location"
+            {...register("location", {
+              required: true,
+            })}
+            ref={null}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Select
+                options={spotsSelect}
+                placeholder="Оберіть адресу"
+                className={`${s.BookingForm__select}`}
+                onChange={(val) => customOnChange(val, onChange)}
+                onBlur={onBlur}
+                value={value || spotsSelect[0]}
+                styles={bookingSelect}
+              />
+            )}
+          />
+          {errors.name && <span>Оберіть адресу</span>}
+        </div>
         {availableServices.length > 0 && (
           <div className={s.BookingForm__container}>
             <Controller
@@ -164,7 +133,7 @@ function BookingForm({
                     className={`${s.BookingForm__select}`}
                     onChange={onChange}
                     onBlur={onBlur}
-                    selected={value}
+                    value={value || servicesSelect[0]}
                     styles={bookingSelect}
                   />
                 </>

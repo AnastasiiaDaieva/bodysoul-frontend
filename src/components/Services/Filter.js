@@ -7,7 +7,7 @@ import { nanoid } from "nanoid";
 
 function Filter() {
   let location = useLocation();
-  const { location: physLocation } = location.state;
+  const { services } = location.state;
   return (
     <ul
       className={s.Filter}
@@ -32,66 +32,27 @@ function Filter() {
             )}
           </li>
         </NavLink> */}
-      {physLocation?.attributes?.online === true && (
+
+      {services.map((serviceType) => (
         <NavLink
-          to={`/services/${physLocation.attributes.value}/body`}
+          to={`/services/${serviceType.attributes.value}`}
           style={activeStyle}
           className={s.Filter__link}
-          key={nanoid()}
+          key={serviceType.id}
           state={{
-            location: physLocation,
+            services,
           }}
         >
-          {" "}
           <li className={s.Filter__item}>
-            Послуги
+            {serviceType.attributes.label}
+
             {location.pathname !==
-              `/services/${physLocation.attributes.value}/body` && (
+              `/services/${serviceType.attributes.value}` && (
               <Arrow className={s.Filter__arrow} />
             )}
           </li>
         </NavLink>
-      )}
-      {physLocation?.attributes?.online === false &&
-        physLocation.attributes.service_types.data.map((service) => (
-          <NavLink
-            to={`/services/${physLocation.attributes.value}/${service.attributes.value}`}
-            style={activeStyle}
-            className={s.Filter__link}
-            key={service.id}
-            state={{
-              location: physLocation,
-            }}
-          >
-            {" "}
-            <li className={s.Filter__item}>
-              {service.attributes.label}
-
-              {location.pathname !==
-                `/services/${physLocation.attributes.value}/${service.attributes.value}` && (
-                <Arrow className={s.Filter__arrow} />
-              )}
-            </li>
-          </NavLink>
-        ))}
-      <NavLink
-        to={`/services/${physLocation.attributes.value}/specialists`}
-        style={activeStyle}
-        className={s.Filter__link}
-        key={nanoid()}
-        state={{
-          location: physLocation,
-        }}
-      >
-        {" "}
-        <li className={s.Filter__item}>
-          Майстри
-          {location.pathname !==
-            `/services/${physLocation.attributes.value}/specialists` && (
-            <Arrow className={s.Filter__arrow} />
-          )}
-        </li>
-      </NavLink>
+      ))}
     </ul>
   );
 }

@@ -45,7 +45,7 @@ function ServicesView() {
       object.services = [...newArray];
       allData.unshift(object);
     }
-    console.log("allData", allData);
+    // console.log("allData", allData);
   };
 
   let location = useLocation();
@@ -85,11 +85,8 @@ function ServicesView() {
       //   )
       // );
       const filteredRes = res.filter((item) => {
-        console.log(item.attributes?.relatedLocations?.data?.length);
         return item.attributes?.relatedLocations?.data?.length > 0;
       });
-      console.log("mass 0", res.length);
-      console.log("mass", filteredRes.length);
 
       setMassageData(filteredRes);
       createNewItem(filteredRes, 1);
@@ -137,7 +134,6 @@ function ServicesView() {
       toast.error(BookingError);
     }
   };
-  console.log("state", location);
 
   // const getHeroContent = () => {
   //   switch (getLocation) {
@@ -164,12 +160,7 @@ function ServicesView() {
             location.pathname.includes("specialists") ? "p-0" : ""
           }`}
         >
-          <div
-            className={`d-flex flex-column flex-md-row d-md-flex mt-4 ${
-              location.pathname.includes("specialists") ? "px-3 px-md-5" : ""
-            } ${physLocation ? "justify-content-between" : ""}`}
-          >
-            <h3 className="mb-5">Послуги у {physLocation?.attributes.where}</h3>
+          <div className={`d-flex flex-column flex-md-row d-md-flex mt-4`}>
             <Filter />
           </div>
           <ToastContainer />
@@ -186,7 +177,7 @@ function ServicesView() {
                 }
               /> */}
               <Route
-                path={`/:location/massage`}
+                path={`/massage`}
                 element={
                   <Massage
                     setBookingStatus={setBookingStatus}
@@ -195,7 +186,7 @@ function ServicesView() {
                 }
               />
               <Route
-                path={`/:location/spa`}
+                path={`/spa`}
                 element={
                   <SpaPrograms
                     setBookingStatus={setBookingStatus}
@@ -204,21 +195,13 @@ function ServicesView() {
                 }
               />
               <Route
-                path={`/:location/body`}
+                path={`/body`}
                 element={
                   <Body setBookingStatus={setBookingStatus} data={bodyData} />
                 }
               />
-              <Route
-                path={`/:location/specialists`}
-                element={<SpecialistsView />}
-              />
-              <Route
-                index
-                element={
-                  <Navigate to={`/${physLocation?.attributes.value}/massage`} />
-                }
-              />
+
+              <Route index element={<Navigate to={`/massage`} />} />
             </Routes>
           </Suspense>
         </div>

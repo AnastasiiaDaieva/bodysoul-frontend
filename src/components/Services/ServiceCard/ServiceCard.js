@@ -1,26 +1,18 @@
 import { nanoid } from "nanoid";
-import placeholder from "img/no-image.jpg";
 import s from "./ServiceCard.module.scss";
 import Prices from "../MassagePrices/Prices";
 import BookingModal from "components/Booking/BookingModal";
 import { useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import transformPricesTable from "api/transformPricesTable";
+import { IoLocationSharp as LocationIcon } from "react-icons/io5";
 import extractColumnByValue from "api/transformPricesTable";
 
 function ServiceCard({ data, imgObj, setBookingStatus, type }) {
   const [isOpen, setIsOpen] = useState(false);
-  const { state } = useLocation();
-  const { location: paramsLocation } = useParams();
   const modalOpen = () => {
     setIsOpen(true);
   };
 
-  const extractedColumnJSX = extractColumnByValue(
-    data?.prices,
-    paramsLocation,
-    true
-  );
+  const extractedColumnJSX = extractColumnByValue(data?.prices, true);
   return (
     <>
       <article className={s.ServiceCard}>
@@ -29,6 +21,16 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
           alt={imgObj?.alternativeText}
           className={s.ServiceCard__image}
         />
+
+        <div className="d-flex align-items-center justify-content-center m-0">
+          <LocationIcon className="me-1" />
+          {data.relatedLocations.data.map((item, index) => (
+            <span key={item.id} className={`fs-6`}>
+              {item.attributes.city}
+              {index === data.relatedLocations.data.length - 1 ? "" : `, `}
+            </span>
+          ))}
+        </div>
 
         <div className={s.ServiceCard__content}>
           <h3 className={s.ServiceCard__heading}>{data.name}</h3>
@@ -55,9 +57,7 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
           <div className="divider"></div>
 
           {!!extractedColumnJSX && (
-            <Prices
-              details={extractColumnByValue(data?.prices, paramsLocation, true)}
-            />
+            <Prices details={extractColumnByValue(data?.prices, true)} />
           )}
 
           <div className="divider"></div>
@@ -65,18 +65,16 @@ function ServiceCard({ data, imgObj, setBookingStatus, type }) {
             <BookingModal
               setIsOpen={setIsOpen}
               type="booking"
-              address={state.location}
               setBookingStatus={setBookingStatus}
-              servicesSelect={extractColumnByValue(
-                data?.prices,
-                paramsLocation,
-                false
-              ).map((item, index) => {
-                return {
-                  value: `${data.id}-${index}`,
-                  label: `${data.name} (${item})`,
-                };
-              })}
+              servicesSelect={extractColumnByValue(data?.prices, false).map(
+                (item, index) => {
+                  return {
+                    value: `${data.typeValue}-${index}`,
+                    label: `${data.name} (${item})`,
+                    ...data,
+                  };
+                }
+              )}
             />
           )}
           <button

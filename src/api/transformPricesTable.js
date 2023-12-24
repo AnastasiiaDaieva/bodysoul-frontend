@@ -1,8 +1,7 @@
-const extractColumnByValue = (html, value, table) => {
+const extractColumnByValue = (html, table) => {
   const tempElement = document.createElement("div");
   tempElement.innerHTML = html;
   const headerRow = tempElement?.querySelector("table tr");
-
   if (headerRow) {
     const headerCells = headerRow.querySelectorAll("td, th");
     const headers = Array.from(headerCells).map((cell) => cell.textContent);
@@ -24,7 +23,7 @@ const extractColumnByValue = (html, value, table) => {
         }
       });
     });
-    const extractedColumn = tableData[value];
+    const extractedColumn = tableData.svyatopetrivske;
 
     const jsxTable = (
       <table>

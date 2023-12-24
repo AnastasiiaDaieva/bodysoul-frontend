@@ -17,6 +17,7 @@ import {
   getMassagesList,
   getSpaList,
 } from "api/strApi";
+import extractColumnByValue from "api/transformPricesTable";
 
 function HomeView() {
   const [isLoading, setIsLoading] = useState(false);
@@ -83,7 +84,21 @@ function HomeView() {
       <Hero
         setBookingStatus={setBookingStatus}
         text={heroText}
-        allServices={allData}
+        allServices={[
+          ...allData
+            .map((service) => {
+              return extractColumnByValue(service.prices, false).map(
+                (item, index) => {
+                  return {
+                    value: `${service.id}-${index}`,
+                    label: `${service.name} (${item})`,
+                    relatedLocations: service?.relatedLocations,
+                  };
+                }
+              );
+            })
+            .flat(),
+        ]}
         discount={discount}
       />
       <ToastContainer />

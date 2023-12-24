@@ -2,7 +2,7 @@ import MediaQuery from "react-responsive";
 import s from "./Hero.module.scss";
 import { useEffect, useState } from "react";
 import BookingModal from "components/Booking/BookingModal";
-import { getLocations } from "api/strApi";
+import { getLocations, getServiceTypes } from "api/strApi";
 import { DropdownSubmenu, NavDropdownMenu } from "react-bootstrap-submenu";
 import { NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
@@ -13,7 +13,6 @@ import { nanoid } from "nanoid";
 function Hero({ setBookingStatus, text, allServices, discount }) {
   const [isOpen, setIsOpen] = useState(false);
   const [giftcardModal, setGiftcardModal] = useState(false);
-  // console.log("allServices", allServices);
 
   const scrollToTop = () => {
     if (window.matchMedia("(max-width: 768px)").matches) {
@@ -21,14 +20,14 @@ function Hero({ setBookingStatus, text, allServices, discount }) {
     }
   };
 
-  const [locations, setLocations] = useState([]);
+  const [serviceTypes, setServiceTypes] = useState([]);
 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    getLocations()
-      .then((res) => setLocations(res))
+    getServiceTypes()
+      .then((res) => setServiceTypes(res))
       .finally(() => setLoading(false));
   }, []);
 
@@ -41,7 +40,6 @@ function Hero({ setBookingStatus, text, allServices, discount }) {
     scrollToTop();
     // document.body.style.overflow = "hidden";
   };
-  console.log("disc", discount);
 
   return (
     <div className={s.Hero}>
@@ -66,41 +64,30 @@ function Hero({ setBookingStatus, text, allServices, discount }) {
                 id="collapsible-nav-dropdown"
                 className={`${s.Hero__button} ${s.Hero__services_button}`}
               >
-                {locations.map((loc, index) => (
-                  <DropdownSubmenu
-                    title={loc.attributes.city}
-                    key={index}
-                    className={s.Hero__services_button_ins}
+                {serviceTypes.map((service) => (
+                  <NavDropdown.Item
+                    to={`/services/${service.attributes.value}`}
+                    // onClick={() => setOpenMenu(false)}
+                    key={service.id}
+                    className={`${s.Hero__services_button_subitem} fs-7`}
+                    as={NavLink}
+                    state={{
+                      services: serviceTypes,
+                    }}
+                    style={activeStyle}
                   >
-                    {loc.attributes.service_types.data.map((service) => (
-                      <NavDropdown.Item
-                        to={`/services/${loc.attributes.value}/${service.attributes.value}`}
-                        // onClick={() => setOpenMenu(false)}
-                        key={service.id}
-                        className={`${s.Hero__services_button_subitem} fs-7`}
-                        as={NavLink}
-                        state={{
-                          location: loc,
-                        }}
-                        style={activeStyle}
-                      >
-                        {service.attributes.label}
-                      </NavDropdown.Item>
-                    ))}
-                    <NavDropdown.Item
-                      key={nanoid()}
-                      to={`/services/${loc.attributes.value}/specialists`}
-                      className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
-                      as={NavLink}
-                      state={{
-                        location: loc,
-                      }}
-                      style={activeStyle}
-                    >
-                      Майстри
-                    </NavDropdown.Item>
-                  </DropdownSubmenu>
+                    {service.attributes.label}
+                  </NavDropdown.Item>
                 ))}
+                <NavDropdown.Item
+                  key={nanoid()}
+                  to={`/specialists`}
+                  className={`${s.NavigationList__subitem} ${s.NavigationList__item_tert}`}
+                  as={NavLink}
+                  style={activeStyle}
+                >
+                  Майстри
+                </NavDropdown.Item>
               </NavDropdownMenu>
             </MediaQuery>
             <button
