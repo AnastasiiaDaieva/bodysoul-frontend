@@ -23,7 +23,15 @@ function BookingForm({
     control,
     formState: { errors },
     getValues,
+    setValue,
   } = useForm();
+
+  useEffect(() => {
+    setValue("location", spotsSelect[0]);
+  }, [spotsSelect]);
+  useEffect(() => {
+    setValue("service", servicesSelect[0]);
+  }, [spotsSelect, servicesSelect]);
 
   const customOnChange = (val, onChange) => {
     onChange(val);
@@ -36,9 +44,9 @@ function BookingForm({
   };
 
   const onSubmit = (data) => {
+    console.log("values", data);
     setIsLoading(true);
     const { comment, date, service, location, name, phone } = data;
-    // console.log("values", data);
     const newDate = JSON.stringify(date.toLocaleString("uk-UA"))
       .split(" ")[0]
       .slice(1, -1);
@@ -102,18 +110,20 @@ function BookingForm({
             })}
             ref={null}
             render={({ field: { onChange, onBlur, value } }) => (
-              <Select
-                options={spotsSelect}
-                placeholder="Оберіть адресу"
-                className={`${s.BookingForm__select}`}
-                onChange={(val) => customOnChange(val, onChange)}
-                onBlur={onBlur}
-                value={value || spotsSelect[0]}
-                styles={bookingSelect}
-              />
+              <>
+                <Select
+                  options={spotsSelect}
+                  placeholder="Оберіть адресу"
+                  className={`${s.BookingForm__select}`}
+                  onChange={(val) => customOnChange(val, onChange)}
+                  onBlur={onBlur}
+                  value={value || spotsSelect[0]}
+                  styles={bookingSelect}
+                />
+              </>
             )}
           />
-          {errors.name && <span>Оберіть адресу</span>}
+          {errors.location && <span>Оберіть адресу</span>}
         </div>
         {availableServices.length > 0 && (
           <div className={s.BookingForm__container}>
@@ -139,7 +149,7 @@ function BookingForm({
                 </>
               )}
             />{" "}
-            {errors.name && <span>Заповніть поле</span>}
+            {errors.service && <span>Заповніть поле</span>}
           </div>
         )}{" "}
         <div className={s.BookingForm__container}>
